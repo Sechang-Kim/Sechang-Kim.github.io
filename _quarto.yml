@@ -27,6 +27,7 @@ format:
       gutter-width: 1.0rem
     theme: custom.scss
     toc: true
+    mainfont: Pretendard
 
 editor: visual
 
