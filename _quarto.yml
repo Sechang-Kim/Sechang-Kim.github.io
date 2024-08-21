@@ -5,15 +5,27 @@ project:
 website:
   title: "Sechang Kim"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - text: Research
+        menu:
+          - text: Personal Research
+          - text: Research Assistant
+      - text: Teaching
+        menu:
+          - text: Instructor
+          - text: Teaching Assistant
+      - text: Personal Experience
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    grid:
+      sidebar-width: 250px
+      body-width: 1000px
+      margin-width: 250px
+      gutter-width: 1.0rem
+    theme: custom.scss
     toc: true
 
 editor: visual

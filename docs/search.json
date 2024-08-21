@@ -2,15 +2,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Sechang-Kim",
+    "title": "Home",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 2\n\n[1] 3"
+    "text": "Hello everyone, I’m Sechang Kim. I’ve studied geography so far, and eager to investigate population studies in the spatial perspectives. Any contact or suggestion is welcomed.\nResearch Interest: population geography, spatial demography, migration, health disparities, spatial analysis, GIS"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Home",
+    "section": "Education",
+    "text": "Education\n\nM.A., 2024, Dept. of Geography Education, Seoul National University\n\nAdvisor: Sang-Il Lee(Professor, Deparment of Geography, Seoul National University)\nThesis: A Study on Internal Migration Modeling based on the Spatial Demographic Perspective: Utilizing Cross-Classified Multilevel Model\nGPA: 4.25/4.3\n\nB.A., 2022, Dept. of Geography Education, Seoul National University\n\nGPA: 3.90/4.3"
+  },
+  {
+    "objectID": "index.html#careers",
+    "href": "index.html#careers",
+    "title": "Home",
+    "section": "Careers",
+    "text": "Careers\n\nJune 2024 - now : Assistant Manager, Center for Educational Research, Seoul National University\nFeb 2018 - Oct 2019 : Sergeant, Republic of Korea Army\n\nMOS: Terrain Analysis in Engineering(So-called “GIS Specialty”)"
   }
 ]

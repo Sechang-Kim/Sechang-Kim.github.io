@@ -1,11 +1,38 @@
 ---
-title: "Sechang-Kim"
+title: "Home"
+about:
+  template: trestles
+  image: img/profile.jpg
+  links: 
+    - icon: github
+      text: Github
+      href: https://Sechang-Kim.github.io
+    - icon: envelope
+      text: Mail
+      href: mailto:vs5345@snu.ac.kr
+toc: false
 ---
 
-This is a Quarto website.
+Hello everyone, I'm Sechang Kim. I've studied geography so far, and eager to investigate population studies in the spatial perspectives. Any contact or suggestion is welcomed.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+**Research Interest**: population geography, spatial demography, migration, health disparities, spatial analysis, GIS<br><br>
 
-```{r}
-1 + 2
-```
+## Education
+
+-   **M.A., 2024, Dept. of Geography Education, Seoul National University**
+
+    -   Advisor: [Sang-Il Lee](https://sangillee.snu.ac.kr/)(Professor, Deparment of Geography, Seoul National University)
+
+    -   Thesis: [A Study on Internal Migration Modeling based on the Spatial Demographic Perspective: Utilizing Cross-Classified Multilevel Model](https://1drv.ms/b/s!AqXpktESgRDo8hRdSyJpuEO2FgzS?e=tb9CBp)
+
+    -   GPA: 4.25/4.3
+
+-   **B.A., 2022, Dept. of Geography Education, Seoul National University**
+
+    -   GPA: 3.90/4.3
+
+## Careers
+
+-   June 2024 - now : Assistant Manager, [Center for Educational Research](https://eduresearch.snu.ac.kr/main/main.php), Seoul National University
+-   Feb 2018 - Oct 2019 : Sergeant, Republic of Korea Army
+    -   MOS: Terrain Analysis in Engineering(So-called "GIS Specialty")
