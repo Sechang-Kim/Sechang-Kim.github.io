@@ -2,22 +2,43 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Home",
+    "title": "Research Interest",
     "section": "",
-    "text": "Hello everyone, I’m Sechang Kim. I’ve studied geography so far, and eager to investigate population studies in the spatial perspectives. Any contact or suggestion is welcomed.\nResearch Interest: population geography, spatial demography, migration, health disparities, spatial analysis, GIS"
+    "text": "Hello everyone, I’m Sechang Kim. I’ve studied geography so far, and eager to investigate population studies in the spatial perspectives. Any contact or suggestion is welcomed."
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
-    "title": "Home",
+    "title": "Research Interest",
     "section": "Education",
-    "text": "Education\n\nM.A., 2024, Dept. of Geography Education, Seoul National University\n\nAdvisor: Sang-Il Lee(Professor, Deparment of Geography, Seoul National University)\nThesis: A Study on Internal Migration Modeling based on the Spatial Demographic Perspective: Utilizing Cross-Classified Multilevel Model\nGPA: 4.25/4.3\n\nB.A., 2022, Dept. of Geography Education, Seoul National University\n\nGPA: 3.90/4.3"
+    "text": "Education\n\nM.A., 2024, Dept. of Geography Education, Seoul National University\n\nAdvisor: Sang-Il Lee(Professor, Deparment of Geography, Seoul National University)\nThesis: A Study on Internal Migration Modeling based on the Spatial Demographic Perspective: Utilizing Cross-Classified Multilevel Model\nGPA: 4.25/4.3(4.46/4.5)\n\nB.A., 2022, Dept. of Geography Education, Seoul National University\n\nGPA: 3.90/4.3(4.10/4.5)\nHonors: Summa Cum Laude"
   },
   {
     "objectID": "index.html#careers",
     "href": "index.html#careers",
-    "title": "Home",
+    "title": "Research Interest",
     "section": "Careers",
-    "text": "Careers\n\nJune 2024 - now : Assistant Manager, Center for Educational Research, Seoul National University\nFeb 2018 - Oct 2019 : Sergeant, Republic of Korea Army\n\nMOS: Terrain Analysis in Engineering(So-called “GIS Specialty”)"
+    "text": "Careers\n\nJune 2024 - Now : Assistant Manager, Center for Educational Research, Seoul National University\nFeb 2018 - Oct 2019 : Sergeant, Republic of Korea Army\n\nMOS: Terrain Analysis in Engineering(so-called “GIS Specialty”)"
+  },
+  {
+    "objectID": "test_gwalkR.html",
+    "href": "test_gwalkR.html",
+    "title": "gwalkR",
+    "section": "",
+    "text": "library(GWalkR)\n\ndata(\"iris\")\ngwalkr(iris)"
+  },
+  {
+    "objectID": "personal-experience.html",
+    "href": "personal-experience.html",
+    "title": "Personal Experience",
+    "section": "",
+    "text": "I’ve developed and taught various programs in secondary schools, often, but not always, using GIS with a demographic phenomenon. Here’s a brief overview of what I’ve designed and taught.\n\n\n\nIn Korean | 인구구조를 통한 지역 이해\nWhere | Garak High School, Seoul(서울 가락고등학교)\nWhen | Mar 2020, Mar 2021, Mar 2022, Mar 2023\n\n\n\n\n\nIn Korean | 커뮤니티 매핑으로 꿈꾸는 배리어프리 세상\nWhere\n\nBokjeong High School, Sungnam(성남 복정고등학교)\nHyundai High School, Seoul(서울 현대고등학교)\nSampyung Middle School, Sungnam(성남 삼평중학교)\n\nWhen\n\nJul 2024, Oct 2022, Oct 2023\nMay 2023, Dec 2023\nJul 2023"
+  },
+  {
+    "objectID": "personal-experience.html#instructor",
+    "href": "personal-experience.html#instructor",
+    "title": "Personal Experience",
+    "section": "",
+    "text": "I’ve developed and taught various programs in secondary schools, often, but not always, using GIS with a demographic phenomenon. Here’s a brief overview of what I’ve designed and taught.\n\n\n\nIn Korean | 인구구조를 통한 지역 이해\nWhere | Garak High School, Seoul(서울 가락고등학교)\nWhen | Mar 2020, Mar 2021, Mar 2022, Mar 2023\n\n\n\n\n\nIn Korean | 커뮤니티 매핑으로 꿈꾸는 배리어프리 세상\nWhere\n\nBokjeong High School, Sungnam(성남 복정고등학교)\nHyundai High School, Seoul(서울 현대고등학교)\nSampyung Middle School, Sungnam(성남 삼평중학교)\n\nWhen\n\nJul 2024, Oct 2022, Oct 2023\nMay 2023, Dec 2023\nJul 2023"
   }
 ]
