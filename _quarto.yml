@@ -16,7 +16,7 @@ website:
         menu:
           - text: Instructor
           - text: Teaching Assistant
-      - href: personal-experiencec.qmd
+      - href: personal-experience.qmd
         text: Personal Experience
 
 format:
