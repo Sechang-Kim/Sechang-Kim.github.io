@@ -18,6 +18,8 @@ website:
           - text: Teaching Assistant
       - href: personal-experience.qmd
         text: Personal Experience
+      - href: shinylive_trial.qmd
+        text: Shinylive
 
 format:
   html:
