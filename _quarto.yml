@@ -18,7 +18,7 @@ website:
           - text: Teaching Assistant
       - href: personal-experience.qmd
         text: Personal Experience
-      - href: https://naver.com/
+      - href: https://sechang-kim.github.io/popTrend/
         text: Shinylive
 
 format:
