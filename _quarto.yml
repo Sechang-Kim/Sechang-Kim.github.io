@@ -18,8 +18,12 @@ website:
           - text: Teaching Assistant
       - href: personal-experience.qmd
         text: Personal Experience
-      - href: https://sechang-kim.github.io/popTrend/
-        text: Shinylive
+      - text: Shinylive
+        menu:
+          - text: World Population Prospect
+            href: https://sechang-kim.github.io/popTrend/
+          - text: Coming Soon
+        
 
 format:
   html:
