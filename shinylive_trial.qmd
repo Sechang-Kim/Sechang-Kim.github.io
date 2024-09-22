@@ -9,15 +9,7 @@ editor: visual
 
 ## Shinylive {.unnumbered}
 
-Shinylive는 서버 없이 정적 웹페이지에서 Shiny를 작동하게끔 만들어주는 WASM 패키지이다. 여기서는 대륙을 선택하면, 해당 대륙 내 국가들의 TFR만 그려주는 간단한 웹 애플리케이션을 shinylive를 통해 구현해본다. *과연 될까??2*
-
-```{r}
-library(readr)
-path <- file.path("data", "wpp_2022.rds")
-data <- read_rds(path)
-
-data |> head(50) |> DT::datatable()
-```
+Shinylive는 서버 없이 정적 웹페이지에서 Shiny를 작동하게끔 만들어주는 WASM 패키지이다. 여기서는 대륙을 선택하면, 해당 대륙 내 국가들의 TFR만 그려주는 간단한 웹 애플리케이션을 shinylive를 통해 구현해본다. *과연 될까??*
 
 ```{shinylive-r}
 #| standalone: true
@@ -26,6 +18,10 @@ library(ggplot2)
 library(dplyr)
 library(shiny)
 library(DT)
+library(readr)
+
+path <- file.path("data", "wpp_2022.rds")
+data <- read_rds(path)
 
 # Define your ui and server code here
 ui <- fluidPage(
