@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -165,23 +199,17 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="shinylive" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="shinylive">Shinylive</h2>
-<p>Shinylive는 서버 없이 정적 웹페이지에서 Shiny를 작동하게끔 만들어주는 WASM 패키지이다. 여기서는 대륙을 선택하면, 해당 대륙 내 국가들의 TFR만 그려주는 간단한 웹 애플리케이션을 shinylive를 통해 구현해본다. <em>과연 될까?</em></p>
+<p>Shinylive는 서버 없이 정적 웹페이지에서 Shiny를 작동하게끔 만들어주는 WASM 패키지이다. 여기서는 대륙을 선택하면, 해당 대륙 내 국가들의 TFR만 그려주는 간단한 웹 애플리케이션을 shinylive를 통해 구현해본다. <em>과연 될까??2</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"wpp_2022.rds"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <pre class="shinylive-r" data-engine="r"><code>#| standalone: true
+#| viewerHeight: 800
+library(ggplot2)
+library(dplyr)
 library(shiny)
-library(tidyverse)
-library(spData)
-library(sf)
-
-data(world)
-world &lt;- st_as_sf(world)
-wpp_2022 &lt;- read_rds("data/wpp_2022.rds")
-
-my_wpp &lt;- wpp_2022 |&gt; 
-  filter(year == 2024)
-
-world_data &lt;- world |&gt;
-  left_join(my_wpp, join_by(iso_a2 == ISO2))
-
 
 # Define your ui and server code here
 ui &lt;- fluidPage(
@@ -189,13 +217,13 @@ ui &lt;- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      selectInput("continent", "Select a Continent:",
-                  choices = unique(world_data$continent),
-                  selected = "Asia")
+      selectInput("country", "Select a country:",
+                  choices = unique(data$ISO3),
+                  selected = "KOR")
     ),
     
     mainPanel(
-      plotOutput("continentMap")
+      plotOutput("popTrend")
     )
   )
 )
@@ -205,64 +233,20 @@ ui &lt;- fluidPage(
 server &lt;- function(input, output) {
   
   # Filter data based on selected continent
-  continentData &lt;- reactive({
-    world_data %&gt;%
-      filter(continent == input$continent)
+  countryData &lt;- reactive({
+    data |&gt; 
+      filter(ISO3 == input$country)
   })
   
   
   # Generate the map output
-  output$continentMap &lt;- renderPlot({
-    ggplot(data = continentData()) +
-      geom_sf(aes(fill = TFR, text = name_long)) +
-      coord_sf(crs = "+proj=robin") +
-      scale_fill_viridis_c() +
-      scale_x_continuous(breaks = seq(-180, 180, 30)) +
-      scale_y_continuous(breaks = c(-89.5, seq(-60, 60, 30), 89.5)) +
-      theme(
-        panel.background = element_rect("white"),
-        panel.grid = element_line(color = "gray80")
-      )
+  output$popTrend &lt;- renderPlot({
+    ggplot(data = countryData(), aes(x=year, y=pop_jan_total)) +
+      geom_line()
   })
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server)</code></pre>
-<pre class="shinylive-r" data-engine="r"><code>#| standalone: true
-#| viewerHeight: 800
-
-library(shiny)
-
-ui &lt;- fluidPage(
-  titlePanel("Hello Shiny!"),
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput(
-        inputId = "bins",
-        label = "Number of bins:",
-        min = 1,
-        max = 50,
-        value = 30
-      )
-    ),
-    mainPanel(
-      plotOutput(outputId = "distPlot")
-    )
-  )
-)
-
-server &lt;- function(input, output) {
-  output$distPlot &lt;- renderPlot({
-    x &lt;- faithful$waiting
-    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)
-    hist(x,
-         breaks = bins, col = "#75AADB", border = "white",
-         xlab = "Waiting time to next eruption (in mins)",
-         main = "Histogram of waiting times"
-    )
-  })
-}
-
 shinyApp(ui = ui, server = server)</code></pre>
 
 

@@ -9,25 +9,20 @@ editor: visual
 
 ## Shinylive {.unnumbered}
 
-Shinylive는 서버 없이 정적 웹페이지에서 Shiny를 작동하게끔 만들어주는 WASM 패키지이다. 여기서는 대륙을 선택하면, 해당 대륙 내 국가들의 TFR만 그려주는 간단한 웹 애플리케이션을 shinylive를 통해 구현해본다. *과연 될까?*
+Shinylive는 서버 없이 정적 웹페이지에서 Shiny를 작동하게끔 만들어주는 WASM 패키지이다. 여기서는 대륙을 선택하면, 해당 대륙 내 국가들의 TFR만 그려주는 간단한 웹 애플리케이션을 shinylive를 통해 구현해본다. *과연 될까??2*
+
+```{r}
+library(readr)
+path <- file.path("data", "wpp_2022.rds")
+data <- read_rds(path)
+```
 
 ```{shinylive-r}
 #| standalone: true
+#| viewerHeight: 800
+library(ggplot2)
+library(dplyr)
 library(shiny)
-library(tidyverse)
-library(spData)
-library(sf)
-
-data(world)
-world <- st_as_sf(world)
-wpp_2022 <- read_rds("data/wpp_2022.rds")
-
-my_wpp <- wpp_2022 |> 
-  filter(year == 2024)
-
-world_data <- world |>
-  left_join(my_wpp, join_by(iso_a2 == ISO2))
-
 
 # Define your ui and server code here
 ui <- fluidPage(
@@ -35,13 +30,13 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      selectInput("continent", "Select a Continent:",
-                  choices = unique(world_data$continent),
-                  selected = "Asia")
+      selectInput("country", "Select a country:",
+                  choices = unique(data$ISO3),
+                  selected = "KOR")
     ),
     
     mainPanel(
-      plotOutput("continentMap")
+      plotOutput("popTrend")
     )
   )
 )
@@ -51,66 +46,19 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # Filter data based on selected continent
-  continentData <- reactive({
-    world_data %>%
-      filter(continent == input$continent)
+  countryData <- reactive({
+    data |> 
+      filter(ISO3 == input$country)
   })
   
   
   # Generate the map output
-  output$continentMap <- renderPlot({
-    ggplot(data = continentData()) +
-      geom_sf(aes(fill = TFR, text = name_long)) +
-      coord_sf(crs = "+proj=robin") +
-      scale_fill_viridis_c() +
-      scale_x_continuous(breaks = seq(-180, 180, 30)) +
-      scale_y_continuous(breaks = c(-89.5, seq(-60, 60, 30), 89.5)) +
-      theme(
-        panel.background = element_rect("white"),
-        panel.grid = element_line(color = "gray80")
-      )
+  output$popTrend <- renderPlot({
+    ggplot(data = countryData(), aes(x=year, y=pop_jan_total)) +
+      geom_line()
   })
 }
 
 # Run the application 
-shinyApp(ui = ui, server = server)
-```
-
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 800
-
-library(shiny)
-
-ui <- fluidPage(
-  titlePanel("Hello Shiny!"),
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput(
-        inputId = "bins",
-        label = "Number of bins:",
-        min = 1,
-        max = 50,
-        value = 30
-      )
-    ),
-    mainPanel(
-      plotOutput(outputId = "distPlot")
-    )
-  )
-)
-
-server <- function(input, output) {
-  output$distPlot <- renderPlot({
-    x <- faithful$waiting
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    hist(x,
-         breaks = bins, col = "#75AADB", border = "white",
-         xlab = "Waiting time to next eruption (in mins)",
-         main = "Histogram of waiting times"
-    )
-  })
-}
-
 shinyApp(ui = ui, server = server)
 ```
