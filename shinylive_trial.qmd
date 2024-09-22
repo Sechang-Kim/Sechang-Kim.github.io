@@ -28,7 +28,7 @@ ui <- fluidPage(
   titlePanel("World Population Prospects"),
   
   mainPanel(
-    dataTableOutput("popTrend")
+    DTOutput("popTrend")
   )
 )
 
@@ -36,7 +36,7 @@ ui <- fluidPage(
 # Define server logic
 server <- function(input, output) {
   
-  output$popTrend <- renderDataTable({
+  output$popTrend <- renderDT({
     data |> head(10) |> 
       DT::datatable()
   })

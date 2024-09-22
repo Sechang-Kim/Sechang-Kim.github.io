@@ -1,24 +1,43 @@
 library(ggplot2)
 library(dplyr)
 library(shiny)
+library(readr)
+
+data <- read_rds("../data/wpp_2022.rds")
 
 # Define your ui and server code here
 ui <- fluidPage(
   titlePanel("World Population Prospects"),
   
-  mainPanel(
-    dataTableOutput("popTrend")
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("country", "Select a country:",
+                  choices = unique(data$ISO3),
+                  selected = "KOR")
+      ),
+    
+    mainPanel(
+      plotOutput("popTrend")
+      )
   )
 )
-
 
 # Define server logic
 server <- function(input, output) {
   
-  output$popTrend <- renderDataTable({
-    data |> head(10) |> 
-      DT::datatable()
+  # Filter data based on selected continent
+  countryData <- reactive({
+    data |> 
+      filter(ISO3 == input$country)
   })
+  
+  
+  # Generate the map output
+  output$popTrend <- renderPlot({
+    ggplot(data = countryData(), aes(x=year, y=pop_jan_total)) +
+      geom_line()
+  })
+
 }
 
 # Run the application 
