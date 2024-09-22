@@ -22,7 +22,8 @@ website:
         menu:
           - text: World Population Prospect
             href: https://sechang-kim.github.io/popTrend/
-          - text: Coming Soon
+          - text: World's Total Fertility Rate
+            href: https://sechang-kim.github.io/TFR_Trend/
         
 
 format:
