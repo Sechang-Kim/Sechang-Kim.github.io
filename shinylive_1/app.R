@@ -3,7 +3,8 @@ library(dplyr)
 library(shiny)
 library(readr)
 
-data <- read_rds("../data/wpp_2022.rds")
+path <- file.path("data", "wpp_2022.rds")
+data <- read_rds(path)
 
 # Define your ui and server code here
 ui <- fluidPage(

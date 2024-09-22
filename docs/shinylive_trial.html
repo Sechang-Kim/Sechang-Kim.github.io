@@ -182,7 +182,7 @@ ui &lt;- fluidPage(
   titlePanel("World Population Prospects"),
   
   mainPanel(
-    dataTableOutput("popTrend")
+    DTOutput("popTrend")
   )
 )
 
@@ -190,7 +190,7 @@ ui &lt;- fluidPage(
 # Define server logic
 server &lt;- function(input, output) {
   
-  output$popTrend &lt;- renderDataTable({
+  output$popTrend &lt;- renderDT({
     data |&gt; head(10) |&gt; 
       DT::datatable()
   })
