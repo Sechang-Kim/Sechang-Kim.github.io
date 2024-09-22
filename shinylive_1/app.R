@@ -69,8 +69,8 @@ server <- function(input, output) {
       e_line(serie = pop_jan_total, symbolSize = 2, bind = region_name) |> 
       e_tooltip(formatter = htmlwidgets::JS("
     function(params) {
-      return 'Year: ' + params.value[0] + '<br>' +
-             'Country Name: ' + params.name + '<br>' +
+      return '<strong>' + params.name + '</strong>' + '<br>' +
+             'Year: ' + params.value[0] + '<br>' +
              'Total Population: ' + params.value[1].toLocaleString();
     }
   ")) |>
