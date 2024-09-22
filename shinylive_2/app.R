@@ -5,18 +5,8 @@ library(tidyverse)
 library(spData)
 library(sf)
 
-data(world)
-world <- st_as_sf(world)
-
-path <- file.path("../shinylive_1/data", "wpp_2022.rds")
-wpp_2022 <- read_rds(path)
-
-my_wpp <- wpp_2022 |> 
-  filter(year == 2024)
-
-world_data <- world |>
-  left_join(my_wpp, join_by(iso_a2 == ISO2))
-
+path <- file.path("data", "TFR_data.rds")
+world_data <- readr::read_rds(path)
 
 # Define your ui and server code here
 ui <- fluidPage(
