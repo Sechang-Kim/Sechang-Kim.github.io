@@ -1,8 +1,6 @@
 library(shiny)
-library(leaflet)
-library(plotly)
-library(tidyverse)
-library(spData)
+library(dplyr)
+library(ggplot2)
 library(sf)
 
 path <- file.path("data", "TFR_data.rds")
