@@ -10,14 +10,11 @@
     ></script>
     <script type="module">
       import { runExportedApp } from "./../shinylive/shinylive.js";
-      const response = await fetch("./app.json");
-      if (!response.ok) {
-        throw new Error("HTTP error loading app.json: " + response.status);
-      }
-      const appFiles = await response.json();
-
-      const appRoot = document.getElementById("root");
-      runApp(appRoot, "viewer", {startFiles: appFiles}, "r");
+      runExportedApp({
+        id: "root",
+        appEngine: "r",
+        relPath: "../",
+      });
     </script>
     <link rel="stylesheet" href="./../shinylive/style-resets.css" />
     <link rel="stylesheet" href="./../shinylive/shinylive.css" />
