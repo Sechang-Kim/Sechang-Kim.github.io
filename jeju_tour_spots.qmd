@@ -1,6 +1,8 @@
 ---
 title: "제주의 자연환경"
-format: dashboard
+format:
+  dashboard:
+embed-resources: true
 editor: visual
 ---
 
@@ -70,13 +72,13 @@ jeju_spots <- data.frame(
     126.6700
   ),
   image = c(
-    "img/seongsan_ilchulbong.png", 
-    "img/hallasan.png", 
-    "img/manjanggul_cave.png", 
-    "img/jeongbang_waterfall.png", 
-    "img/udo_island.png", 
-    "img/cheonjeyeon_waterfall.png", 
-    "img/hamdeok_beach.png"
+    "./img/seongsan_ilchulbong.png", 
+    "./img/hallasan.png", 
+    "./img/manjanggul_cave.png", 
+    "./img/jeongbang_waterfall.png", 
+    "./img/udo_island.png", 
+    "./img/cheonjeyeon_waterfall.png", 
+    "./img/hamdeok_beach.png"
   ),
   stringsAsFactors = FALSE
 )
@@ -105,7 +107,7 @@ jeju_map <- leaflet(data = jeju_spots, width = 2000) |>
       opacity = 0.9
     )
   ) |> 
-  addLayersControl(baseGroups = c("OSM", "Outdoors", "Alidade"),
+  addLayersControl(baseGroups = c("OSM"),
                    options = layersControlOptions(collapsed = FALSE)) |> 
   setView(lng = 126.55, lat = 33.34, zoom = 11)   # Center the map on Jeju Island
   
