@@ -24,7 +24,7 @@ about:
       href: https://orcid.org/0009-0002-5604-3782
     - icon: file-person
       text: CV
-      href: Sechang_KIM_CV(JUN_2025).pdf
+      href: https://nbviewer.org/github/Sechang-Kim/Sechang-Kim.github.io/blob/main/materials/Sechang_KIM_CV%28JUN_2025%29.pdf
 toc: false
 ---
 
