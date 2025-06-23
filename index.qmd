@@ -22,9 +22,9 @@ about:
       href: mailto:vs5345@uw.edu
     - text: "![](img/orcid_logo_50.svg)"
       href: https://orcid.org/0009-0002-5604-3782
-    - icon: envelope
+    - icon: file-person
       text: CV
-      href: materials/Sechang_KIM_CV(JUN_2025).pdf
+      href: Sechang_KIM_CV(JUN_2025).pdf
 toc: false
 ---
 
