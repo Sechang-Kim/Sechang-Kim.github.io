@@ -29,7 +29,6 @@ format:
     theme:
       - custom.scss
     mainfont: Pretendard
-    bibliography: bibliography.bib
 
 editor: visual
 
