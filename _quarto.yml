@@ -1,5 +1,5 @@
 project:
-  type: website
+  type: website 
   output-dir: docs
   
 website:
@@ -18,14 +18,7 @@ website:
           - text: Teaching Assistant
       - href: personal-experience.qmd
         text: Personal Experience
-      - text: Shinylive
-        menu:
-          - text: World Population Prospect
-            href: https://sechang-kim.github.io/popTrend/
-          - text: World's Total Fertility Rate
-            href: https://sechang-kim.github.io/TFR_Trend/
         
-
 format:
   html:
     grid:
@@ -36,6 +29,7 @@ format:
     theme:
       - custom.scss
     mainfont: Pretendard
+    bibliography: bibliography.bib
 
 editor: visual
 

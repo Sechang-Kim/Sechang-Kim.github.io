@@ -19,9 +19,12 @@ about:
       href: https://Sechang-Kim.github.io
     - icon: envelope
       text: Mail
-      href: mailto:vs5345@snu.ac.kr
+      href: mailto:vs5345@uw.edu
     - text: "![](img/orcid_logo_50.svg)"
       href: https://orcid.org/0009-0002-5604-3782
+    - icon: envelope
+      text: CV
+      href: materials/Sechang_KIM_CV(JUN_2025).pdf
 toc: false
 ---
 
@@ -29,21 +32,22 @@ Hello everyone, **I'm Sechang Kim**. I've **studied geography so far**, and eage
 
 ## Education
 
+-   **Ph.D. Student, Dept. of Geography, University of Washinton**
+
+    -   From Autumn 2025
+
 -   **M.A., 2024, Dept. of Geography Education, Seoul National University**
 
     -   Advisor: [Sang-Il Lee](https://sangillee.snu.ac.kr/)(Professor, Deparment of Geography, Seoul National University)
 
     -   Thesis: [A Study on Internal Migration Modeling based on the Spatial Demographic Perspective: Utilizing Cross-Classified Multilevel Model](https://1drv.ms/b/s!AqXpktESgRDo8hRdSyJpuEO2FgzS?e=tb9CBp)
 
-    -   GPA: 4.25/4.3(4.46/4.5)
-
 -   **B.A., 2022, Dept. of Geography Education, Seoul National University**
 
-    -   GPA: 3.90/4.3(4.10/4.5)
     -   Honors: Summa Cum Laude
 
 ## Careers
 
--   June 2024 - Now : Assistant Manager, [Center for Educational Research](https://eduresearch.snu.ac.kr/main/main.php), Seoul National University
+-   June 2024 - May 2025 : Manager, [Center for Educational Research](https://eduresearch.snu.ac.kr/main/main.php), Seoul National University
 -   Feb 2018 - Oct 2019 : Sergeant, Republic of Korea Army
     -   MOS: Terrain Analysis in Engineering(so-called "GIS Specialty")
