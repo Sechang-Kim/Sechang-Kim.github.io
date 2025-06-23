@@ -1,14 +1,12 @@
 ---
-title: "Research Interest"
+title: "Sechang Kim"
 
 subtitle: |
-  | **Population Geography and Spatial Demography**
-  |
-  | **Spatial Variation in Demographic Processes**<br>
-    - Cause and Effect of Migration<br>
-    - Neighborhood and Health Disparities
-  | 
-  | **Spatial Data Science and Spatial Analysis**
+  | **Research Interest**
+  | ① Spatial Variation in Demographic Process<br>
+      - Cause and Effect of Migration<br>
+      - Spatial Disparities in Health
+  | ② Spatial Data Science and Geovisualization
 
 about:
   template: trestles

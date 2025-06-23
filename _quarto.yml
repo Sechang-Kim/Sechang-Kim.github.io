@@ -10,8 +10,8 @@ website:
         text: Home
       - text: Research
         menu:
-          - text: Personal Research
-          - text: Research Assistant
+          - text: Migration
+          - text: Education
       - text: Teaching
         menu:
           - text: Instructor
