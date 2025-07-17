@@ -18,6 +18,8 @@ website:
           - text: Teaching Assistant
       - href: personal-experience.qmd
         text: Personal Experience
+      - href: Travel_Takamatsu.qmd
+        text: Travel
         
 format:
   html:
