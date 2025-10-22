@@ -16,8 +16,15 @@ website:
         menu:
           - text: Instructor
           - text: Teaching Assistant
+<<<<<<< HEAD
       - href: blog.qmd
         text: Blog
+=======
+      - href: personal-experience.qmd
+        text: Personal Experience
+      - href: Travel_Takamatsu.qmd
+        text: Travel
+>>>>>>> bc3885be287537538c4aa6cf660b1f87ac8a0dc6
         
 format:
   html:
