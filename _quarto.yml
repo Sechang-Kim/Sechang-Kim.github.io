@@ -16,8 +16,8 @@ website:
         menu:
           - text: Instructor
           - text: Teaching Assistant
-      - href: personal-experience.qmd
-        text: Personal Experience
+      - href: blog.qmd
+        text: Blog
         
 format:
   html:

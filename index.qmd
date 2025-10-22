@@ -1,6 +1,5 @@
 ---
 title: "Sechang Kim"
-
 subtitle: |
   | **Research Interest**
   | ① Spatial Variation in Demographic Process<br>
@@ -26,17 +25,17 @@ about:
 toc: false
 ---
 
-Hello everyone, **I'm Sechang Kim**. I've **studied geography so far**, and eager to investigate **population studies in the spatial perspectives**. Any contact or suggestion is welcomed.
+Hello, my name is **Sechang Kim**. I've **studied geography so far**, and I am eager to investigate **population studies from a spatial perspective.** Any contact or suggestion is welcome.
 
 ## Education
 
--   **Ph.D. Student, Dept. of Geography, University of Washinton**
+-   **Ph.D Student, Dept. of Geography, University of Washington**
 
     -   From Autumn 2025
 
 -   **M.A., 2024, Dept. of Geography Education, Seoul National University**
 
-    -   Advisor: [Sang-Il Lee](https://sangillee.snu.ac.kr/)(Professor, Deparment of Geography, Seoul National University)
+    -   Advisor: [Sang-Il Lee](https://sangillee.snu.ac.kr/)(Professor, Department of Geography, Seoul National University)
 
     -   Thesis: [A Study on Internal Migration Modeling based on the Spatial Demographic Perspective: Utilizing Cross-Classified Multilevel Model](https://1drv.ms/b/s!AqXpktESgRDo8hRdSyJpuEO2FgzS?e=tb9CBp)
 
@@ -46,6 +45,6 @@ Hello everyone, **I'm Sechang Kim**. I've **studied geography so far**, and eage
 
 ## Careers
 
--   June 2024 - May 2025 : Manager, [Center for Educational Research](https://eduresearch.snu.ac.kr/main/main.php), Seoul National University
--   Feb 2018 - Oct 2019 : Sergeant, Republic of Korea Army
+-   June 2024 - May 2025: Manager, [Center for Educational Research](https://eduresearch.snu.ac.kr/main/main.php), Seoul National University
+-   Feb 2018 - Oct 2019: Sergeant, Republic of Korea Army
     -   MOS: Terrain Analysis in Engineering(so-called "GIS Specialty")

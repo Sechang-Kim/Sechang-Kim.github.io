@@ -1,0 +1,36 @@
+project:
+  type: website 
+  output-dir: docs
+  
+website:
+  title: "Sechang Kim"
+  navbar:
+    right:
+      - href: index.qmd
+        text: Home
+      - text: Research
+        menu:
+          - text: Migration
+          - text: Education
+      - text: Teaching
+        menu:
+          - text: Instructor
+          - text: Teaching Assistant
+      - href: personal-experience.qmd
+        text: Personal Experience
+      - href: Travel_Takamatsu.qmd
+        text: Travel
+        
+format:
+  html:
+    grid:
+      sidebar-width: 250px
+      body-width: 1000px
+      margin-width: 250px
+      gutter-width: 1.0rem
+    theme:
+      - custom.scss
+    mainfont: Pretendard
+
+editor: visual
+

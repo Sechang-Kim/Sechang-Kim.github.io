@@ -1,0 +1,62 @@
+---
+title: "Takamatsu Travel"
+author: "김세창, 이영서, 해마"
+format: html
+editor: visual
+---
+
+## 1일차
+
+| 시간 | 일정 | 교통·메모 |
+|------------------|---------------------|---------------------------------|
+| 16:15 | **공항 리무진 버스** 탑승 → 가와라마치 버스터미널 | 비행기 착륙 15 분 뒤 출발, 소요 40 분 / 760엔 ([코토덴](https://www.kotoden.co.jp/publichtm/bus/limousine/index-en.html?utm_source=chatgpt.com)) |
+| 17:10 | 도미인 다카마츠 체크‑인 | 터미널→호텔 도보 5 분 |
+| 18:00 | 근처 이자카야·편의점 맥주 | **교자야** 17 시\~24 시 추천 ([食べログ](https://s.tabelog.com/en/kagawa/A3701/A370101/37000870/?utm_source=chatgpt.com)) |
+| 20:30 | 호텔 온천·무료 ‘요나키 소바 | 숙소 서비스 |
+
+## 2일차
+
+| 시각 | 이동·관람 | 교통·메모 |
+|------------------|---------------------|---------------------------------|
+| **07 : 25** | 도미인 출발 → 가와라마치역 | 도보 5 분 |
+| **07 : 35‑07 : 40** | **코토덴 열차** → 다카마쓰‑칙코역 | 1 정거장·140 엔 ([코토덴](https://www.my-kagawa.jp/static/en/ritsurin/access?utm_source=chatgpt.com)) |
+| **08 : 12‑09 : 02** | **페리** 다카마쓰→나오시마(미야노우라) | 50 분 / 520 엔 ([四国汽船株式会社](https://shikoku-guide.com/en/information/tamamopark/?utm_source=chatgpt.com)) |
+| **09 : 11‑09 : 30** | **100 엔 버스** 미야노우라→츠츠지‑소 | 동전만 가능 ([나오시마 관광 사이트](https://s.tabelog.com/en/kagawa/A3701/A370101/37000053/?utm_source=chatgpt.com) |
+| **09 : 35‑09 : 45** | **무료 셔틀** 츠츠지‑소→지추 앞 | 30 분 간격 ([ベネッセアートサイト直島](https://shikoku-tourism.com/en/see-and-do/10093?utm_source=chatgpt.com)) |
+| **10 : 00‑11 : 15** | **지추 아트 뮤지엄** | 10‑17 시, 최종 16 시 ([ベネッセアートサイト直島](https://japantravel.navitime.com/en/area/jp/spot/02301-pn0000874/?utm_source=chatgpt.com)) |
+| **11 : 30‑12 : 10** | **이우환 뮤지엄** | 10‑17 시, 최종 16 시 30 분 ([ベネッセアートサイト直島](https://benesse-artsite.jp/en/news/20250110-3126.html?utm_source=chatgpt.com)) |
+| **12 : 15‑13 : 30** | **베네세 하우스 뮤지엄** & 카페 | 09 : 30‑16 : 00 ([ベネッセアートサイト直島](https://benesse-artsite.jp/en/calendar/?utm_source=chatgpt.com)) |
+| **13 : 55‑14 : 30** | 무료 셔틀 복귀 → 100 엔 버스 혼무라 | 100 엔 버스 시각 13 : 55,14 : 25 등 ([나오시마 관광 사이트](https://s.tabelog.com/en/kagawa/A3701/A370101/37000053/?utm_source=chatgpt.com)) |
+| **14 : 40‑16 : 00** | **안도 뮤지엄** | 10‑13/14‑16 : 30, 최종 16 시 ([ベネッセアートサイト直島](https://benesse-artsite.jp/en/calendar/monthly.html?utm_source=chatgpt.com "Benesse Art Site Naoshima Calendar")) |
+| **16 : 20** | 100 엔 버스 혼무라 발 → 16 : 37 미야노우라 | ([나오시마 관광 사이트](https://s.tabelog.com/en/kagawa/A3701/A370101/37000053/?utm_source=chatgpt.com)) |
+| **17 : 00‑18 : 00** | **페리** 나오시마→다카마쓰 | 60 분 ([四国汽船株式会社](https://shikoku-guide.com/en/information/tamamopark/?utm_source=chatgpt.com)) |
+| **18 : 15** | 호텔 귀환 → **교자야** 만두&맥주 | 17‑24 시(일·공휴 22 시) ([食べログ](https://s.tabelog.com/en/kagawa/A3701/A370101/37000870/?utm_source=chatgpt.com)) |
+| **21 : 00** | 도미인 온천 & 무료 야식 | 숙소 서비스 |
+
+## 3일차
+
+| 시각 | 일정 | 상세 |
+|-------------------|-------------------|----------------------------------|
+| **08 : 00‑09 : 15** | **리쓰린 공원** | 5 : 30‑19 : 00, 아침 햇살 산책 ([香川県観光協会公式サイト - うどん県旅ネット](https://www.my-kagawa.jp/static/en/ritsurin/access?utm_source=chatgpt.com)) |
+| **09 : 30** | 호텔 조식 & 휴식 |  |
+| **10 : 45‑11 : 45** | **다카마쓰 성(타마모 파크)** | 일출‑19 : 00, JR역 도보 3 분 ([四国ガイド Shikoku-Guide｜四国旅行の総合情報サイト](https://shikoku-guide.com/en/information/tamamopark/?utm_source=chatgpt.com "Takamatsu Castle Tamamo Park")) |
+| **12 : 00‑13 : 00** | **우동보** 점심 | 목·금 11‑14 : 30 영업 ([食べログ](https://s.tabelog.com/en/kagawa/A3701/A370101/37000053/?utm_source=chatgpt.com)) |
+| **13 : 30‑16 : 30** | **유메타운** 쇼핑·카페 | 10‑21 시, 코토덴 산조역 근접 ([ツーリズム四国](https://shikoku-tourism.com/en/see-and-do/10093?utm_source=chatgpt.com "Takamatsu Castle Tamamo Park｜What to See & Do")) |
+| **17 : 00‑19 : 30** | **붓쇼잔 온천** | 11‑24 시, 버스쇼잔역 도보 5 분 ([Japan Travel](https://japantravel.navitime.com/en/area/jp/spot/02301-pn0000874/?utm_source=chatgpt.com)) |
+| **20 : 00‑22 : 00** | 가와라마치 아케이드 밤거리 | 로컬 술집 추천 |
+
+## 4일차
+
+| 시간        | 일정                                |
+|-------------|-------------------------------------|
+| 09:00       | 호텔 체크아웃 연장·수하물 보관      |
+| 10:00‑13:00 | 기념품 쇼핑·카페                    |
+| 15:30       | 가와라마치 버스터미널 → 공항 리무진 |
+| 17:00       | 귀국편 탑승                         |
+
+## 예약
+
+-   나오시마행 페리는 당일 현장 예매만 가능 (출발 40분 전부터)
+-   지추 뮤지엄, 안도 뮤지엄 예매 필요
+-   교통패스는 [레일 & 리무진](https://blog.naver.com/hangeuland/223443394556)으로!
+-   붓쇼잔 패스도 구매 필요

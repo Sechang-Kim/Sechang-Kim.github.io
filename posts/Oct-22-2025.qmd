@@ -1,0 +1,17 @@
+---
+title: "[Book Chapter] Introduction: Feedback in Migration Process"
+author: "Sechang Kim"
+date: "10/22/2025"
+date-modified: last-modified
+categories:
+  - geography
+  - demography
+  - migration
+  - social network
+---
+
+이 북 챕터는 책 "[Beyond Networks: Feedback in International Migration](https://link.springer.com/chapter/10.1057/9781137539212_1)"의 1장이다. 또한 이 책은 [Migration, Diasporas and Citizenship (MDC)](https://link.springer.com/series/14044)라는 유서 깊은 북 시리즈 중 하나로, 무려 1999년 "Kurdish Diaspora"을 시작으로, 25년이 넘는 기간 '이주(migration)'와 관련된 다양한 주제를 책으로 출간하고 있다. 주제의 특성상 당연히 지리학에 국한되지 않고, 인류학, 사회학, 정치학 (이밖에도 더 다양한 학문분야를 포포괄한다.) 등을 넘나든다. 그럼에도 이 시리즈가 지리학을 전공하는 내게 더 신기하게 다가온 것은, 시리즈의 총괄 편집장이 [Brenda Yeoh](https://discovery.nus.edu.sg/260-brenda-sa-yeoh) 싱가포르 국립대학(National University of Singapore) 지리학과 교수이기 때문이다. 이 분야의 엄청난 권위자이기도 하지만, 사실 내 [첫 영문 논문](https://onlinelibrary.wiley.com/doi/pdf/10.1002/psp.70049)을 출간한 학술지 *Population, Space and Place*의 공동 편집장(co-editor)이라 더욱 감회가 새로웠다.
+
+다시 책 이야기로 돌아오면, 이 책은 이주에서 사회 연결망(social network)이 주는 피드백 효과(개인적으로 '되먹임'이라는 번역어를 좋아하지 않아 원어를 사용한다)를 중점적으로 다룬다. 시애틀에 정착한 나로선 이 효과가 크게 체감되는데, 이 도시에는 한인 사회와 한국 문화가 제법 자리잡았다고 느껴지기 때문이다. 먼저 학교 앞 U District에 위치한 H마트가 식생활에 대한 걱정을 덜어준다. 이 지점엔 아트박스까지 들어와 있어 심적으로 참 편안하다. 여기가 작다고 느껴진다면, 시애틀 다운타운이나 근방의 벨뷰(Bellevue), 린우드(Lynwood)라는 도시로 가면 훨씬 큰 규모의 매장을 만나볼 수 있다. 뿐만 아니라 기본적으로 한식당도 어렵지 않게 찾을 수 있고, K-pop 굿즈를 파는 곳, 심지어는 인생네컷도 있다. 여기에 한인 학생회의 규모도 크고 만남도 자주 주선되니, 새로운 나라에서의 삶 치곤 정말 빠르게 적응할 수 있었다. 이 책은 이런 '사회 연결망'이 '이주'에 어떠한 영향을 미치는지를 바라보고자 한다. 물론 이제 읽기 시작한 책인만큼 자세한 내용은 차차 살펴보아야 하겠지만.
+
+1장은 여느 편저서(edited volume)이 그렇듯 책의 편집자가 이 책을 출간하게 된 배경과 이후의 챕터를 소개한다. 이 부분을 읽고 책이 나의 관심사와 잘 맞는지 (책을 덮을지 말지), 눈 여겨 볼 다른 챕터는 무엇인지 정할 수 있으니 조금 신경써서 보기로 하였다. 겸사겸사 개인 홈페이지 관리도 해볼까 해서, 1장을 리뷰하는 글을 남겨보기로 했다. 이후에 책이 나와 잘 맞는다 싶으면 다른 장도 틈틈이 리뷰를 해볼까 한다.
