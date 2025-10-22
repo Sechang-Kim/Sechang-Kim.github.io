@@ -1,6 +1,26 @@
 ---
 title: "Blog"
 subtitle: "Study and daily life in Seattle"
+format:
+  html:
+    include-in-header: 
+      text: |
+        <style>
+          .quarto-title-banner .title,
+          .quarto-title-banner .subtitle,
+          .quarto-title-banner .lead {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,1);
+            position: relative;
+            z-index: 1;
+          }
+
+          /* 썸네일 컨테이너 정렬 및 간격 조정 */
+          .quarto-post.image-right .thumbnail {
+            max-width: 230px;
+            margin-left: 1.5rem;
+          }
+        </style>
 listing:
   contents: posts
   sort: "date desc"
