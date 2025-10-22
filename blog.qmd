@@ -9,5 +9,6 @@ listing:
   sort-ui: true
   filter-ui: true
 page-layout: article
+title-block-banner: images/UW_Campus.png
 lightbox: true
 ---
