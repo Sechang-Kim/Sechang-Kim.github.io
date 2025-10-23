@@ -5,6 +5,8 @@ project:
 website:
   title: "Sechang Kim"
   favicon: img/favicon.ico
+  site-url: "https://sechang-kim.github.io"
+  google-analytics: "G-E3JCZTJ7C8"
   navbar:
     right:
       - href: index.qmd
