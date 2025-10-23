@@ -4,6 +4,7 @@ project:
   
 website:
   title: "Sechang Kim"
+  favicon: img/favicon.ico
   navbar:
     right:
       - href: index.qmd
