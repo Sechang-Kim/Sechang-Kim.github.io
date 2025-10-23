@@ -3,6 +3,7 @@ format:
   html:
     title: "Blog"
     subtitle: "Study and daily life in Seattle"
+    comments: false
     include-in-header: 
       text: |
         <style>
@@ -30,5 +31,4 @@ listing:
   sort-ui: true
   filter-ui: true
 lightbox: true
-comments: false
 ---
