@@ -21,7 +21,18 @@ website:
         text: Personal Experience
       - href: blog.qmd
         text: Blog
-        
+  comments:
+    giscus: 
+      repo: Sechang-Kim/Sechang-Kim.github.io
+      repo-id: R_kgDOMmUdvQ
+      category: General
+      category-id: DIC_kwDOMmUdvc4Cw9rN
+      mapping: pathname
+      reactions-enabled: true
+      input-position: bottom
+      theme: light
+      language: en
+
 format:
   html:
     grid:

@@ -23,6 +23,7 @@ about:
       text: CV
       href: https://nbviewer.org/github/Sechang-Kim/Sechang-Kim.github.io/blob/main/materials/Sechang_KIM_CV%28JUN_2025%29.pdf
 toc: false
+comments: false
 ---
 
 Hello, my name is **Sechang Kim**. I've **studied geography so far**, and I am eager to investigate **population studies from a spatial perspective.** Any contact or suggestion is welcome.

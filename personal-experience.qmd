@@ -1,6 +1,7 @@
 ---
 title: "Personal Experience"
 author: Sechang Kim
+comments: false
 ---
 
 ## Instructor

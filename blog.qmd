@@ -31,4 +31,5 @@ listing:
 page-layout: article
 title-block-banner: img/UW_Campus.png
 lightbox: true
+comments: false
 ---
