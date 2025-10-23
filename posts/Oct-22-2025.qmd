@@ -1,8 +1,10 @@
 ---
-title: "[Book Chapter] Introduction: Feedback in Migration Process"
-author: "Sechang Kim"
-date: "10/22/2025"
-date-modified: last-modified
+format:
+  html: 
+    title: "[Book Chapter] Introduction: Feedback in Migration Process"
+    author: "Sechang Kim"
+    date: "10/22/2025"
+    date-modified: last-modified
 image: "images/Book_Image.png"
 categories:
   - geography
