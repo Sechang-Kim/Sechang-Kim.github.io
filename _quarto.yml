@@ -37,7 +37,6 @@ website:
 
 format:
   html:
-    include-in-header: google683d6f09ddf6ea64.html
     grid:
       sidebar-width: 250px
       body-width: 1000px
@@ -46,6 +45,6 @@ format:
     theme:
       - custom.scss
     mainfont: Pretendard
-
+resources: google683d6f09ddf6ea64.html
 editor: visual
 
