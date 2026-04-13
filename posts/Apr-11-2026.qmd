@@ -531,7 +531,7 @@ These efforts aim to move beyond the qualitative-quantitative divide, reflecting
 
 # 5. Humanistic GIS: Toward a Research Agenda
 
--   Zhao, B. (2022). Humanistic GIS: Toward a Research Agenda. Annals of the American Association of Geographers, 112(6), 1576–1592.
+-   Zhao, B. (2022). Humanistic GIS: Toward a Research Agenda. *Annals of the American Association of Geographers*, *112*(6), 1576–1592.
 -   DOI: <https://doi.org/10.1080/24694452.2021.2004875>
 -   Humanistic GIS proposes a new research perspective that reorients the epistemological foundation of Geographic Information Systems by situating GIS in its mediation of human experience of place. It offers a coherent framework rooted in humanistic geography and phenomenology of technology, classifying GIS into embodiment, hermeneutic, autonomous, and background relations with humans and places, while encouraging careful, critical, and responsible engagement from both users and developers.
 
