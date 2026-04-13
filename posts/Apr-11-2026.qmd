@@ -1,0 +1,739 @@
+---
+format:
+  html: 
+    title: "Critical GIS - Methods"
+    author: "Sechang Kim"
+    date: "04/11/2026"
+    date-modified: last-modified
+    toc: true
+categories:
+  - GIS
+  - Qualitative GIS
+  - Critical GIS
+  - GEOG 521
+---
+
+# 1. Mixed methods: Thinking, doing, and asking in multiple ways
+
+-   Elwood, S. (2010). Mixed methods: Thinking, doing, and asking in multiple ways. *The SAGE handbook of qualitative geography*, *1*, 94-114.
+
+-   DOI: <https://doi.org/10.4135/9780857021090.n7>
+
+Mixed methods research offers a powerful approach to challenging long-standing disciplinary divides between qualitative and quantitative methodologies in geography, providing a framework to integrate diverse epistemological and ontological perspectives for more robust and nuanced understanding of complex phenomena. Despite historical debates aiming to separate research paradigms, mixed methods have been practiced for decades, fostering new ways of knowing and addressing practical and institutional challenges within academia and policy-making.
+
+## Introduction: The Uneasy Fit of Mixed Methods
+
+-   **Historical Context**: Geography has a history of debates attempting to separate quantitative vs. qualitative, or positivist vs. humanist/post-structuralist epistemologies.
+    -   Discussions focused on particularity vs. generality (Hartshorne, 1939; Schaefer, 1953).
+    -   Debates on appropriateness for human spatial activities (Chorley and Haggett, 1967; Harvey, 1969; Buttimer, 1976; Tuan, 1976).
+    -   Specific method 'wars' like the 'GIS wars' of the mid-1990s (Pickles, 1995), often positioning GIS as strictly quantitative and positivist.
+-   **Paradox**: Despite these "boundary making" efforts, geographers have been conducting mixed methods research for decades.
+    -   *Feminist geography* integrating quantitative/geovisual methods with ontological/epistemological challenges (Mattingly and Falconer-Al Hindi, 1995; Kwan, 2002a).
+    -   *Political ecologists* combining quantitative remote sensing with qualitative oral histories/interviews (Robbins, 2001a, b; Nightingale, 2003).
+    -   *Participatory action research* commonly uses mixed methods (Pain, 2003, 2004).
+    -   *GIScience* increasingly diversifies to include qualitative GIS (Sieber, 2001; Kwan and Knigge, 2006).
+-   **Chapter Focus**: Examines philosophical, practical, and institutional dilemmas of mixed methods, with emphasis on GIS applications due to its historical divisions and potential gains from mixed approaches.
+
+## Clarifying "Mixed Methods"
+
+-   **Distinction**: Some literature differentiates 'multi-method' (parallel, separate analysis) from 'mixed method' (some degree of integration).
+-   **Author's Definition**: Considers mixed methods as approaches relying on **multiple types of data, modes of analysis, or ways of knowing**, used in varied relationships and for diverse intellectual/analytical purposes, regardless of the extent of integration at epistemological/ontological levels.
+
+## Epistemologies and Ontologies in Mixed Methods Research
+
+-   **Core Dilemmas**:
+    -   Conceptual purpose/intellectual goals of mixing methods.
+    -   Extent to which different epistemologies and assumptions about knowledge can/should be integrated.
+-   **Intellectual Purpose/Contribution**:
+    1.  **Validation**: Using different data/techniques to highlight discrepancies or confirm findings (Eyles and Smith, 1988; Phillip, 1998; Cresswell, 2003). Assumes an *wholly knowable* object of inquiry.
+    2.  **Complementarity**: Enhancing explanatory power by interrogating different processes/interactions with different data types (e.g., qualitative for meanings, quantitative for patterns) (England, 1993; Hanson and Pratt, 1995, 2003). Understands knowledge as *situated* and ways of knowing as *inherently partial*, informed by feminist theory.
+        -   **Example**: Hanson and Pratt (1995) used quantitative data for labor markets and ethnographic interviews for household decision-making regarding gender roles and economic restructuring.
+    3.  **New Knowledge Generation**: Integrating methods at analytical, interpretive, or epistemological levels to produce novel insights.
+        -   **Example**: Jiang (2003) and Nightingale (2003) analyzed remote sensing and ethnographic interviews as socially constructed texts.
+        -   **Example**: Knigge and Cope's (2006) *grounded visualization* applies grounded theory (qualitative) to GIS-based spatial data (quantitative and qualitative).
+        -   These approaches may be rooted in a *unique hybrid epistemology* rather than a "strategic collision."
+-   **Integrating Multiple Epistemologies/Ontologies**:
+    -   Question: Is it possible or desirable to integrate or simultaneously hold multiple assumptions about reality and knowledge production?
+    -   **Epistemology & Methodology**: In geography, stronger consensus that epistemology *informs* but does not *determine* methods.
+        -   Quantitative methods not solely tied to positivism (Phillip, 1998; Barnes and Hannah, 2001; Sheppard, 2001).
+        -   Feminist epistemologies compatible with quantitative methods depending on application (Lawson, 1995; Mattingly and Falconer-Al Hindi, 1995; McLafferty, 1995; Moss, 1995).
+        -   GIS-based research can be informed by realist, pragmatist, positivist, and other paradigms (Pavlovskaya, 2002; Schuurman, 2002a; Kwan, 2002c; Pavlovskaya, 2006).
+        -   This *epistemological flexibility* allows researchers to actively engage and reconstruct the connection between epistemology and methodology for intellectual/political purposes (e.g., St. Martin, 2005, using GIS for experiential knowledge and interviews for other influences).
+    -   **Epistemology & Ontology**: Separating these is more problematic. Ontological assumptions guide how knowledge is produced.
+        -   Fixed, coherent world $\rightarrow$ positivist/realist, quantitative methods (Lawson, 1995; Dixon and Jones, 1998).
+        -   Shifting, contradictory world $\rightarrow$ constructivist/post-structuralist, different knowledge production (Staeheli and Lawson, 1995).
+        -   This alignment makes mixing at the ontological level difficult, leading to divergent characterizations of methods like GIS.
+-   **Conceptual Frameworks for Multiplicity**:
+    -   **Strong Objectivity** (Haraway, 1991; Rocheleau, 1995): Acknowledges the partiality of all knowledge, enabling methodological pluralism by directly addressing knowledge production practices.
+    -   **Soft Ontology** (Doel, 2001): Sensitive to the contradiction between fixed/categorical and fluid/constructivist ways of knowing.
+    -   **Local Epistemologies** (Longino, 2002; Leitner and Sheppard, 2003): For any research question, multiple valid conceptual frameworks exist, and appropriateness is contingent on socio-political/philosophical considerations.
+    -   **Pragmatism** (Smith, 1984; Maxcy, 2003; Mertens, 2003): Knowledge is produced through experience, the world is created and known socially, and validity is based on capacity for understanding or social change. Informs feminist and participatory research (Lawson, 1995; Rocheleau, 1995; Schuurman, 2002b; Pain, 2004), allowing methods to be combined and reworked based on their potential for socially/politically significant outcomes.
+
+## Mixed Methods in Practice: Interpretive, Analytical, and Political Issues
+
+-   **Key Research Areas**: Political ecology, feminist geography, critical GIScience, participatory action research.
+-   **Challenges of Multiple Data Sources**:
+    -   **Representation, Analysis, Communication**: Different data types lend themselves to divergent forms.
+        -   *Critical GIS*: Difficulty incorporating multiple spatial knowledges into GIS, traditionally favoring cartographic representations of quantitative data.
+        -   *Multimedia Techniques*: Use of text, sound, photos, 3-D, animations in GIS to include qualitative data, shifting representations, perceptions, and emotions (Al-Kodmany, 2000; Shiffer, 2002; Harrower, 2004; Kwan and Lee, 2004).
+        -   Difficulty in facilitating *multiple modes of analysis* within GIS, which traditionally focuses on tangible, fixed phenomena.
+    -   **Emerging Qualitative GIS Techniques**:
+        -   ***Grounded Visualization*** (Knigge and Cope, 2006): Applies grounded theory (inductive coding of qualitative data) to GIS visualization of spatial data. Example: mapping land use from local government and walking surveys/interviews to understand neighborhood conditions and agendas.
+        -   ***Qualified GIS*** (Pain et al., 2006): Uses qualitative data/analysis to explore propositions from GIS analysis, refining rather than confirming/refuting. Example: GIS analysis of street lighting and crime incidence combined with ethnographic interviews on perceived safety revealed low lighting was problematic for perception of safety, not necessarily crime incidence.
+    -   **Challenges in Qualitative Methods**: Diversifying beyond text-focused data to include visual/performative ways of knowing (Crang, 2005) faces difficulties in applying text-based analysis to performative practices (Pratt, 2000; Cahill et al., 2004).
+-   **Dealing with Contradictory Data**:
+    -   **Early Approach**: Treat discrepancies as evidence of error or misinterpretation (validation-focused) (Eyles and Smith, 1998; Cresswell, 2003).
+    -   **Partiality of Knowledge**: Assume different ways of knowing are partial and complementary, revealing insights not evident otherwise (England, 1993).
+    -   **Generating New Insights**: Examine ambiguities to reach new understandings (Nightingale, 2003; Robbins, 2003; Hanson and Pratt, 2003). Example: Contradictory meanings of "community development" from maps vs. participant observation, resolved by interviews showing strategic negotiation of meanings by professionals.
+    -   **Triangulation**: A long-standing practice for working with multiple methods/data, but not a single practice (England, 1993).
+        -   For *validation* (assumes fixed knowable reality).
+        -   For *complementarity*.
+        -   For *generating new insights* (assumes partial knowledge and that ways of knowing produce realities). Requires critical reflection and thoughtful interpretation of contradictions/silences.
+    -   **Other Creative Practices**: Multi-vocal approaches (Wolf, 1992; Pratt and Kirby, 2003; Crang, 2005), participatory diagramming, counter-mapping, feminist/qualitative GIS (Kesby, 2000; Pavlovskaya, 2002; Williams and Dunn, 2003; Knigge and Cope, 2006).
+-   **Incorporating Multi-scalar Data & Complex Processes**:
+    -   **Political Ecology**: Excellent for illustrating multi-scalar challenges due to focus on intersecting human/physical processes.
+        -   **Example**: Zimmerer (2003) on biodiversity conservation in agriculture: combined regional economic analysis (quantitative survey) with household gender roles (ethnographic interviews) to show how seed management is shaped by both biophysical and socio-economic factors across scales.
+        -   **Example**: Robbins (2001b) on land management practices in India: integrated satellite imagery, historical documents, household practices, and state policies to explain global landscape change at multiple scales.
+    -   **Analytical Challenge**: Interpreting how different data sources (and investigated processes) are related across scales. Effective projects carefully conceptualize structural processes and local contexts, clearly linking methods to specific aspects of these relationships.
+    -   **Example**: Bassett (2005) on wild game depletion in West Africa: detailed conceptual framework linking habitat change and hunting pressure to social, institutional, biophysical changes, using longitudinal surveys to connect local data with macro-economic shifts and national policies.
+    -   **Example**: Pavlovskaya (2002) on post-Soviet Moscow economies: GIS mapping of urban services combined with qualitative interviews revealed that macro-economic studies (showing service expansion) omitted informal strategies and affordability issues at the household level.
+-   **Differential Discursive and Political Authority**:
+    -   Different research paradigms/data hold varying sway with audiences.
+    -   **Quantitative methods** can be powerful for illustrating and combating inequalities (Lawson, 1995; McLafferty, 1995).
+    -   **GIS/Remote Sensing** often granted scientific authority in academic/policy forums (Turner, 2003).
+    -   **Strategic Use**: Participants may use quantitative representations for government authorities and artistic practices for other audiences (Pratt and Hanson, 2003).
+    -   **Community-based GIS**: Local knowledge may gain legitimacy when incorporated into GIS visually/cartographically, while quantitative data may be rejected by residents as inaccurate (Elwood, 2002, 2006). Activists develop flexible strategies to maximize influence.
+    -   **Dilemma**: Does "translating" experiential knowledge into GIS alter the significance of alternative discourses? Can different ways of knowing coexist productively if one is granted greater legitimacy?
+    -   **Caution**: Strategic deployment is not unproblematic. Quantitative data can be misinterpreted by policymakers (McLafferty, 1995). Participatory GIS can exclude marginalized groups if they can't understand/express knowledge in GIS forms (Weiner and Harris, 2003; Elmes et al., 2004).
+    -   **Imperative**: Consider the power of particular ways of knowing with different audiences and address potential silences/exclusions.
+
+## Institutional Challenges in the Academy and Beyond
+
+-   **Academic Norms**: Disciplines often validate particular epistemological commitments and single-method approaches. Mixed methods challenge these divisions.
+-   **Methodological Training**: Graduate education in mixed methods is underdeveloped; many geographers develop them independently or through collaborative mentorship. This reinforces single-paradigm allegiances.
+-   **Justification & Review**: Explaining/justifying mixed methods to journals, funders, or peers can be difficult. Reviewers may lack sufficient background in both components or in mixed methods integration.
+    -   Authors bear the burden of explaining practices for knowledge production and validation.
+    -   Both authors and reviewers have a responsibility to disrupt disciplinary gate-keeping.
+-   **Policy Relevance Debate**:
+    -   Some suggest post-structural/hermeneutic epistemologies don't readily inform policy or quantitative training is lacking (Wheeler, 2000; Martin, 2001).
+    -   Others argue for epistemological/methodological diversity for complex policy issues (Imrie, 2004; Wyly, 2004; Lake, 2005).
+    -   Policymakers often prioritize *quantitative evidence* and measurable benchmarks (Elwood, 2004; Newman and Lake, 2004; Curran, 2005; McCann, 2008). This trend is problematic for mixed methods.
+-   **Methodological Uncertainty**: Critiques of partiality have led to "methodological uncertainty" (Lake, 2005) or "epistemological eclecticism" (Mountz and Prytherch, 2005), with few accepted reference points for evaluating rigor.
+    -   Questions remain about integrating approaches, conceptualizing reliability, and constructive critique without rejecting underlying intellectual reasoning.
+    -   Validity and rigor are negotiated through funding, publication, and peer review processes.
+-   **Institutional Resources for Collaboration**:
+    -   Mixed methods projects often require collaborative teams with diverse expertise.
+    -   National funding agencies prioritize multi-disciplinary projects.
+    -   Collaboration is challenging and *time-consuming*, especially for integrated intellectual efforts.
+    -   Need for *time* for researchers to adopt new methodological approaches.
+    -   **Call to Action**: Create institutional spaces and tangible support (reading groups, seminars) for engaging new techniques and fostering critical understanding of mixed methods. Fluency in mixed methods will be increasingly necessary.
+
+## Conclusion
+
+-   Growth of mixed methods in geography is fueled by critical re-examination of methodology, assuming knowledge and paradigms are socially, politically, and institutionally constructed.
+-   This has led to "unthinkable methodological collisions" like *qualitative GIS*.
+-   Key considerations: appropriateness of mixing epistemologies, integration of data/analysis, and institutional/disciplinary constraints.
+-   Emphasis on *reflexivity* and *critical agency* for navigating challenges.
+-   Recognition of the "third geographer" (Barnes and Hannah, 2001) who bridges quantitative/qualitative approaches, providing opportunities to legitimize their work.
+-   **Future Directions**: Mixed methods must move beyond quantitative-qualitative debates to engage with new theoretical developments like emotion, affect, performativity, and non-representational theory, which challenge assumptions about representation and practice. This will require new ways of compartmentalizing and analyzing research beyond traditional text-focused methods.
+
+# 2. Crossing the Qualitative-Quantitative Chasm I: Hybrid Geographies, the Spatial Turn, and Volunteered Geographic Information (VGI)
+
+-   Sui, D., & DeLyser, D. (2012). Crossing the qualitative-quantitative chasm I: Hybrid geographies, the spatial turn, and volunteered geographic information (VGI). *Progress in human geography*, *36*(1), 111-124.
+-   DOI: <https://doi.org/10.1177/0309132510392164>
+-   This report, the first in a three-part series, reviews various qualitative and quantitative methods and methodological approaches in geography. It aims to bridge the long-standing qualitative-quantitative divide by focusing on *hybrid geographies*, the *spatial turn*, and the exponential growth of *volunteered geographic information (VGI)*. The core argument is that complex contemporary problems necessitate synergistic, holistic, pluralistic, and diverse methodological approaches.
+
+## I. Introduction: Beyond the Qualitative-Quantitative Divide
+
+-   **Goal**: To overcome the qualitative-quantitative divide in geography and broader social sciences/humanities, which has hindered cooperation and constructive engagement.
+-   This report focuses on *mixing methods* and *methodologies* or *transcending their differences*.
+-   Future reports will highlight strong individual qualitative and quantitative approaches.
+-   **Objective**: Inject tolerance, strive for synergy, and embrace diversity to address complex problems.
+-   **Observation**: A broad-spectrum view is common in introductory texts but often elusive in advanced geographical scholarship, which tends to be specialized.
+-   **Analogy**: The divide is akin to C.P. Snow’s 'chasm' between scientific and humanistic knowledge (Snow, 1993).
+-   **Importance**: Moving beyond divisiveness is crucial for the discipline's survival and relevance, while still valuing productive diversity and fundamental debates.
+
+## II. Geography’s New Turn to Synthesis and Holism
+
+Geography has historically oscillated between analytical and synthetic paradigms. The early 21st century has seen a significant *turn to synthesis and holism*, alongside other 'turns' (e.g., critical, cultural, relational, computational, communicational, mobilities, performative).
+
+### Three Contextual Trends for this Synthetic and Holistic Turn:
+
+1.  **Calls for a Unified Geography and New Synthesis**:
+    -   Advocacy for a unified disciplinary identity (Matthews and Herbert, 2004) and studying the planet holistically (Clarke, forthcoming).
+    -   ***Hybrid geographies***: A conceptual framework for practicing this new synthesis.
+        -   Whatmore (2002): Engaging in a "politics of hybridity."
+        -   Rose (2000): Hybrids "transgress and displace boundaries between binary divisions and in so doing produce something ontologically new."
+        -   Kwan (2004): Addresses divisions between physical/human geography and spatial-analytical/social-critical approaches.
+        -   Aim: Integrate elements often considered incompatible.
+2.  **The Spatial Turn Across Disciplines**:
+    -   *Space* has become an integrating theme across physical sciences, social sciences, and humanities (e.g., spatially integrated social sciences, GIS/spatial analysis in humanities).
+    -   **Examples**:
+        -   Economist *Paul Krugman* received the 2008 Nobel Prize for economic geography work.
+        -   Mathematics, physics, computer science, and ecology have enhanced geography's quantitative toolbox (complex networks, visual analytics, spatial modeling).
+    -   **Policy Relevance**: Policy-makers recognize the importance of space/place for global problems (World Bank, 2009 report from a geographical perspective) and place-based policies (Obama White House, 2009).
+3.  **Merger of New Spatial Data Understanding and Acquisition**:
+    -   Rapid development of *Web 2.0, GeoWeb*, and *geospatial technologies* (GIS, RS, GPS, LBS).
+    -   **Capability**: "Know where nearly everything, from genetic to global levels, is at all times."
+    -   **Data Avalanche**: User-generated content (UGC) and *Volunteered Geographic Information (VGI)*, where individuals act as "sensors."
+    -   ***Neogeography***: Emerged from digital mapping and Web 2.0, allowing ordinary citizens to participate in geographic data/knowledge production (Batty et al., 2010).
+    -   **Crowdsourcing**: A new mode of knowledge production (Goodchild, 2009).
+    -   Vast amounts of fragmented individual-level data can reveal interesting patterns when aggregated.
+
+## III. Recent Efforts in Geographic Synthesis: A Step Toward Consilience?
+
+These efforts aim to move beyond the qualitative-quantitative divide, reflecting the trends outlined above.
+
+### 1. Hybridizing Physical and Human Geography
+
+-   Growing number of geographers crossing the traditional physical-human divide, beyond cultural/political ecology traditions.
+-   **Examples**:
+    -   *Neil Smith* (1998) on *El Niño capitalism*, linking ENSO cycles to capitalism's crises. Research by Berry and Okulicz-Kozaryn (2008) found no significant co-cyclicality for the US macroeconomy but acknowledged localized impacts.
+    -   Leichenko et al. (2010) link global financial crisis to climate change via a *double-exposure framework*.
+    -   Gober et al. (2010a, 2010b) downscaled global climate models for urban water planning in Phoenix, using *WaterSim* for policy scenario simulation.
+    -   Physical geographers embrace human topics: *Clifford* (2009) on globalization; *Phillips* (2001, 2009a, 2009b) on the primacy of place.
+    -   Yu and Liu (2007) studied environmental consequences of divorce rates, finding increased energy/water consumption per person due to separate residences.
+    -   Odoni and Lane (2010) advocate a *knowledge-theoretic* approach in hydrological modeling, integrating qualitative data (reports, recollections, photos, opinions) as an integral part of quantitative models.
+    -   Comrie (2010) uses *Nietzsche* to challenge physical geographers to reconsider their role and include meaning/action in science.
+    -   Mistry et al. (2009) describe physical geographers' shift from "top-down experts to participatory facilitators," addressing reflexivity and positionality.
+
+### 2. Mixing Qualitative and Quantitative Methods
+
+-   Geography's interdisciplinary nature fosters methodological hybridity.
+-   Complex mixed-methods approaches cross spatial-analytical and social-critical divides, revealing their binary as "pseudo rather than real" (Barnes, 2009).
+-   *Critical geography* can effectively use quantitative methods, as evidenced by *Karl Marx* (Schwanen and Kwan, 2009).
+-   Elwood (2010) emphasizes that mixed-methods research must bridge methodological, epistemological, and philosophical divides, often renegotiating theoretical principles.
+-   Bergman et al. (2009) seek a "methodological reinterpretation of what employing mathematical arguments could mean within larger, postpositivist theoretical projects in critical human geography."
+-   **Examples**:
+    -   *Transport geography*: Zolinik (2010) used multilevel, mixed-methods; Goetz et al. (2009) call for greater integration of qualitative analysis into quantitative modeling.
+    -   ***Qualitative GIS*** (Aitken and Kwan, 2010): Reconceptualizes GIS beyond purely quantitative, embracing non-cartographic data, qualitative analysis, and multiple representations (Cope and Elwood, 2009).
+        -   Knigge and Cope (2006, 2009) developed *grounded visualization* for inductive, iterative analysis, engaging scale as both cartographic representation and sociopolitical construction.
+        -   Elwood (2009) shows how GIS representations can produce multiple understandings of neighborhoods.
+        -   Aitken and Craine (2009) demonstrate non-representational readings of GIS for affective politics.
+
+### 3. Archival Ethnography
+
+-   Stoler (2009) advocates applying ethnographic sensibilities to archival research, shifting from "archive as source" to "archive as subject."
+-   Ogborn (2009): Examine archives as "forms of communication."
+-   Lorimer and Philo (2009): Emphasize suspicion of apparent order in archives and seeking "cracks."
+-   Lambert (2009): Uses an *ethno-historical approach* to identify gaps in written records and excavate knowledge of enslaved individuals from colonial traces, making "the unsaid" evidence.
+-   Cameron and Matless (2010): Show how even "ignorance itself" can be revealed in archives.
+-   Lorimer and Whatmore (2009): Incorporate non-humans (elephants) into historical geography studies using "embodied re-enactive" techniques and a more-than-human perspective.
+-   Bailey et al. (2009): Detail the "backstage production" of archival work through a group-autoethnography, emphasizing researchers' voices and experiences.
+
+### 4. Activism, Applied Geography, and Academia
+
+-   Community engagement via *Participatory Action Research (PAR)* or *applied geography* involves hybridizations of research, pedagogy, participation, political action, and care.
+-   **Examples**:
+    -   Autonomous Geographies Collective (2010): Rejects the "false distinction between academia and wider society," advocating for collective research and engagement.
+    -   Evans et al. (2009): Advocates for a "fusion" of methods across subfields, particularly in community-based work, to recognize indigenous peoples as knowledge authors.
+    -   Gibson-Graham and Roelvink (2009): Promote hybrid research collectives of human and non-human actants for "world-changing processes."
+    -   Askins (2009): Urges academics to acknowledge and make space for emotions in research and activism.
+    -   Brown and Pickerill (2009): Link emotions to the sustainability of activism, emphasizing emotional reflexivity.
+    -   Linking activism with pedagogy: Mountz et al. (2008) connected courses with community-service centers for organic project development and "meaning making" outside the classroom. Pain (2009) highlights PAR's role in linking theory to practice in teaching.
+
+### 5. Mashing Up Paleo- and Neogeography
+
+-   The rise of VGI has led to a potential "neogeography versus paleogeography" divide (Sieber et al., 2009; Sui, 2009a).
+-   ***Mashups***: Originally from the music industry, in Web applications it refers to combining data or functionality from two or more sources (often using open APIs) to create a new service or content (Sui, 2009b).
+    -   Significance: Promotes a "new habit of mind towards synthesis and hybridity."
+-   **Examples**:
+    -   Liu and Palen (2010): Qualitative analysis of *crisis-map mashups* (e.g., Ushahidi, New Orleans repopulation maps) in emergency management, merging professional/paleo and participatory/neo geotechnologies.
+    -   Zook et al. (2010): Documented mashup efforts in the Haiti relief effort (CrisisCamp Haiti, OpenStreetMap, Ushahidi, GeoCommons), showing how individuals made a tangible difference remotely.
+    -   Goodchild and Glennon (2010): Examined VGI potential in time-critical scenarios like forest-fire mapping.
+    -   User-generated content (UGC) and VGI are important data sources, often mashed with traditional sources.
+    -   Cidell (2010): Used *content clouds* as exploratory qualitative data analysis (online information), functioning as a qualitative GIS.
+    -   Poon and Cheong (2009): Used blog data (Dell customer blog) to examine intersubjectivity in economic geography.
+    -   Jones et al. (2010) and Mould and Joel (2010): Used blog data for agglomeration effects and information hubs.
+    -   O’Loughlin et al. (2010): Utilized WikiLeaks and Afghan war data to reveal micro-geographies of conflict.
+    -   Madden and Ross (2009): Mashed multiple online/offline sources to illuminate genocide patterns in northern Uganda.
+
+## IV. Conclusions
+
+-   The reviewed trends demonstrate a powerful (re)turn to *synthesis and holism* in human geography.
+-   **Key takeaway**: Hybridizing, remixing, and mashing up conceptual frameworks, data sources, and modes of analysis offers a means to cross previously perceived methodological, epistemological, and philosophical chasms.
+-   While common hybrids include combining statistical analysis with interviews or supplementing GIS with qualitative data, this report highlights the breadth of hybrid methods.
+-   **Concern**: A "worrisome percentage" of reviewed works do not adequately describe their methods.
+-   **Philosophical backing**:
+    -   Feyerabend (1975): "everywhere science is enriched by unscientific methods and unscientific results."
+    -   Wolch (2003): Advocated *radical openness* as a method.
+    -   Barnes and Sheppard (2010): Proposed an *engaged pluralist approach*.
+-   **Challenges**:
+    -   Mastering the "dizzying array of traditions and techniques" for truly hybrid geographies (Wyly, 2009).
+    -   Institutional culture can discourage transdisciplinary research (Wainwright, 2010).
+-   **Recommendation**: Balanced specialist-synthesis approaches adapted to each new situation may be the most successful methodological framework (Turner, 1989).
+-   Future reports will delve into specific qualitative or quantitative approaches, emphasizing doing them well and melding them creatively as needed.
+-   **Note 1**: Funding bodies (e.g., US National Research Council, US National Science Foundation) are increasingly supporting transdisciplinary geographical sciences and the coupling of natural and human systems, accelerating synthetic efforts.
+
+# 3. From Visuals to Vision: Using GIS to Inform Civic Dialogue about African American Males
+
+-   Tate IV, W. F., & Hogrebe, M. (2011). From visuals to vision: using GIS to inform civic dialogue about African American males. *Race Ethnicity and Education*, *14*(1), 51–71.
+-   DOI: <https://doi.org/10.1080/13613324.2011.531980>
+-   This article proposes leveraging Geographic Information Systems (GIS) as a visual political literacy tool to foster civic engagement and capacity building aimed at improving African American male life course development and educational attainment in metropolitan regions, using St. Louis, Missouri, as a case study. It critiques the current disparity between swift mobilization for economic development and the struggle to generate sustained support for human capital development in urban education, highlighting the critical role of spatial arrangements and systemic factors over individual deficits.
+
+## Introduction and Context
+
+-   **Core Issue:** The relationship between *spatial arrangements* and *opportunity structures* in metropolitan America, specifically examining African American males in urban contexts like Metro St. Louis.
+-   **Civic Capacity** (Henig et al. 1999): The extent to which community sectors form structures to define and implement common goals.
+    -   Well-mobilized for *economic objectives* (e.g., sports stadiums, downtown remakes).
+    -   Extremely challenging to generate for *public education* and *human development*.
+    -   **Contrast:** Economic development offers material, near-term benefits with transparent actors, while human capital development presumes diffuse, slow-to-materialize benefits and is often perceived as *redistribution policy*.
+-   **Opportunity Expansion** (Stone 1993): Argued that enriched education and improved transportation access for disadvantaged communities should be viewed as "opportunity expansion" (yielding economic/social gains) rather than redistribution or zero-sum. However, it remains largely hypothetical due to a lack of organized, sustainable cross-institutional efforts.
+-   **Proposed Solution:** Education researchers should support a *visual political literacy project* using **Geographic Information Systems (GIS)** to inform and advance civic engagement and capacity as part of an *opportunity expansion regime* for African American males in urban America.
+    -   *Myron Orfield (2002)* advocated for accurate visual representations (e.g., color maps) of regional demographics to stimulate community discussion on social inequality, including education, among interdependent institutions and actors.
+-   **Article Organization:**
+    1.  Review of extant social science literature on African American males in urban America (developmental challenges, intervention opportunities).
+    2.  Psychological and political value of GIS mapping for civic engagement.
+    3.  Application of GIS to research on African American male attainment (St. Louis case study).
+    4.  Recommendations for investment in resources and sustained community-based research.
+
+## Why Focus on Visual Political Literacy and African American Males?
+
+-   **Geospatial Distribution (2000 US Census):**
+    -   **Largest Urban Black Populations:** New York, Los Angeles, Chicago, Houston, Philadelphia, Phoenix, San Diego, Dallas, San Antonio, Detroit, Baltimore, Memphis, Washington DC, New Orleans.
+    -   **Highest % Black Residents (100,000+ population):** Gary, IN (85%); Detroit, MI; Birmingham, AL; Jackson, MS; New Orleans, LA; Baltimore, MD; Atlanta, GA; Memphis, TN; Washington, DC; Richmond, VA (58%).
+    -   **Demographic Dispersion:** 64% of US counties (3141) were less than 6% Black. 96 counties were 50% or more Black, with all but one (St. Louis City, MO) located in the Southern US.
+    -   Focus for this article: African American males in urban cities and metropolitan communities.
+-   **Critique of Individual-Level Analysis:**
+    -   Traditional social science (health, education) often uses linear models focusing on individual-level risk factors, neglecting social milieu and life course.
+    -   **Wilson (1998)** argued that *geographic factors* (neighborhood, community) are missing links in the individualistic paradigm, which fails to capture *relational, organizational, and collective processes* of social inequality (institutional influences, residential segregation, discrimination, unequal access to information, government policies, corporate decisions).
+    -   Structural and environmental considerations are crucial for understanding African American male development.
+
+## Factors Influencing African American Male Attainment
+
+### Teachers' Expectations and Support Factors
+
+-   **Teacher Expectations:** Teachers often have lower expectations for Black students than for white students (Ferguson 1998), which significantly impacts Black students' performance.
+    -   African American males are often perceived as disruptive, leading to negative judgments of past performance and behavior.
+    -   **Risk Ratios (Klingner et al. 2005):** African American males have disproportionately high risk ratios for disability categories: *mental retardation* (2.41) and *emotional disturbance* (1.88).
+    -   Low expectations can lead teachers to withdraw help and support; students may conform to these negative perceptions.
+-   **Teacher Support:** High teacher expectations and support are *protective factors*; low expectations and limited support are *risk factors*.
+    -   Schools serving high concentrations of poor and minority students often lack resources, personnel, and a climate of "low mutual expectations" (Payne 2008).
+
+### School Opportunity Factors
+
+-   **Access to Quality Education:** Persistent disparities in access to rigorous college preparatory courses and quality teachers exist between minority students in resource-poor inner-city schools and students in affluent suburban communities (Anderson & Tate 2008).
+
+    -   *Advanced Placement* course availability decreases as the percentage of African American students in a school increases (Oakes, Muir, & Joseph 2000).
+    -   Disparities in curriculum access extend from secondary to K-8 schools.
+
+-   **Cognitive Demand** (Tate 2006):
+
+    1.  **Curriculum Policy:** Quantity and type of core subjects/courses offered and taken.
+    2.  **Classroom Thinking:** The level of thinking required (e.g., understanding concepts = high demand; routine memorization = low demand).
+
+    -   Both types of cognitive demand are linked to student performance and attainment.
+
+### Neighborhood and Community Factors
+
+-   **Neighborhood Circumstances:** Living in underserved, resource-poor neighborhoods negatively affects the college aspirations of African American students (Stewart, Stewart, & Simon 2007).
+    -   Ending desegregation oversight often leads to reassignment of African American youth to schools in high-risk neighborhoods characterized by criminal activity, limited health access, low social capital, and high unemployment (Hochschild & Scovronick 2003).
+-   **Residential Segregation:** A fundamental cause of racial disparities in health and socioeconomic status (SES), primarily by limiting access to education and employment (Williams & Collins 2001).
+-   **Economic Status and Intergenerational Wealth:**
+    -   Family economic status significantly influences educational attainment (Margo 1990).
+    -   Miller (1995) argued that differences in academic achievement reflect greater variation in *family resources* than in school resources, emphasizing education as an *intergenerational process*.
+    -   **Wealth vs. Income:** Wealth passed across generations (not just current income) significantly influences educational attainment (Shapiro 2004). From 1989-1999, for every dollar earned, whites accrued \$1.22 more wealth than Blacks.
+    -   Wealth and poverty are heavily concentrated in metropolitan areas.
+-   **Business Proximity and Spatial Mismatch:**
+    -   Neighborhoods with higher percentages of highly educated residents attract more businesses (Wheeler 2006), creating a mutually reinforcing cycle of economic activity and lower unemployment.
+    -   **Spatial Mismatch Hypothesis** (Kain 1968): Job shifts from urban cores to suburbs lead to higher rates of joblessness among African Americans due to limited transportation and access.
+    -   **St. Louis Example (Cummings 2004):** Regional development disparities and the focus on biotechnology create a mismatch between the skills of young African Americans (job seekers) and the requirements of emerging industries. Workforce development is often racialized, hindering consensus and support.
+
+## A Visual Political Literacy Project
+
+-   **Goal:** Inform *collective cognition* and *civic engagement* regarding African American males' education attainment.
+-   **Cognitive Benefits of Visuals:**
+    -   **Learning and Retention:** Images, illustrations, and graphic representations enhance learning and support reading, improving delayed recall (Kulhavy, Stock, & Kealy 1993).
+    -   **Perceptual System:** Spatial representations leverage the perceptual system, enabling spatial computations and providing an integrated, stable experience of complex arrangements (Schwartz & Heiser 2006). Visuals are deterministic and specific, unlike potentially vague verbal descriptions.
+    -   **Functionality:** Visual computation tools support inspecting, finding, zooming, rotating, and transforming representations, useful for planning and explanations.
+-   **Political Benefits:**
+    -   **Informing Community Debates:** GIS mapping has been central to regional planning in areas like Minneapolis–St. Paul (Orfield 2002). In St. Louis, GIS has illustrated wealth transfer to urban fringes and decline in central city resources (Gordon 2008).
+    -   Helps understand geopolitical fragmentation and changing economic goals (e.g., shift to biotechnology).
+
+## St. Louis Case Study: Biotechnology Clusters and African American Males
+
+-   **Context:** St. Louis aims to be a leader in biotechnology. The region is highly geopolitically fragmented (2nd among 25 largest metros), with 312 local governments. St. Louis City lost an average of 10,172 persons annually between 1950-2000, with out-migration to surrounding counties.
+-   **Biotechnology Clusters:** Are statistically clustered, not randomly dispersed, influencing regional opportunity structures (Tate 2008).
+-   **Methodology: Kernel Density Estimation (KDE)** (Wang 2006; Tate 2008): Used to calculate the density of biotechnology organizations, turning discrete point data into a continuous surface to highlight spatial patterns. (Kernel radius: 2.8 miles).
+-   **GIS Maps Illustrating Geospatial Arrangements:**
+    -   **Figure 1 (2000 Census):** African American males of all ages are highly concentrated in the *St. Louis City Urban Core biotechnology cluster* and communities to its north.
+    -   **Figure 2 (2003–2004 Academic Year):** African American male seniors enrolled in school districts show similar concentrations in the *St. Louis City Urban Core* and *Earth City Industrial Development clusters*, as well as north St. Louis County.
+    -   **Figure 3 (2003–2004 Academic Year):** High school graduation rates for African American male seniors. The St. Louis City Urban Core cluster (St. Louis Public Schools) shows a 53% graduation rate. Areas north and west of this cluster have higher rates but smaller numbers of African American males.
+    -   **Figure 4 (2003–2004 Academic Year):** Attainment of Missouri's **College Preparatory Studies Certificate (CPSC)**.
+        -   **Requirements:**
+            1.  Completion of a specific course of study (e.g., English/Language Arts: 4 units, Mathematics: 3 units, Science: 2 units, Social Studies: 3 units, Fine Arts: 1 unit, Practical Arts: 1 unit, Physical Education: 1 unit, Specified Core Electives: 3 units, General Electives: 6 units; total 24 units), emphasizing college preparatory courses (e.g., Algebra I, Algebra II, plane geometry).
+            2.  A 3.0 GPA (on a 4.0 scale) in core subjects.
+            3.  ACT or SAT score above the prior year's national composite average.
+        -   **Results:** The *Earth City Industrial Development cluster* produced the largest number of African American male CPSC awardees (primarily from Hazelwood School District). The *St. Louis City Urban Core* cluster had a large number of enrolled African American males but very low CPSC production.
+    -   **Figure 5 (2002 MAP Test):** Number of African American male 10th graders scoring proficient or advanced in math. Performance across clusters was very low (0-7 students proficient/advanced per cluster), with the vast majority in the lowest proficiency levels (Step 1 and Progressing).
+    -   **Figure 6 (2002 MAP Test):** Number of African American male 10th graders scoring proficient or advanced in science. Performance was similarly low across clusters.
+
+## Summary of Map Findings and Community Questions
+
+-   **Residential Pattern:** Most African American males reside in the St. Louis Urban Core biotechnology cluster or areas north of it, suggesting a need for quality transportation to access employment opportunities in emerging industries.
+-   **College Readiness:** The data indicate that many African American male students lack the skills and understanding necessary to fully participate in the biotechnology development regime.
+-   **Key Community Questions for Dialogue:**
+    -   How to improve African American male graduation rates?
+    -   What factors influence their college preparation status?
+    -   What accounts for the Hazelwood School District's relative success in CPSC production?
+    -   Why are so few African American males proficient in mathematics and science?
+    -   How can the region prepare more indigenous African American males for biotechnology careers?
+-   **Role of Visuals:** Maps and visuals serve as tools to *inform* and *promote sustained civic dialogue*, not as solutions themselves.
+
+## Engineering Tools to Support Mobilization
+
+-   **Alternative Evaluation Models:** Shift from centralized, standardized testing models to evaluation frameworks emphasizing *community mobilization* (Henig et al. 1999), providing diverse performance indicators and robust communication systems. GIS tools can serve as a "methodological engine" for this mobilization.
+-   **Role of Urban Universities:**
+    -   **Benefits:** Universities benefit from improved neighborhood conditions (thriving businesses, reduced crime, quality schools).
+    -   **Moral Duty:** To conduct relevant research and development that supports indigenous community groups, especially given their significant impact on urban areas (e.g., housing, tax revenues, employment).
+    -   **Capacity:** Universities in major US cities with large African American populations (e.g., New York, Los Angeles, Chicago, Philadelphia, St. Louis, Atlanta, Baltimore, Washington D.C., Detroit) are uniquely positioned to develop GIS-based insights and form multi-institutional consortiums focused on African American male attainment.
+-   **John Hope Franklin's Vision (1989):** Core to reform are:
+    1.  Acknowledging the centrality of human relationships.
+    2.  Eliminating obstacles to successful teaching and learning.
+    3.  Mobilizing physical and political resources.
+-   This article aims to advance a method (visual political literacy) to support the development of a vision and capacity for African American male opportunity in education.
+
+# 4. Inductive Visualization: A Humanistic Alternative to GIS
+
+-   Knowles, A. K., Westerveld, L., & Strom, L. (2015). Inductive visualization: A humanistic alternative to GIS. GeoHumanities, 1(2), 233-265.
+-   DOI: <https://doi.org/10.1080/2373566X.2015.1108831>
+-   This article by Anne Kelly Knowles, Levi Westerveld, and Laura Strom (2015) proposes *inductive visualization* as a methodology more suitable for humanistic scholarship, particularly for "acutely perceived but imprecise, often highly relational spatial content," compared to Geographic Information Systems (GIS). It critiques the limitations of GIS for representing human experience, especially in the context of Holocaust studies, and demonstrates how inductive visualization can better capture complex spatial and emotional narratives from survivor testimonies and historical sources.
+
+## Introduction
+
+-   Growing numbers of humanities researchers use **Geographic Information Systems (GIS)** for mapping and visualizing spatial relationships.
+-   **Problem**: GIS has inherent limitations as a research methodology for humanistic scholarship.
+-   **Solution**: *Inductive visualization* is introduced as a promising alternative, better suited for subjective, relational, and imprecise spatial content in humanistic sources.
+-   **Examples**: Research on the geographies of the Holocaust, focusing on survivor testimony.
+-   **Value**: Flexible methodology for teaching spatial thinking and visualizing spatial meaning in primary sources.
+-   **Key Words**: digital humanities, GIS, Holocaust, inductive visualization.
+
+## GIS in Digital Humanities Context
+
+-   GIS is dominant in explicitly spatial digital humanities fields: *historical GIS*, *spatial history*, *spatial humanities*.
+-   **Attractions of GIS**: Integrates disparate sources, manages large datasets, works with historical maps, strong analytical capacity (e.g., "Mercedes of geovisualization").
+-   **Critique**:
+    -   Need to re-evaluate rhetoric and practices of GIS, including qualitative GIS and cartographic representation.
+    -   All methods have built-in constraints; researchers often become habituated to certain approaches (Kuhn 1970).
+    -   Goal is not to unseat GIS, but to **broaden the range of geographical methods** for visualizing human experience, especially in early research stages.
+    -   Theoretical and philosophical critiques of GIS are extensive (Pickles 1995, 2004; Schuurman 2000, 2006; Harley 2001, etc.).
+    -   Digital humanities is increasingly visual and computer-based, necessitating critical awareness of how digital methods shape evidence and understanding.
+    -   Humanistic geographers' "abdication of the craft of geovisualization" is a loss; need to be critical and creative practitioners of humanistic visual methodologies.
+
+## What is GIS? Key Terms and Constraints
+
+-   **GIS as a "tool"**: Emphasizes its capacity to perform tasks, make maps, graphs, charts, and interrogate data spatially, statistically, or temporally.
+    -   Debates in the 1990s questioned if GIS was merely a tool or a field of scientific research (GIScience).
+    -   Critics argued tool-centric views ignore how GIS shapes understanding and its association with power hierarchies (military, economic development).
+-   **GIS as "technology"**: Acknowledges social construction and historical context, part of the digital revolution.
+    -   More than a single tool; a "bundle of techniques" or a "workshop."
+    -   Defined as an integrated system of hardware, software, and personnel for capturing, storing, analyzing, manipulating, and displaying spatially-referenced data.
+    -   *Public Participation GIS (PPGIS)* highlights power dynamics and empowers communities.
+-   **Methodological Constraints**: Embedded in its internal architecture, based on three representational models:
+    1.  **Geodetic models**: Grid of geographic coordinates for locating features, based on Earth's shape.
+    2.  **Mathematical models**: Map projections affecting shape, angle, and relative position, enabling calculation of distance, proximity, density.
+    3.  **Visual representations**:
+        -   **Vector GIS**: Features as points, lines, or polygons; attributes stored in data tables (common in humanities/social sciences).
+        -   **Raster GIS**: Earth as a continuous surface of square cells (pixels); a single value per cell (e.g., temperature).
+-   **Translation Issues**: Bringing qualitative source material into these models often results in **loss or invention of meaning**.
+    -   **Historical GIS (HGIS)** example: Assigning precise dates and locations when time and place are vague or uncertain (e.g., *Barrington Atlas*, Holocaust camp system research by Knowles and Yule).
+        -   Challenges included camps changing locations, temporal data varying greatly (specific dates, seasons, years), and defining entities like "Auschwitz" (town, camp section, complex).
+        -   Regularizing vague temporal data for mapping led to "specious accuracy."
+-   **Qualitative GIS (QGIS)**: Aims to make GIS more amenable to nonquantitative analysis and align with critical theory (feminist theory, grounded theory).
+    -   Focuses on incorporating "situated knowledge and ethnographic material" and multimedia representations (photos, audio, video).
+    -   Kwan's work incorporated subjective emotional responses to place with 3D visualizations.
+    -   Emphasizes using *other methods* when GIS falls short.
+    -   **Critique**: QGIS has not fully confronted why GIS is difficult for studying human experience due to its basic representational models.
+-   **Lefebvre's Three Kinds of Space (*The Production of Space*) and GIS**:
+    1.  ***Representations of space***: Plans, surveys, censuses, imperial maps. GIS is ideal for this.
+    2.  ***Spatial practice***: People's everyday movement in lived environments.
+        -   Mapping movement as lines shows location, sequence, distance, but not nuances of habitual, local movement.
+        -   Time geography (Hägerstrand) focuses on duration, reduces space to abstract points.
+        -   Attempts to visualize movement with emotion/nuance (e.g., McQuoid & Dijst, "time-space aquaria") are often difficult to decipher or become unreadable for multiple individuals.
+        -   **Conclusion**: GIS has limited utility for studying spatial practice.
+    3.  ***Representational space***: Meanings attached to spaces, transformation of space into place (Tuan).
+        -   Maps are semiotic (Bertin), using symbols, but standard symbols rarely evoke rich or complex meanings.
+        -   The "propositional nature" of maps (Wood) asserts truths ("what it is" and "where it is"), embedded in GIS database structure.
+        -   **Venturesome cartography** (Pearce & Hermann) challenges these constraints by including multiple voices, emotional colors, omissions of unknown, and changing scales. Yet, the encoding for cartographic representation still imposes distance.
+        -   **Narrative mapping** and **"deep maps"** (Bodenhamer) aim to capture richness of human experience, combining GIS data with VR, video, text.
+            -   Bodenhamer views GIS as a "blunt instrument" incapable of nuance, and notes its expense and poor handling of time (Gregory).
+        -   **Problem**: GIS/cartographic models hinder expression of immersive, sensory, changing human experience of place.
+
+## The Spatial Turn in Holocaust Studies
+
+-   Historically, few geographers contributed before 2010, focusing on geopolitics, planning, propaganda, and memorials.
+-   Charlesworth and Cole brought attention to places and spatial practices of the Holocaust, but with largely conceptual or photographic methods.
+-   **New Veins of Research (post-2010)**:
+    1.  **Biopolitical theory**: Focus on Agamben's conception of Auschwitz, Hitlerism fusing politics/biology/space, racial biopolitics (Giaccaria & Minca). This scholarship is historically empirical but not yet using mapping analytically.
+    2.  **Empirical methods & Geovisualization**: Researchers use GIS to document and analyze arrests, camp construction, mass killings.
+        -   **Holocaust Geographies Collaborative (HGC)**, co-founded by Knowles, tested GIS potential.
+        -   **GIS-based HGC Case Studies**:
+            -   ***SS Concentration and Labor Camps (Knowles & Jaskot)***: Mapping showed that main camps did not always send prisoners to nearby labor camps, revealing "splayed, irregular patterns" that questioned efficiency and suggested other factors at play (Figure 1).
+            -   ***Auschwitz Built Environment (Jaskot & Harvey)***: Database of Nazi architectural plans. Mapping revealed that many guard barracks were constructed in late 1943/early 1944 while grand architectural plans were never started (Figure 2). This indicated how the escalation of genocide and local conditions altered Nazi "dreams."
+            -   ***Einsatzkommando Attacks in Lithuania (Yule & Burton from Jäger Report)***: Mapping of killings (June–December 1941) showed distinctive spatial and temporal patterns (Figure 3). A "genocidal" burst in late August/early September killed women, children, and elderly, not just "partisans," helping pinpoint the turning point to genocide.
+        -   **Limitations and Ethical Concerns with GIS**:
+            -   The "god's-eye perspective" and "seeming precision" of maps evoked the Nazis' dehumanizing view.
+            -   Categorical thinking in database construction for GIS mirrored Nazi logic (e.g., difficulty classifying fluid camp identities).
+            -   **The "ethics of the algorithm" (Presner, forthcoming)**: Turning Holocaust victims into "quantifiable entries" and "data points" risks dehumanizing them and partaking in the "rationalized logic of modernity" that contributed to genocide.
+            -   GIS characteristics suitable for representing Nazi space are problematic for representing victim experience.
+            -   ***Auschwitz Evacuation Study (Gigliotti, Masurovsky, Steiner)***: Mapping the route (Figure 4) conveyed general locations but little of women's traumatic experiences.
+            -   **Turning Point for HGC**: Erik Steiner's experimental visualization (Figure 5) revealed experiential content (guards' aggression, friend's death, relationships, silences) without relying on spatial coordinates or binary categories. This led to focusing on *place* (victim's meaning-making) rather than *space* (Nazi-created environments).
+
+## Exploring Holocaust Testimony with Inductive Visualization
+
+-   **Definition**: A creative, experimental exploration of source material structure, content, and meaning, without a priori visual methodology or software.
+-   **Process**: Began with chalk, blackboard, then paper/colored pens. Close listening and visual notation (graphic ideation, diagramming) heightened awareness of words, phrases, and affect.
+-   **Data Source**: USC Shoah Foundation Visual History Archive (VHA) – oral interviews with Holocaust survivors. Selected three samples (Leon Wells, Agnes Adachi, Paul Schneiderman).
+    -   VHA indexing (keywords, names, places) often lacked terms for emotions or small, everyday places, making it ideal for inductive visualization.
+-   **Initial Research Question**: How do survivors speak of their experiences of place?
+-   **Methods and Findings**:
+    -   **Spatial Freedom/Confinement (Strom on Wells)**: Diagram traced narrative flow, color-coded for perceived freedom (green), constraint (red), restricted choice (orange), or missed opportunity (yellow) (Figure 6).
+    -   **Narrative Structure and Scale (Strom on Wells)**: Story "bubbles" showed distinct narrative chapters. Spatial scale *expanded* during significant stories (focus on specific places, people), shifting from general place names to common nouns ("home," "in the kitchen"). Temporal scale also shifted from months/years to days/minutes, with markers like "then" and "next" (Figure 7).
+    -   **Social Relations (Westerveld on Adachi)**: Physical diagram tracked characters and groups entering/exiting Adachi's narrative, showing her stories as interwoven accounts involving many people (Figure 8).
+    -   **Time-Geographical Approaches (Knowles & Strom)**: Attempted to summarize typical narrative arcs and emotional trajectories. Found abstract symbols and absolute time flattened the narratives too much, highlighting the need for better representations of narrative variation (Figure 9).
+    -   **Multiple Scales of Narrative Space and Time (Westerveld on Wells)**: Diagram representing linear story sequence, with places and people placed closer or further from the center line based on physical interaction (Figure 10).
+        -   **Key Realizations**:
+            1.  Narrative time is not linear; it is disrupted, elastic, and discontinuous, moving back and forth, interspersed with reflection and other information.
+            2.  Used *interview time* as a constant referent to visualize story duration and place scale.
+            3.  **Inverse Relationship of Scale**: The more important a story, the longer it takes to tell, and the more intensely localized it is likely to be (Figure 11).
+            4.  Visualized shifts between historical and daily time references within narratives (Figure 12).
+            5.  Dramatic, emotional stories occurred in **specific, small places** (e.g., an office, a table) too minute for conventional maps (Figure 13).
+-   **Conclusions from Inductive Visualization Experiment**:
+    1.  Places in testimony exist in an **elastic, discontinuous space**, changing with the narrator's awareness and emotional intensity.
+    2.  The time of experience is **disrupted, elastic, and discontinuous**.
+    3.  Changes in experiential time and place are linked to **scale**, often inversely.
+    4.  Conventional mapping is insufficient for mapping survivors' journeys where spatial experience mattered most.
+    5.  VHA index terms (proper nouns) are of limited use for finding experiential stories; inductive visualization helps identify *meaningful keywords and phrases* related to storytelling, movement, emotion, and perception.
+-   **Commonalities with GIS**: Inductive visualization is also an *iterative, exploratory practice*.
+-   **Differences**: Inductive visualization has **no a priori structure or parameters**. It can lead to database development, but also many other outcomes.
+-   **Topology**: While GIS uses topology for metric-independent relationships (connection, adjacency), inductive visualization is excellent for *detecting and thinking about* social and spatial relationships not measurable in metric terms.
+    -   Survivors often describe *social distance* (trust, fear, intimacy, estrangement, vastness, crowding) which are topological perceptions of space and place.
+    -   This topological representation may be closer to survivors' understanding than conventional mapping.
+
+## Teaching with Inductive Visualization
+
+-   **Benefits**:
+    -   Promotes "slow thinking" (Kahneman 2013) and thoughtful discussion.
+    -   Stimulates creativity and supports open-minded collaboration.
+    -   Creates common ground for students with diverse technical skills (electronically savvy and technophobic).
+    -   Low-cost (chalk, paper, colored pencils) or can use graphic software.
+-   **Knowles's Experience**:
+    -   Devised the approach over 15 years ago at Wellesley College, teaching geographic concepts and basic cartographic skills *without GIS*.
+    -   Students made maps by hand (light tables, mylar, colored pencils) for research papers (Knowles 2000), fostering critical and creative spatial thinking.
+-   **Holocaust Courses at Middlebury College**:
+    -   Few existing geovisualization examples for the Holocaust.
+    -   Students created "astonishing graphics" from unillustrated memoirs.
+    -   **Examples**:
+        -   *Allison Andrews's "The Spatial Journeys of Helmut Reiner and the Orensteins"* (Figure 14): A compressed graphic novel showing parallel journeys, shared spaces, and relationships between a Nazi officer and a Jewish family. Focused on subjective "room allotted" rather than objective location.
+        -   *Hannah McMeekin's "Holocaust Journey Analysis"* (Figure 15): Analyzed letters of Hertha Feiner, depicting the erosion of her mental and emotional state in relation to worsening Nazi oppression, using abstract triangles.
+        -   *Hannah Day's visualization of Victor Klemperer's Diary* (Figure 16): Initially mapped diary excerpts to city locations, but felt it lacked emotional power. Her final graphic used a time axis (horizontal) and emotional intensity axis (vertical, transcendence vs. imprisonment), with quotations originating from dates. This represented "the motion of emotion."
+    -   **Conclusion**: Inductive visualization encourages deep engagement with primary sources, finds expressive forms for complex emotions, and embraces the challenge of representing the *magnitude* of emotion over its quantification.
+
+# 5. Humanistic GIS: Toward a Research Agenda
+
+-   Zhao, B. (2022). Humanistic GIS: Toward a Research Agenda. Annals of the American Association of Geographers, 112(6), 1576–1592.
+-   DOI: <https://doi.org/10.1080/24694452.2021.2004875>
+-   Humanistic GIS proposes a new research perspective that reorients the epistemological foundation of Geographic Information Systems by situating GIS in its mediation of human experience of place. It offers a coherent framework rooted in humanistic geography and phenomenology of technology, classifying GIS into embodiment, hermeneutic, autonomous, and background relations with humans and places, while encouraging careful, critical, and responsible engagement from both users and developers.
+
+## Introduction to Humanistic GIS
+
+-   **Expanded Connotation of GIS**: In the last decade, GIS has evolved from digital objects/representations to a *mediated means* by which humans experience, explore, and make sense of the world.
+-   **Proposal**: **Humanistic GIS** is proposed to encompass this expanded category, addressing opportunities and challenges.
+-   **Roots**: Deeply rooted in **humanistic geography**, it offers a systematic framework integrating fragmented humanism-related GIS studies.
+-   **Epistemological Reorientation**: Situates GIS in its *mediation of human experience*.
+-   **Analytical Structure**: Categorizes GIS through its:
+    -   *Embodiment*
+    -   *Hermeneutic*
+    -   *Autonomous*
+    -   *Background relations*
+-   **Goal**: Develop and use GIS in ways that are more *empathetic and better for humanity*.
+
+## Evolution of GIS and Related Research
+
+-   **History**: GIS developed for almost seven decades since the early 1960s.
+-   **Impact**: Profoundly influenced everyday life (e.g., navigation, contact tracing, ridesharing) and society (e.g., pandemic reporting, city management).
+-   **GIS as a Mediated Means**: Examples include GPS-enabled smartwatches tracking health, self-navigated delivery robots interacting with pedestrians, and city-wide spatial infrastructure controlling traffic.
+-   **Previous Research Efforts**:
+    -   Conceptualizing human behaviors in GIS: human dynamics, humanities GIS, public participation GIS (PPGIS), people-based GIS.
+    -   Epistemological/methodological reorientations of place: place-based GIScience, GIS of place, placial analysis, splatial framework.
+    -   *Sui and Goodchild (2001, 2003, 2011)*: Characterized GIS as a medium.
+-   **Need for Humanistic GIS**:
+    -   None of the above holistically conceptualized the expanded GIS category, especially its relevance to *users' emplaced experiential knowing and doing*.
+    -   Humanistic geography offers experiential perspective but overlooks GIS's mediating role.
+    -   Phenomenology of technology (Heidegger, Ihde) offers insights into technology impacts but not sufficiently on *places* where impacts occur.
+    -   **Resonance with Humanistic Turn in Computer Science**: Parallels with "humanistic AI" (*Gruber 2021*), "human-in-the-loop" (*Zanzotto 2019*), "human-centered AI" (*Riedl 2019*).
+-   **Distinction from Related Themes**:
+    -   Digital geohumanities, qualitative GIS, critical GIS, GIS/2 movement – while related, they focused on applications, methodology, or social implications, but **none originated from humanistic geography or a fundamental humanistic epistemology**.
+    -   Humanistic GIS provides a *coherent and systematic framework* to integrate these fragmented themes, representing a unique ethos.
+
+## Humanistic Perspectives in Geography
+
+-   **Humanism**:
+    -   **Origin**: 15th-century Italy.
+    -   **Stance**: Philosophical perspective emphasizing careful, critical, and responsible use of intellectual knowledge and life experiences to improve human life.
+    -   **Contrast with Positivism**: Views human beings as *subjects* rather than objects, emphasizing human experiences.
+    -   **Epistemology**: Calls to enter another's world, feel through their body, using this experience as valid scientific exploration.
+-   **Humanistic Geography**:
+    -   **Emergence**: Prominent in the 1970s.
+    -   **Core Idea**: Places human at the center of geographic inquiries; comprehensive understanding requires individual and group experiences.
+    -   **Term Coined by**: *Tuan (1976)*.
+    -   **Influence of Phenomenology**: Key concepts derived directly from phenomenology: *lifeworld, taken-for-granted world, dwelling, human-being-in-the-world*.
+        -   *Tuan (1971)*: Argued for integrating *human-being-in-the-world*.
+        -   *Buttimer (1974, 1976)*: Examined *taken-for-granted world* and defined *lifeworld*.
+    -   **Four Central Themes (Seamon and Larsen 2020)**:
+        1.  Constructing a multidimensional model of human experience.
+        2.  Developing an open, empathetic methodology.
+        3.  Prioritizing firsthand human experience.
+        4.  Acknowledging two types of research: explication of experiences and interpretation of social worlds.
+-   **Focus on Place**:
+    -   *Tuan (1979)*: "sense of place" (subjective feelings).
+    -   *Tuan (1974)*: *topophilia* (strong affective bond to surroundings).
+    -   *Seamon (1979)*: "place ballet" (regularity in environments).
+    -   *Relph (1976)*: Place brings subconscious affective bond; *placelessness* describes lack of emotional attachment.
+    -   *Casey (1993)* and *Malpas (2018)*: Place is a primary ontological structure ("human-being-in-place").
+    -   *Seamon (2015)*: "lived emplacement" (united structure of human-beings-experiencing-place).
+    -   *Seamon (1979)*: *environmental embodiment*.
+    -   *Seamon (2018)*: Place as a *process* involving human, situated place, and other entanglements (organismic view).
+
+## Phenomenological Interpretations of Technology
+
+-   **Heidegger (1977)**:
+    -   Examined technology's relationship with being and the world.
+    -   Technology "sets upon" nature or "frames" human society.
+    -   The world is a "standing reserve" for manipulation.
+    -   Essence of technology: one way reality can be revealed.
+    -   **Critique**: Neglects diversity and complexity of the world (*Leszczynski and Crampton* suggesting "anthropological GIS").
+-   **Ihde's Postphenomenology (1995)**:
+    -   Technologies are always *technologies-in-use* and should be examined in context.
+    -   Technology varies into different identities based on situated contexts, indicating inherent ambiguity.
+    -   Focuses on *possible forms of revealing* technology makes possible.
+-   **Human-World Relations (Ihde 1990)**:
+    -   Technology mediates relations between human beings and their worlds, with humans and technologies *coconstituting each other*.
+    -   No direct human-world relationship, only indirect means (*Rosenberger and Verbeek 2015*).
+    -   **Four Types of Human-World Relations**:
+        1.  **Embodiment relation**: Technology is a medium of human perceptual experience, transforming perception and bodily sense.
+        2.  **Hermeneutic relation**: Technology represents the perceived world.
+        3.  **Alterity relation** (or *Autonomous* in the context of GIS): Technology experienced as another independent being.
+        4.  **Background relations**: Technology becomes part of the world and withdraws from immediate human experience.
+-   **Amplification-Reduction Structure (Ihde 1990)**:
+    -   Captures how technology affects human perceptions and praxes.
+    -   Technology that augments human capabilities will *simultaneously reduce others*.
+    -   Microlevel impacts (sensations) accumulate to macrolevel societal impacts.
+
+## GIS-Mediated Experience: Human, GIS, and Place
+
+-   **Centrality of Human Experience**: Primary epistemological entry for theoretical and practical exploration of GIS.
+-   **GIS as an Inseparable Medium**: Extends humanistic geography by considering GIS as capable of changing the structure of human experience.
+-   **Primary Elements of GIS-Mediated Experience**:
+    -   **Human**:
+        -   Biological system with multiple sensory organs (visual, auditory, tactile, vestibular, etc.).
+        -   Exists within a social context.
+        -   Map-mediated experience is both *bodily relevant* and *socially constructed*.
+    -   **Place**: The target of GIS-mediated experience.
+        -   **Scalable**: From a chair to the whole world.
+        -   **Dynamic**: Can be relocated and transformed (e.g., urban sprawl, virtual venues).
+        -   **Forms**: Can be physical, virtual, or hybrid (e.g., #Seattle on Twitter, augmented reality monuments).
+        -   **Space in Humanistic GIS**: Conceptualized as the spatial structure, pattern, or context of place.
+-   **Structure**: GIS-mediated human experience is abstracted into an integral structure of **human, GIS, and place**.
+    -   Adopts an *organismic worldview*, transcending mechanistic views.
+    -   GIS is not an entity on its own; its functions are revealed *only when it is being used*.
+
+## Human–GIS–Place Relation: GIS as Embodiment, Hermeneutics, Autonomy, and Background
+
+-   **Conceptual Framework**: A network of relations between human beings and places, mediated by GIS.
+    -   *Latour's actor-network theory* (macrolevel) and GIS-mediated experience (microlevel).
+-   **Baseline Equation**: Human – GIS – Place
+    -   GIS maintains its place *between* human and place.
+    -   GIS's "position" in the equation implies its nature and functions.
+-   **Four Primary Types of GIS**:
+    1.  **Embodiment GIS**:
+        -   **Equation**: Human – GIS ($\text{Human} \leftrightarrow \text{GIS}$) $\rightarrow$ Place
+        -   **Description**: United with its user, extends capabilities without user's full awareness. GIS becomes part of the human body.
+        -   **Characteristics**: "Partially transparent" (user sees through but feels device).
+        -   **Examples**: Wearable devices (Google Glass, smartwatches, VR headsets).
+        -   **Implication**: Forms a *GIS cyborg* (*Clynes and Kline 1960*; *Haraway 1987*), highlighting the subjectivity of GIS.
+    2.  **Hermeneutic GIS**:
+        -   **Equation**: Human $\rightarrow$ GIS – Place ($\text{GIS} \leftrightarrow \text{Place}$)
+        -   **Description**: Acts as a representation of the depicted place; user perceives the place *through* it, not firsthand.
+        -   **Characteristics**: "Opaque." Geospatial data cannot entirely reproduce firsthand experience; map generalization is unavoidable.
+        -   **Examples**: Maps, geovisualizations (atlases, online maps, virtual globes), auditory maps.
+        -   **Implication**: Creates an "enigma" (*Ihde 1990*), simplifying real-world phenomena to avoid cognitive overload.
+    3.  **Autonomous GIS**:
+        -   **Equation**: Human $\rightarrow$ GIS = Place ($\text{GIS} \leftrightarrow \text{Independent Agent/Place}$)
+        -   **Description**: Regarded as either an independent agent or a place itself; a "quasi-other" requiring minimal human intervention.
+        -   **Examples**: GeoAI (land object recognition), robots (unmanned aerial vehicles, self-driving cars, robot vacuums).
+        -   **Illustrative Example**: DJI drone (flies independently, avoids collisions, also functions as a place to which owners develop emotional attachment).
+    4.  **Background GIS**:
+        -   **Equation**: Human $\rightarrow$ GIS \@ Place ($\text{GIS} \subseteq \text{Place}$)
+        -   **Description**: Becomes an integral part of a place, not apparent to the user, yet influences them.
+        -   **Examples**: Digital environments, smart cities, smart homes (integrating Internet of Things).
+        -   **Illustrative Example**: Smart city traffic control (network of vehicle detection loops embedded in pavement influences drivers without their awareness).
+        -   **Conceptual Impact**: GIS theories/models can frame human experience (e.g., perceiving a place as objects or fields, or backed by point/polygon/pixel models).
+-   **Dynamic Nature of Relations**: GIS does not remain in a fixed relation; it *freely varies* among these four types (e.g., a self-driving Tesla shifts between embodiment, hermeneutic, autonomous, and background GIS depending on the interaction). GIS must be analyzed *when in use*.
+
+## Implications of GIS: Intertwined Amplification and Reduction
+
+-   **Analytical Framework**: Uses *Ihde's amplification-reduction structure* to examine implications, uncovering both strengthened capabilities and diminished others.
+-   **Physiological Discomfort**:
+    -   Embodiment GIS (e.g., VR headsets) can cause headaches, nausea, disorientation (motion sickness) due to conflicting visual/vestibular inputs.
+    -   *Munafo, Diedrick, and Stoffregen (2017)* found female wearers at greater risk.
+-   **Fake Geographical Information**:
+    -   Mapmakers exploit the "enigma" of hermeneutic GIS.
+    -   Examples: Propaganda maps (*Monmonier 1991*, *Herb 2002*), fictitious entries for copyright (*S. Zhang 2015*), colonial maps excluding minority groups (*Aalbers 2014*).
+    -   **Countermapping**: Grassroots strategy by marginalized communities (*Peluso 1995*).
+    -   Digital Platforms: Location spoofing on Twitter (*Zhao and Sui 2017*), Pokémon Go (*Zhao and Zhang 2019*).
+    -   **GeoAI**: Can manipulate aerial imagery, creating realistic falsified features, posing national security issues (*Zhao et al. 2021*).
+-   **Displacements and Dislocations**:
+    -   Autonomous GIS (automation, robotics, AI) will displace workers (e.g., *McKinsey* estimates 375 million workers by 2030).
+    -   New job opportunities (e.g., geospatial data annotators) may emerge.
+    -   **Bias Transfer**: Bias in geographical annotations can transfer to GeoAI recognition functions (e.g., due to differences in race, socioeconomic status, culture) (*Zou and Schiebinger 2018*).
+-   **Digital Panopticon**:
+    -   Background GIS (smart cities) can lead to mass surveillance if misused.
+    -   Example: China's *Skynet* (200 million surveillance cameras by 2019, AI face recognition for real-time identification) (*Xu 2018*).
+    -   Raises concerns about spontaneous self-surveillance and anxiety (*Norris 2005*).
+
+## Message from Humanistic GIS
+
+-   **Human-Centered Logic**: Similar to critical GIS, but uses GIS-mediated experience as the epistemological entry point.
+-   **Coconstitution**: Human, GIS, and place are integral and coconstitute each other; GIS technology shapes human existence, and humans constitute themselves through mediation.
+-   **Stance Toward GIS**: Neither suspicion nor blind reliance is helpful; people need to develop a *stance* toward the specific GIS in use.
+-   **"Care of the Self" (Foucault)**: Encourages users to engage with GIS technology carefully and critically, actively shaping their GIS-mediated existences.
+    -   Examples: Critically evaluate planned routes, ensure navigation systems are up-to-date.
+-   **For GIS Developers**:
+    -   **Anticipate Mediations**: Use imagination to predict existing, potential, or unintended GIS-mediated experiences to make necessary adjustments.
+        -   Examples: Diversify GeoAI training sets (different races, ethnicities, socioeconomic status), develop fact-checking tools for satellite imagery.
+    -   **Responsible Design**: Acknowledge drawbacks and proactively make responsible adjustments, even by "rewiring" GIS.
+    -   **Freedom and Mediation**: GIS mediation does not mean giving up freedom; developers should design *responsible forms of mediation* instead of pitting human autonomy against technology.
+    -   **Capacities**: Developers need capacities to discover, interpret, and analyze various possibilities of mediation to design GIS in a critical, considerate, and empathetic way (*Kiran and Verbeek 2010*).
+-   **Author's Perspective**: Developed from \>15 years of practical GIS experience and critical reflection.
+
+## New Research Agenda for GIS
+
+-   **Contribution**: Integrates fragmented humanism-related GIS studies, modifies GIS connotation, and reorients its epistemological foundation.
+-   **Guidance**: Guides methodological developments, real-world praxes, and offers moral/educational messages.
+-   **Core Principles**:
+    -   Situates GIS in an experiential structure between user and perceived place, avoiding an isolated object view.
+    -   Reemphasizes that GIS nature and functions are understood *while it is being used*.
+    -   Taxonomy of human-GIS-place relations (embodiment, hermeneutic, autonomous, background) offers a generative approach.
+    -   Amplification-reduction structure unveils intertwined implications.
+-   **Pathways for Future Research**:
+    1.  **Biophysical and Psychological Processes**: Pay attention to GIS-mediated experiences.
+        -   Learn from cognitive science, environmental psychology, neuroscience.
+        -   Methodological example: EEG headsets (embodiment GIS) to quantitatively examine human brain's electrical reflex and infer emotions about a place.
+    2.  **Expanded Research Scope**: Move beyond conventional hermeneutic GIS to include all four GIS types.
+    3.  **Hermeneutic GIS Reorientation**: Shift from a Cartesian mechanistic worldview to an *organismic one*.
+        -   Represent geographies as *topological objects* (bent, twisted, folded) and *geographical imaginations*.
+-   **Moral and Educational Implications**: Urges users to engage carefully and developers to design responsibly.
+-   **Challenges**: Cross-disciplinary nature may face resistance (e.g., historical "Science Wars").
+-   **Objective**: To offer a vehicle for scholars to collectively envision and improve a humanistic future of GIS.
+-   **Future Directions**: Incorporate central themes of humanistic geography, explore experiences of animals/nonhumans/sentient beings (postphenomenological geographies, affective force).
+-   **Call to Action**: Requires "tough-minded and idealistic" scholars (*Tuan 2018*).
+-   **Proactive Attitude**: Not "technodystopian"; recognizes unintended mediations (errors, bugs), encouraging action to foster friendly experiences. Similar to *glitch politics* (*Russell 2020*).
+-   **Vision**: GIS is not just a tool, but a variety of ways humans live on the "digital" Earth, promoting an empathetic, sustainable, and poetic lifestyle.
+
+## Notes
+
+1.  **GIS Acronym**: In this article, GIS is an inclusive field encompassing GISciences, technologies, arts, humanities with geographic information, and critiques of social, political, cultural implications.
+2.  **GIS Technology**: Used consistently in the article to imply natural linkages between technology and underlying science.
+3.  **Check-in Function**: Considered a GIS technology as it allows users to post locations and provides mechanisms for storing, processing, analyzing this data.
+4.  **Cyborg**: Term coined by *Clynes and Kline (1960)* describing a creature that is half human and half machine.

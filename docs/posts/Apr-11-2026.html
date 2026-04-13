@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.49">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sechang Kim">
+<meta name="dcterms.date" content="2026-04-11">
+
+<title>Critical GIS - Methods – Sechang Kim</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../img/favicon-192x192.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-E3JCZTJ7C8"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-E3JCZTJ7C8', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Sechang Kim</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research">    
+        <li class="dropdown-header">Migration</li>
+        <li class="dropdown-header">Education</li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teaching" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teaching</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-teaching">    
+        <li class="dropdown-header">Instructor</li>
+        <li class="dropdown-header">Teaching Assistant</li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../personal-experience.html"> 
+<span class="menu-text">Personal Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mixed-methods-thinking-doing-and-asking-in-multiple-ways" id="toc-mixed-methods-thinking-doing-and-asking-in-multiple-ways" class="nav-link active" data-scroll-target="#mixed-methods-thinking-doing-and-asking-in-multiple-ways">1. Mixed methods: Thinking, doing, and asking in multiple ways</a>
+  <ul class="collapse">
+  <li><a href="#introduction-the-uneasy-fit-of-mixed-methods" id="toc-introduction-the-uneasy-fit-of-mixed-methods" class="nav-link" data-scroll-target="#introduction-the-uneasy-fit-of-mixed-methods">Introduction: The Uneasy Fit of Mixed Methods</a></li>
+  <li><a href="#clarifying-mixed-methods" id="toc-clarifying-mixed-methods" class="nav-link" data-scroll-target="#clarifying-mixed-methods">Clarifying “Mixed Methods”</a></li>
+  <li><a href="#epistemologies-and-ontologies-in-mixed-methods-research" id="toc-epistemologies-and-ontologies-in-mixed-methods-research" class="nav-link" data-scroll-target="#epistemologies-and-ontologies-in-mixed-methods-research">Epistemologies and Ontologies in Mixed Methods Research</a></li>
+  <li><a href="#mixed-methods-in-practice-interpretive-analytical-and-political-issues" id="toc-mixed-methods-in-practice-interpretive-analytical-and-political-issues" class="nav-link" data-scroll-target="#mixed-methods-in-practice-interpretive-analytical-and-political-issues">Mixed Methods in Practice: Interpretive, Analytical, and Political Issues</a></li>
+  <li><a href="#institutional-challenges-in-the-academy-and-beyond" id="toc-institutional-challenges-in-the-academy-and-beyond" class="nav-link" data-scroll-target="#institutional-challenges-in-the-academy-and-beyond">Institutional Challenges in the Academy and Beyond</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  <li><a href="#crossing-the-qualitative-quantitative-chasm-i-hybrid-geographies-the-spatial-turn-and-volunteered-geographic-information-vgi" id="toc-crossing-the-qualitative-quantitative-chasm-i-hybrid-geographies-the-spatial-turn-and-volunteered-geographic-information-vgi" class="nav-link" data-scroll-target="#crossing-the-qualitative-quantitative-chasm-i-hybrid-geographies-the-spatial-turn-and-volunteered-geographic-information-vgi">2. Crossing the Qualitative-Quantitative Chasm I: Hybrid Geographies, the Spatial Turn, and Volunteered Geographic Information (VGI)</a>
+  <ul class="collapse">
+  <li><a href="#i.-introduction-beyond-the-qualitative-quantitative-divide" id="toc-i.-introduction-beyond-the-qualitative-quantitative-divide" class="nav-link" data-scroll-target="#i.-introduction-beyond-the-qualitative-quantitative-divide">I. Introduction: Beyond the Qualitative-Quantitative Divide</a></li>
+  <li><a href="#ii.-geographys-new-turn-to-synthesis-and-holism" id="toc-ii.-geographys-new-turn-to-synthesis-and-holism" class="nav-link" data-scroll-target="#ii.-geographys-new-turn-to-synthesis-and-holism">II. Geography’s New Turn to Synthesis and Holism</a>
+  <ul class="collapse">
+  <li><a href="#three-contextual-trends-for-this-synthetic-and-holistic-turn" id="toc-three-contextual-trends-for-this-synthetic-and-holistic-turn" class="nav-link" data-scroll-target="#three-contextual-trends-for-this-synthetic-and-holistic-turn">Three Contextual Trends for this Synthetic and Holistic Turn:</a></li>
+  </ul></li>
+  <li><a href="#iii.-recent-efforts-in-geographic-synthesis-a-step-toward-consilience" id="toc-iii.-recent-efforts-in-geographic-synthesis-a-step-toward-consilience" class="nav-link" data-scroll-target="#iii.-recent-efforts-in-geographic-synthesis-a-step-toward-consilience">III. Recent Efforts in Geographic Synthesis: A Step Toward Consilience?</a>
+  <ul class="collapse">
+  <li><a href="#hybridizing-physical-and-human-geography" id="toc-hybridizing-physical-and-human-geography" class="nav-link" data-scroll-target="#hybridizing-physical-and-human-geography">1. Hybridizing Physical and Human Geography</a></li>
+  <li><a href="#mixing-qualitative-and-quantitative-methods" id="toc-mixing-qualitative-and-quantitative-methods" class="nav-link" data-scroll-target="#mixing-qualitative-and-quantitative-methods">2. Mixing Qualitative and Quantitative Methods</a></li>
+  <li><a href="#archival-ethnography" id="toc-archival-ethnography" class="nav-link" data-scroll-target="#archival-ethnography">3. Archival Ethnography</a></li>
+  <li><a href="#activism-applied-geography-and-academia" id="toc-activism-applied-geography-and-academia" class="nav-link" data-scroll-target="#activism-applied-geography-and-academia">4. Activism, Applied Geography, and Academia</a></li>
+  <li><a href="#mashing-up-paleo--and-neogeography" id="toc-mashing-up-paleo--and-neogeography" class="nav-link" data-scroll-target="#mashing-up-paleo--and-neogeography">5. Mashing Up Paleo- and Neogeography</a></li>
+  </ul></li>
+  <li><a href="#iv.-conclusions" id="toc-iv.-conclusions" class="nav-link" data-scroll-target="#iv.-conclusions">IV. Conclusions</a></li>
+  </ul></li>
+  <li><a href="#from-visuals-to-vision-using-gis-to-inform-civic-dialogue-about-african-american-males" id="toc-from-visuals-to-vision-using-gis-to-inform-civic-dialogue-about-african-american-males" class="nav-link" data-scroll-target="#from-visuals-to-vision-using-gis-to-inform-civic-dialogue-about-african-american-males">3. From Visuals to Vision: Using GIS to Inform Civic Dialogue about African American Males</a>
+  <ul class="collapse">
+  <li><a href="#introduction-and-context" id="toc-introduction-and-context" class="nav-link" data-scroll-target="#introduction-and-context">Introduction and Context</a></li>
+  <li><a href="#why-focus-on-visual-political-literacy-and-african-american-males" id="toc-why-focus-on-visual-political-literacy-and-african-american-males" class="nav-link" data-scroll-target="#why-focus-on-visual-political-literacy-and-african-american-males">Why Focus on Visual Political Literacy and African American Males?</a></li>
+  <li><a href="#factors-influencing-african-american-male-attainment" id="toc-factors-influencing-african-american-male-attainment" class="nav-link" data-scroll-target="#factors-influencing-african-american-male-attainment">Factors Influencing African American Male Attainment</a>
+  <ul class="collapse">
+  <li><a href="#teachers-expectations-and-support-factors" id="toc-teachers-expectations-and-support-factors" class="nav-link" data-scroll-target="#teachers-expectations-and-support-factors">Teachers’ Expectations and Support Factors</a></li>
+  <li><a href="#school-opportunity-factors" id="toc-school-opportunity-factors" class="nav-link" data-scroll-target="#school-opportunity-factors">School Opportunity Factors</a></li>
+  <li><a href="#neighborhood-and-community-factors" id="toc-neighborhood-and-community-factors" class="nav-link" data-scroll-target="#neighborhood-and-community-factors">Neighborhood and Community Factors</a></li>
+  </ul></li>
+  <li><a href="#a-visual-political-literacy-project" id="toc-a-visual-political-literacy-project" class="nav-link" data-scroll-target="#a-visual-political-literacy-project">A Visual Political Literacy Project</a></li>
+  <li><a href="#st.-louis-case-study-biotechnology-clusters-and-african-american-males" id="toc-st.-louis-case-study-biotechnology-clusters-and-african-american-males" class="nav-link" data-scroll-target="#st.-louis-case-study-biotechnology-clusters-and-african-american-males">St.&nbsp;Louis Case Study: Biotechnology Clusters and African American Males</a></li>
+  <li><a href="#summary-of-map-findings-and-community-questions" id="toc-summary-of-map-findings-and-community-questions" class="nav-link" data-scroll-target="#summary-of-map-findings-and-community-questions">Summary of Map Findings and Community Questions</a></li>
+  <li><a href="#engineering-tools-to-support-mobilization" id="toc-engineering-tools-to-support-mobilization" class="nav-link" data-scroll-target="#engineering-tools-to-support-mobilization">Engineering Tools to Support Mobilization</a></li>
+  </ul></li>
+  <li><a href="#inductive-visualization-a-humanistic-alternative-to-gis" id="toc-inductive-visualization-a-humanistic-alternative-to-gis" class="nav-link" data-scroll-target="#inductive-visualization-a-humanistic-alternative-to-gis">4. Inductive Visualization: A Humanistic Alternative to GIS</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#gis-in-digital-humanities-context" id="toc-gis-in-digital-humanities-context" class="nav-link" data-scroll-target="#gis-in-digital-humanities-context">GIS in Digital Humanities Context</a></li>
+  <li><a href="#what-is-gis-key-terms-and-constraints" id="toc-what-is-gis-key-terms-and-constraints" class="nav-link" data-scroll-target="#what-is-gis-key-terms-and-constraints">What is GIS? Key Terms and Constraints</a></li>
+  <li><a href="#the-spatial-turn-in-holocaust-studies" id="toc-the-spatial-turn-in-holocaust-studies" class="nav-link" data-scroll-target="#the-spatial-turn-in-holocaust-studies">The Spatial Turn in Holocaust Studies</a></li>
+  <li><a href="#exploring-holocaust-testimony-with-inductive-visualization" id="toc-exploring-holocaust-testimony-with-inductive-visualization" class="nav-link" data-scroll-target="#exploring-holocaust-testimony-with-inductive-visualization">Exploring Holocaust Testimony with Inductive Visualization</a></li>
+  <li><a href="#teaching-with-inductive-visualization" id="toc-teaching-with-inductive-visualization" class="nav-link" data-scroll-target="#teaching-with-inductive-visualization">Teaching with Inductive Visualization</a></li>
+  </ul></li>
+  <li><a href="#humanistic-gis-toward-a-research-agenda" id="toc-humanistic-gis-toward-a-research-agenda" class="nav-link" data-scroll-target="#humanistic-gis-toward-a-research-agenda">5. Humanistic GIS: Toward a Research Agenda</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-humanistic-gis" id="toc-introduction-to-humanistic-gis" class="nav-link" data-scroll-target="#introduction-to-humanistic-gis">Introduction to Humanistic GIS</a></li>
+  <li><a href="#evolution-of-gis-and-related-research" id="toc-evolution-of-gis-and-related-research" class="nav-link" data-scroll-target="#evolution-of-gis-and-related-research">Evolution of GIS and Related Research</a></li>
+  <li><a href="#humanistic-perspectives-in-geography" id="toc-humanistic-perspectives-in-geography" class="nav-link" data-scroll-target="#humanistic-perspectives-in-geography">Humanistic Perspectives in Geography</a></li>
+  <li><a href="#phenomenological-interpretations-of-technology" id="toc-phenomenological-interpretations-of-technology" class="nav-link" data-scroll-target="#phenomenological-interpretations-of-technology">Phenomenological Interpretations of Technology</a></li>
+  <li><a href="#gis-mediated-experience-human-gis-and-place" id="toc-gis-mediated-experience-human-gis-and-place" class="nav-link" data-scroll-target="#gis-mediated-experience-human-gis-and-place">GIS-Mediated Experience: Human, GIS, and Place</a></li>
+  <li><a href="#humangisplace-relation-gis-as-embodiment-hermeneutics-autonomy-and-background" id="toc-humangisplace-relation-gis-as-embodiment-hermeneutics-autonomy-and-background" class="nav-link" data-scroll-target="#humangisplace-relation-gis-as-embodiment-hermeneutics-autonomy-and-background">Human–GIS–Place Relation: GIS as Embodiment, Hermeneutics, Autonomy, and Background</a></li>
+  <li><a href="#implications-of-gis-intertwined-amplification-and-reduction" id="toc-implications-of-gis-intertwined-amplification-and-reduction" class="nav-link" data-scroll-target="#implications-of-gis-intertwined-amplification-and-reduction">Implications of GIS: Intertwined Amplification and Reduction</a></li>
+  <li><a href="#message-from-humanistic-gis" id="toc-message-from-humanistic-gis" class="nav-link" data-scroll-target="#message-from-humanistic-gis">Message from Humanistic GIS</a></li>
+  <li><a href="#new-research-agenda-for-gis" id="toc-new-research-agenda-for-gis" class="nav-link" data-scroll-target="#new-research-agenda-for-gis">New Research Agenda for GIS</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Critical GIS - Methods</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">GIS</div>
+    <div class="quarto-category">Qualitative GIS</div>
+    <div class="quarto-category">Critical GIS</div>
+    <div class="quarto-category">GEOG 521</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sechang Kim </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 11, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">April 12, 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="mixed-methods-thinking-doing-and-asking-in-multiple-ways" class="level1">
+<h1>1. Mixed methods: Thinking, doing, and asking in multiple ways</h1>
+<ul>
+<li><p>Elwood, S. (2010). Mixed methods: Thinking, doing, and asking in multiple ways.&nbsp;<em>The SAGE handbook of qualitative geography</em>,&nbsp;<em>1</em>, 94-114.</p></li>
+<li><p>DOI: <a href="https://doi.org/10.4135/9780857021090.n7" class="uri">https://doi.org/10.4135/9780857021090.n7</a></p></li>
+</ul>
+<p>Mixed methods research offers a powerful approach to challenging long-standing disciplinary divides between qualitative and quantitative methodologies in geography, providing a framework to integrate diverse epistemological and ontological perspectives for more robust and nuanced understanding of complex phenomena. Despite historical debates aiming to separate research paradigms, mixed methods have been practiced for decades, fostering new ways of knowing and addressing practical and institutional challenges within academia and policy-making.</p>
+<section id="introduction-the-uneasy-fit-of-mixed-methods" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-the-uneasy-fit-of-mixed-methods">Introduction: The Uneasy Fit of Mixed Methods</h2>
+<ul>
+<li><strong>Historical Context</strong>: Geography has a history of debates attempting to separate quantitative vs.&nbsp;qualitative, or positivist vs.&nbsp;humanist/post-structuralist epistemologies.
+<ul>
+<li>Discussions focused on particularity vs.&nbsp;generality (Hartshorne, 1939; Schaefer, 1953).</li>
+<li>Debates on appropriateness for human spatial activities (Chorley and Haggett, 1967; Harvey, 1969; Buttimer, 1976; Tuan, 1976).</li>
+<li>Specific method ‘wars’ like the ‘GIS wars’ of the mid-1990s (Pickles, 1995), often positioning GIS as strictly quantitative and positivist.</li>
+</ul></li>
+<li><strong>Paradox</strong>: Despite these “boundary making” efforts, geographers have been conducting mixed methods research for decades.
+<ul>
+<li><em>Feminist geography</em> integrating quantitative/geovisual methods with ontological/epistemological challenges (Mattingly and Falconer-Al Hindi, 1995; Kwan, 2002a).</li>
+<li><em>Political ecologists</em> combining quantitative remote sensing with qualitative oral histories/interviews (Robbins, 2001a, b; Nightingale, 2003).</li>
+<li><em>Participatory action research</em> commonly uses mixed methods (Pain, 2003, 2004).</li>
+<li><em>GIScience</em> increasingly diversifies to include qualitative GIS (Sieber, 2001; Kwan and Knigge, 2006).</li>
+</ul></li>
+<li><strong>Chapter Focus</strong>: Examines philosophical, practical, and institutional dilemmas of mixed methods, with emphasis on GIS applications due to its historical divisions and potential gains from mixed approaches.</li>
+</ul>
+</section>
+<section id="clarifying-mixed-methods" class="level2">
+<h2 class="anchored" data-anchor-id="clarifying-mixed-methods">Clarifying “Mixed Methods”</h2>
+<ul>
+<li><strong>Distinction</strong>: Some literature differentiates ‘multi-method’ (parallel, separate analysis) from ‘mixed method’ (some degree of integration).</li>
+<li><strong>Author’s Definition</strong>: Considers mixed methods as approaches relying on <strong>multiple types of data, modes of analysis, or ways of knowing</strong>, used in varied relationships and for diverse intellectual/analytical purposes, regardless of the extent of integration at epistemological/ontological levels.</li>
+</ul>
+</section>
+<section id="epistemologies-and-ontologies-in-mixed-methods-research" class="level2">
+<h2 class="anchored" data-anchor-id="epistemologies-and-ontologies-in-mixed-methods-research">Epistemologies and Ontologies in Mixed Methods Research</h2>
+<ul>
+<li><strong>Core Dilemmas</strong>:
+<ul>
+<li>Conceptual purpose/intellectual goals of mixing methods.</li>
+<li>Extent to which different epistemologies and assumptions about knowledge can/should be integrated.</li>
+</ul></li>
+<li><strong>Intellectual Purpose/Contribution</strong>:
+<ol type="1">
+<li><strong>Validation</strong>: Using different data/techniques to highlight discrepancies or confirm findings (Eyles and Smith, 1988; Phillip, 1998; Cresswell, 2003). Assumes an <em>wholly knowable</em> object of inquiry.</li>
+<li><strong>Complementarity</strong>: Enhancing explanatory power by interrogating different processes/interactions with different data types (e.g., qualitative for meanings, quantitative for patterns) (England, 1993; Hanson and Pratt, 1995, 2003). Understands knowledge as <em>situated</em> and ways of knowing as <em>inherently partial</em>, informed by feminist theory.
+<ul>
+<li><strong>Example</strong>: Hanson and Pratt (1995) used quantitative data for labor markets and ethnographic interviews for household decision-making regarding gender roles and economic restructuring.</li>
+</ul></li>
+<li><strong>New Knowledge Generation</strong>: Integrating methods at analytical, interpretive, or epistemological levels to produce novel insights.
+<ul>
+<li><strong>Example</strong>: Jiang (2003) and Nightingale (2003) analyzed remote sensing and ethnographic interviews as socially constructed texts.</li>
+<li><strong>Example</strong>: Knigge and Cope’s (2006) <em>grounded visualization</em> applies grounded theory (qualitative) to GIS-based spatial data (quantitative and qualitative).</li>
+<li>These approaches may be rooted in a <em>unique hybrid epistemology</em> rather than a “strategic collision.”</li>
+</ul></li>
+</ol></li>
+<li><strong>Integrating Multiple Epistemologies/Ontologies</strong>:
+<ul>
+<li>Question: Is it possible or desirable to integrate or simultaneously hold multiple assumptions about reality and knowledge production?</li>
+<li><strong>Epistemology &amp; Methodology</strong>: In geography, stronger consensus that epistemology <em>informs</em> but does not <em>determine</em> methods.
+<ul>
+<li>Quantitative methods not solely tied to positivism (Phillip, 1998; Barnes and Hannah, 2001; Sheppard, 2001).</li>
+<li>Feminist epistemologies compatible with quantitative methods depending on application (Lawson, 1995; Mattingly and Falconer-Al Hindi, 1995; McLafferty, 1995; Moss, 1995).</li>
+<li>GIS-based research can be informed by realist, pragmatist, positivist, and other paradigms (Pavlovskaya, 2002; Schuurman, 2002a; Kwan, 2002c; Pavlovskaya, 2006).</li>
+<li>This <em>epistemological flexibility</em> allows researchers to actively engage and reconstruct the connection between epistemology and methodology for intellectual/political purposes (e.g., St.&nbsp;Martin, 2005, using GIS for experiential knowledge and interviews for other influences).</li>
+</ul></li>
+<li><strong>Epistemology &amp; Ontology</strong>: Separating these is more problematic. Ontological assumptions guide how knowledge is produced.
+<ul>
+<li>Fixed, coherent world <span class="math inline">\(\rightarrow\)</span> positivist/realist, quantitative methods (Lawson, 1995; Dixon and Jones, 1998).</li>
+<li>Shifting, contradictory world <span class="math inline">\(\rightarrow\)</span> constructivist/post-structuralist, different knowledge production (Staeheli and Lawson, 1995).</li>
+<li>This alignment makes mixing at the ontological level difficult, leading to divergent characterizations of methods like GIS.</li>
+</ul></li>
+</ul></li>
+<li><strong>Conceptual Frameworks for Multiplicity</strong>:
+<ul>
+<li><strong>Strong Objectivity</strong> (Haraway, 1991; Rocheleau, 1995): Acknowledges the partiality of all knowledge, enabling methodological pluralism by directly addressing knowledge production practices.</li>
+<li><strong>Soft Ontology</strong> (Doel, 2001): Sensitive to the contradiction between fixed/categorical and fluid/constructivist ways of knowing.</li>
+<li><strong>Local Epistemologies</strong> (Longino, 2002; Leitner and Sheppard, 2003): For any research question, multiple valid conceptual frameworks exist, and appropriateness is contingent on socio-political/philosophical considerations.</li>
+<li><strong>Pragmatism</strong> (Smith, 1984; Maxcy, 2003; Mertens, 2003): Knowledge is produced through experience, the world is created and known socially, and validity is based on capacity for understanding or social change. Informs feminist and participatory research (Lawson, 1995; Rocheleau, 1995; Schuurman, 2002b; Pain, 2004), allowing methods to be combined and reworked based on their potential for socially/politically significant outcomes.</li>
+</ul></li>
+</ul>
+</section>
+<section id="mixed-methods-in-practice-interpretive-analytical-and-political-issues" class="level2">
+<h2 class="anchored" data-anchor-id="mixed-methods-in-practice-interpretive-analytical-and-political-issues">Mixed Methods in Practice: Interpretive, Analytical, and Political Issues</h2>
+<ul>
+<li><strong>Key Research Areas</strong>: Political ecology, feminist geography, critical GIScience, participatory action research.</li>
+<li><strong>Challenges of Multiple Data Sources</strong>:
+<ul>
+<li><strong>Representation, Analysis, Communication</strong>: Different data types lend themselves to divergent forms.
+<ul>
+<li><em>Critical GIS</em>: Difficulty incorporating multiple spatial knowledges into GIS, traditionally favoring cartographic representations of quantitative data.</li>
+<li><em>Multimedia Techniques</em>: Use of text, sound, photos, 3-D, animations in GIS to include qualitative data, shifting representations, perceptions, and emotions (Al-Kodmany, 2000; Shiffer, 2002; Harrower, 2004; Kwan and Lee, 2004).</li>
+<li>Difficulty in facilitating <em>multiple modes of analysis</em> within GIS, which traditionally focuses on tangible, fixed phenomena.</li>
+</ul></li>
+<li><strong>Emerging Qualitative GIS Techniques</strong>:
+<ul>
+<li><strong><em>Grounded Visualization</em></strong> (Knigge and Cope, 2006): Applies grounded theory (inductive coding of qualitative data) to GIS visualization of spatial data. Example: mapping land use from local government and walking surveys/interviews to understand neighborhood conditions and agendas.</li>
+<li><strong><em>Qualified GIS</em></strong> (Pain et al., 2006): Uses qualitative data/analysis to explore propositions from GIS analysis, refining rather than confirming/refuting. Example: GIS analysis of street lighting and crime incidence combined with ethnographic interviews on perceived safety revealed low lighting was problematic for perception of safety, not necessarily crime incidence.</li>
+</ul></li>
+<li><strong>Challenges in Qualitative Methods</strong>: Diversifying beyond text-focused data to include visual/performative ways of knowing (Crang, 2005) faces difficulties in applying text-based analysis to performative practices (Pratt, 2000; Cahill et al., 2004).</li>
+</ul></li>
+<li><strong>Dealing with Contradictory Data</strong>:
+<ul>
+<li><strong>Early Approach</strong>: Treat discrepancies as evidence of error or misinterpretation (validation-focused) (Eyles and Smith, 1998; Cresswell, 2003).</li>
+<li><strong>Partiality of Knowledge</strong>: Assume different ways of knowing are partial and complementary, revealing insights not evident otherwise (England, 1993).</li>
+<li><strong>Generating New Insights</strong>: Examine ambiguities to reach new understandings (Nightingale, 2003; Robbins, 2003; Hanson and Pratt, 2003). Example: Contradictory meanings of “community development” from maps vs.&nbsp;participant observation, resolved by interviews showing strategic negotiation of meanings by professionals.</li>
+<li><strong>Triangulation</strong>: A long-standing practice for working with multiple methods/data, but not a single practice (England, 1993).
+<ul>
+<li>For <em>validation</em> (assumes fixed knowable reality).</li>
+<li>For <em>complementarity</em>.</li>
+<li>For <em>generating new insights</em> (assumes partial knowledge and that ways of knowing produce realities). Requires critical reflection and thoughtful interpretation of contradictions/silences.</li>
+</ul></li>
+<li><strong>Other Creative Practices</strong>: Multi-vocal approaches (Wolf, 1992; Pratt and Kirby, 2003; Crang, 2005), participatory diagramming, counter-mapping, feminist/qualitative GIS (Kesby, 2000; Pavlovskaya, 2002; Williams and Dunn, 2003; Knigge and Cope, 2006).</li>
+</ul></li>
+<li><strong>Incorporating Multi-scalar Data &amp; Complex Processes</strong>:
+<ul>
+<li><strong>Political Ecology</strong>: Excellent for illustrating multi-scalar challenges due to focus on intersecting human/physical processes.
+<ul>
+<li><strong>Example</strong>: Zimmerer (2003) on biodiversity conservation in agriculture: combined regional economic analysis (quantitative survey) with household gender roles (ethnographic interviews) to show how seed management is shaped by both biophysical and socio-economic factors across scales.</li>
+<li><strong>Example</strong>: Robbins (2001b) on land management practices in India: integrated satellite imagery, historical documents, household practices, and state policies to explain global landscape change at multiple scales.</li>
+</ul></li>
+<li><strong>Analytical Challenge</strong>: Interpreting how different data sources (and investigated processes) are related across scales. Effective projects carefully conceptualize structural processes and local contexts, clearly linking methods to specific aspects of these relationships.</li>
+<li><strong>Example</strong>: Bassett (2005) on wild game depletion in West Africa: detailed conceptual framework linking habitat change and hunting pressure to social, institutional, biophysical changes, using longitudinal surveys to connect local data with macro-economic shifts and national policies.</li>
+<li><strong>Example</strong>: Pavlovskaya (2002) on post-Soviet Moscow economies: GIS mapping of urban services combined with qualitative interviews revealed that macro-economic studies (showing service expansion) omitted informal strategies and affordability issues at the household level.</li>
+</ul></li>
+<li><strong>Differential Discursive and Political Authority</strong>:
+<ul>
+<li>Different research paradigms/data hold varying sway with audiences.</li>
+<li><strong>Quantitative methods</strong> can be powerful for illustrating and combating inequalities (Lawson, 1995; McLafferty, 1995).</li>
+<li><strong>GIS/Remote Sensing</strong> often granted scientific authority in academic/policy forums (Turner, 2003).</li>
+<li><strong>Strategic Use</strong>: Participants may use quantitative representations for government authorities and artistic practices for other audiences (Pratt and Hanson, 2003).</li>
+<li><strong>Community-based GIS</strong>: Local knowledge may gain legitimacy when incorporated into GIS visually/cartographically, while quantitative data may be rejected by residents as inaccurate (Elwood, 2002, 2006). Activists develop flexible strategies to maximize influence.</li>
+<li><strong>Dilemma</strong>: Does “translating” experiential knowledge into GIS alter the significance of alternative discourses? Can different ways of knowing coexist productively if one is granted greater legitimacy?</li>
+<li><strong>Caution</strong>: Strategic deployment is not unproblematic. Quantitative data can be misinterpreted by policymakers (McLafferty, 1995). Participatory GIS can exclude marginalized groups if they can’t understand/express knowledge in GIS forms (Weiner and Harris, 2003; Elmes et al., 2004).</li>
+<li><strong>Imperative</strong>: Consider the power of particular ways of knowing with different audiences and address potential silences/exclusions.</li>
+</ul></li>
+</ul>
+</section>
+<section id="institutional-challenges-in-the-academy-and-beyond" class="level2">
+<h2 class="anchored" data-anchor-id="institutional-challenges-in-the-academy-and-beyond">Institutional Challenges in the Academy and Beyond</h2>
+<ul>
+<li><strong>Academic Norms</strong>: Disciplines often validate particular epistemological commitments and single-method approaches. Mixed methods challenge these divisions.</li>
+<li><strong>Methodological Training</strong>: Graduate education in mixed methods is underdeveloped; many geographers develop them independently or through collaborative mentorship. This reinforces single-paradigm allegiances.</li>
+<li><strong>Justification &amp; Review</strong>: Explaining/justifying mixed methods to journals, funders, or peers can be difficult. Reviewers may lack sufficient background in both components or in mixed methods integration.
+<ul>
+<li>Authors bear the burden of explaining practices for knowledge production and validation.</li>
+<li>Both authors and reviewers have a responsibility to disrupt disciplinary gate-keeping.</li>
+</ul></li>
+<li><strong>Policy Relevance Debate</strong>:
+<ul>
+<li>Some suggest post-structural/hermeneutic epistemologies don’t readily inform policy or quantitative training is lacking (Wheeler, 2000; Martin, 2001).</li>
+<li>Others argue for epistemological/methodological diversity for complex policy issues (Imrie, 2004; Wyly, 2004; Lake, 2005).</li>
+<li>Policymakers often prioritize <em>quantitative evidence</em> and measurable benchmarks (Elwood, 2004; Newman and Lake, 2004; Curran, 2005; McCann, 2008). This trend is problematic for mixed methods.</li>
+</ul></li>
+<li><strong>Methodological Uncertainty</strong>: Critiques of partiality have led to “methodological uncertainty” (Lake, 2005) or “epistemological eclecticism” (Mountz and Prytherch, 2005), with few accepted reference points for evaluating rigor.
+<ul>
+<li>Questions remain about integrating approaches, conceptualizing reliability, and constructive critique without rejecting underlying intellectual reasoning.</li>
+<li>Validity and rigor are negotiated through funding, publication, and peer review processes.</li>
+</ul></li>
+<li><strong>Institutional Resources for Collaboration</strong>:
+<ul>
+<li>Mixed methods projects often require collaborative teams with diverse expertise.</li>
+<li>National funding agencies prioritize multi-disciplinary projects.</li>
+<li>Collaboration is challenging and <em>time-consuming</em>, especially for integrated intellectual efforts.</li>
+<li>Need for <em>time</em> for researchers to adopt new methodological approaches.</li>
+<li><strong>Call to Action</strong>: Create institutional spaces and tangible support (reading groups, seminars) for engaging new techniques and fostering critical understanding of mixed methods. Fluency in mixed methods will be increasingly necessary.</li>
+</ul></li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<ul>
+<li>Growth of mixed methods in geography is fueled by critical re-examination of methodology, assuming knowledge and paradigms are socially, politically, and institutionally constructed.</li>
+<li>This has led to “unthinkable methodological collisions” like <em>qualitative GIS</em>.</li>
+<li>Key considerations: appropriateness of mixing epistemologies, integration of data/analysis, and institutional/disciplinary constraints.</li>
+<li>Emphasis on <em>reflexivity</em> and <em>critical agency</em> for navigating challenges.</li>
+<li>Recognition of the “third geographer” (Barnes and Hannah, 2001) who bridges quantitative/qualitative approaches, providing opportunities to legitimize their work.</li>
+<li><strong>Future Directions</strong>: Mixed methods must move beyond quantitative-qualitative debates to engage with new theoretical developments like emotion, affect, performativity, and non-representational theory, which challenge assumptions about representation and practice. This will require new ways of compartmentalizing and analyzing research beyond traditional text-focused methods.</li>
+</ul>
+</section>
+</section>
+<section id="crossing-the-qualitative-quantitative-chasm-i-hybrid-geographies-the-spatial-turn-and-volunteered-geographic-information-vgi" class="level1">
+<h1>2. Crossing the Qualitative-Quantitative Chasm I: Hybrid Geographies, the Spatial Turn, and Volunteered Geographic Information (VGI)</h1>
+<ul>
+<li>Sui, D., &amp; DeLyser, D. (2012). Crossing the qualitative-quantitative chasm I: Hybrid geographies, the spatial turn, and volunteered geographic information (VGI).&nbsp;<em>Progress in human geography</em>,&nbsp;<em>36</em>(1), 111-124.</li>
+<li>DOI: <a href="https://doi.org/10.1177/0309132510392164" class="uri">https://doi.org/10.1177/0309132510392164</a></li>
+<li>This report, the first in a three-part series, reviews various qualitative and quantitative methods and methodological approaches in geography. It aims to bridge the long-standing qualitative-quantitative divide by focusing on <em>hybrid geographies</em>, the <em>spatial turn</em>, and the exponential growth of <em>volunteered geographic information (VGI)</em>. The core argument is that complex contemporary problems necessitate synergistic, holistic, pluralistic, and diverse methodological approaches.</li>
+</ul>
+<section id="i.-introduction-beyond-the-qualitative-quantitative-divide" class="level2">
+<h2 class="anchored" data-anchor-id="i.-introduction-beyond-the-qualitative-quantitative-divide">I. Introduction: Beyond the Qualitative-Quantitative Divide</h2>
+<ul>
+<li><strong>Goal</strong>: To overcome the qualitative-quantitative divide in geography and broader social sciences/humanities, which has hindered cooperation and constructive engagement.</li>
+<li>This report focuses on <em>mixing methods</em> and <em>methodologies</em> or <em>transcending their differences</em>.</li>
+<li>Future reports will highlight strong individual qualitative and quantitative approaches.</li>
+<li><strong>Objective</strong>: Inject tolerance, strive for synergy, and embrace diversity to address complex problems.</li>
+<li><strong>Observation</strong>: A broad-spectrum view is common in introductory texts but often elusive in advanced geographical scholarship, which tends to be specialized.</li>
+<li><strong>Analogy</strong>: The divide is akin to C.P. Snow’s ‘chasm’ between scientific and humanistic knowledge (Snow, 1993).</li>
+<li><strong>Importance</strong>: Moving beyond divisiveness is crucial for the discipline’s survival and relevance, while still valuing productive diversity and fundamental debates.</li>
+</ul>
+</section>
+<section id="ii.-geographys-new-turn-to-synthesis-and-holism" class="level2">
+<h2 class="anchored" data-anchor-id="ii.-geographys-new-turn-to-synthesis-and-holism">II. Geography’s New Turn to Synthesis and Holism</h2>
+<p>Geography has historically oscillated between analytical and synthetic paradigms. The early 21st century has seen a significant <em>turn to synthesis and holism</em>, alongside other ‘turns’ (e.g., critical, cultural, relational, computational, communicational, mobilities, performative).</p>
+<section id="three-contextual-trends-for-this-synthetic-and-holistic-turn" class="level3">
+<h3 class="anchored" data-anchor-id="three-contextual-trends-for-this-synthetic-and-holistic-turn">Three Contextual Trends for this Synthetic and Holistic Turn:</h3>
+<ol type="1">
+<li><strong>Calls for a Unified Geography and New Synthesis</strong>:
+<ul>
+<li>Advocacy for a unified disciplinary identity (Matthews and Herbert, 2004) and studying the planet holistically (Clarke, forthcoming).</li>
+<li><strong><em>Hybrid geographies</em></strong>: A conceptual framework for practicing this new synthesis.
+<ul>
+<li>Whatmore (2002): Engaging in a “politics of hybridity.”</li>
+<li>Rose (2000): Hybrids “transgress and displace boundaries between binary divisions and in so doing produce something ontologically new.”</li>
+<li>Kwan (2004): Addresses divisions between physical/human geography and spatial-analytical/social-critical approaches.</li>
+<li>Aim: Integrate elements often considered incompatible.</li>
+</ul></li>
+</ul></li>
+<li><strong>The Spatial Turn Across Disciplines</strong>:
+<ul>
+<li><em>Space</em> has become an integrating theme across physical sciences, social sciences, and humanities (e.g., spatially integrated social sciences, GIS/spatial analysis in humanities).</li>
+<li><strong>Examples</strong>:
+<ul>
+<li>Economist <em>Paul Krugman</em> received the 2008 Nobel Prize for economic geography work.</li>
+<li>Mathematics, physics, computer science, and ecology have enhanced geography’s quantitative toolbox (complex networks, visual analytics, spatial modeling).</li>
+</ul></li>
+<li><strong>Policy Relevance</strong>: Policy-makers recognize the importance of space/place for global problems (World Bank, 2009 report from a geographical perspective) and place-based policies (Obama White House, 2009).</li>
+</ul></li>
+<li><strong>Merger of New Spatial Data Understanding and Acquisition</strong>:
+<ul>
+<li>Rapid development of <em>Web 2.0, GeoWeb</em>, and <em>geospatial technologies</em> (GIS, RS, GPS, LBS).</li>
+<li><strong>Capability</strong>: “Know where nearly everything, from genetic to global levels, is at all times.”</li>
+<li><strong>Data Avalanche</strong>: User-generated content (UGC) and <em>Volunteered Geographic Information (VGI)</em>, where individuals act as “sensors.”</li>
+<li><strong><em>Neogeography</em></strong>: Emerged from digital mapping and Web 2.0, allowing ordinary citizens to participate in geographic data/knowledge production (Batty et al., 2010).</li>
+<li><strong>Crowdsourcing</strong>: A new mode of knowledge production (Goodchild, 2009).</li>
+<li>Vast amounts of fragmented individual-level data can reveal interesting patterns when aggregated.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="iii.-recent-efforts-in-geographic-synthesis-a-step-toward-consilience" class="level2">
+<h2 class="anchored" data-anchor-id="iii.-recent-efforts-in-geographic-synthesis-a-step-toward-consilience">III. Recent Efforts in Geographic Synthesis: A Step Toward Consilience?</h2>
+<p>These efforts aim to move beyond the qualitative-quantitative divide, reflecting the trends outlined above.</p>
+<section id="hybridizing-physical-and-human-geography" class="level3">
+<h3 class="anchored" data-anchor-id="hybridizing-physical-and-human-geography">1. Hybridizing Physical and Human Geography</h3>
+<ul>
+<li>Growing number of geographers crossing the traditional physical-human divide, beyond cultural/political ecology traditions.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><em>Neil Smith</em> (1998) on <em>El Niño capitalism</em>, linking ENSO cycles to capitalism’s crises. Research by Berry and Okulicz-Kozaryn (2008) found no significant co-cyclicality for the US macroeconomy but acknowledged localized impacts.</li>
+<li>Leichenko et al.&nbsp;(2010) link global financial crisis to climate change via a <em>double-exposure framework</em>.</li>
+<li>Gober et al.&nbsp;(2010a, 2010b) downscaled global climate models for urban water planning in Phoenix, using <em>WaterSim</em> for policy scenario simulation.</li>
+<li>Physical geographers embrace human topics: <em>Clifford</em> (2009) on globalization; <em>Phillips</em> (2001, 2009a, 2009b) on the primacy of place.</li>
+<li>Yu and Liu (2007) studied environmental consequences of divorce rates, finding increased energy/water consumption per person due to separate residences.</li>
+<li>Odoni and Lane (2010) advocate a <em>knowledge-theoretic</em> approach in hydrological modeling, integrating qualitative data (reports, recollections, photos, opinions) as an integral part of quantitative models.</li>
+<li>Comrie (2010) uses <em>Nietzsche</em> to challenge physical geographers to reconsider their role and include meaning/action in science.</li>
+<li>Mistry et al.&nbsp;(2009) describe physical geographers’ shift from “top-down experts to participatory facilitators,” addressing reflexivity and positionality.</li>
+</ul></li>
+</ul>
+</section>
+<section id="mixing-qualitative-and-quantitative-methods" class="level3">
+<h3 class="anchored" data-anchor-id="mixing-qualitative-and-quantitative-methods">2. Mixing Qualitative and Quantitative Methods</h3>
+<ul>
+<li>Geography’s interdisciplinary nature fosters methodological hybridity.</li>
+<li>Complex mixed-methods approaches cross spatial-analytical and social-critical divides, revealing their binary as “pseudo rather than real” (Barnes, 2009).</li>
+<li><em>Critical geography</em> can effectively use quantitative methods, as evidenced by <em>Karl Marx</em> (Schwanen and Kwan, 2009).</li>
+<li>Elwood (2010) emphasizes that mixed-methods research must bridge methodological, epistemological, and philosophical divides, often renegotiating theoretical principles.</li>
+<li>Bergman et al.&nbsp;(2009) seek a “methodological reinterpretation of what employing mathematical arguments could mean within larger, postpositivist theoretical projects in critical human geography.”</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><em>Transport geography</em>: Zolinik (2010) used multilevel, mixed-methods; Goetz et al.&nbsp;(2009) call for greater integration of qualitative analysis into quantitative modeling.</li>
+<li><strong><em>Qualitative GIS</em></strong> (Aitken and Kwan, 2010): Reconceptualizes GIS beyond purely quantitative, embracing non-cartographic data, qualitative analysis, and multiple representations (Cope and Elwood, 2009).
+<ul>
+<li>Knigge and Cope (2006, 2009) developed <em>grounded visualization</em> for inductive, iterative analysis, engaging scale as both cartographic representation and sociopolitical construction.</li>
+<li>Elwood (2009) shows how GIS representations can produce multiple understandings of neighborhoods.</li>
+<li>Aitken and Craine (2009) demonstrate non-representational readings of GIS for affective politics.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="archival-ethnography" class="level3">
+<h3 class="anchored" data-anchor-id="archival-ethnography">3. Archival Ethnography</h3>
+<ul>
+<li>Stoler (2009) advocates applying ethnographic sensibilities to archival research, shifting from “archive as source” to “archive as subject.”</li>
+<li>Ogborn (2009): Examine archives as “forms of communication.”</li>
+<li>Lorimer and Philo (2009): Emphasize suspicion of apparent order in archives and seeking “cracks.”</li>
+<li>Lambert (2009): Uses an <em>ethno-historical approach</em> to identify gaps in written records and excavate knowledge of enslaved individuals from colonial traces, making “the unsaid” evidence.</li>
+<li>Cameron and Matless (2010): Show how even “ignorance itself” can be revealed in archives.</li>
+<li>Lorimer and Whatmore (2009): Incorporate non-humans (elephants) into historical geography studies using “embodied re-enactive” techniques and a more-than-human perspective.</li>
+<li>Bailey et al.&nbsp;(2009): Detail the “backstage production” of archival work through a group-autoethnography, emphasizing researchers’ voices and experiences.</li>
+</ul>
+</section>
+<section id="activism-applied-geography-and-academia" class="level3">
+<h3 class="anchored" data-anchor-id="activism-applied-geography-and-academia">4. Activism, Applied Geography, and Academia</h3>
+<ul>
+<li>Community engagement via <em>Participatory Action Research (PAR)</em> or <em>applied geography</em> involves hybridizations of research, pedagogy, participation, political action, and care.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li>Autonomous Geographies Collective (2010): Rejects the “false distinction between academia and wider society,” advocating for collective research and engagement.</li>
+<li>Evans et al.&nbsp;(2009): Advocates for a “fusion” of methods across subfields, particularly in community-based work, to recognize indigenous peoples as knowledge authors.</li>
+<li>Gibson-Graham and Roelvink (2009): Promote hybrid research collectives of human and non-human actants for “world-changing processes.”</li>
+<li>Askins (2009): Urges academics to acknowledge and make space for emotions in research and activism.</li>
+<li>Brown and Pickerill (2009): Link emotions to the sustainability of activism, emphasizing emotional reflexivity.</li>
+<li>Linking activism with pedagogy: Mountz et al.&nbsp;(2008) connected courses with community-service centers for organic project development and “meaning making” outside the classroom. Pain (2009) highlights PAR’s role in linking theory to practice in teaching.</li>
+</ul></li>
+</ul>
+</section>
+<section id="mashing-up-paleo--and-neogeography" class="level3">
+<h3 class="anchored" data-anchor-id="mashing-up-paleo--and-neogeography">5. Mashing Up Paleo- and Neogeography</h3>
+<ul>
+<li>The rise of VGI has led to a potential “neogeography versus paleogeography” divide (Sieber et al., 2009; Sui, 2009a).</li>
+<li><strong><em>Mashups</em></strong>: Originally from the music industry, in Web applications it refers to combining data or functionality from two or more sources (often using open APIs) to create a new service or content (Sui, 2009b).
+<ul>
+<li>Significance: Promotes a “new habit of mind towards synthesis and hybridity.”</li>
+</ul></li>
+<li><strong>Examples</strong>:
+<ul>
+<li>Liu and Palen (2010): Qualitative analysis of <em>crisis-map mashups</em> (e.g., Ushahidi, New Orleans repopulation maps) in emergency management, merging professional/paleo and participatory/neo geotechnologies.</li>
+<li>Zook et al.&nbsp;(2010): Documented mashup efforts in the Haiti relief effort (CrisisCamp Haiti, OpenStreetMap, Ushahidi, GeoCommons), showing how individuals made a tangible difference remotely.</li>
+<li>Goodchild and Glennon (2010): Examined VGI potential in time-critical scenarios like forest-fire mapping.</li>
+<li>User-generated content (UGC) and VGI are important data sources, often mashed with traditional sources.</li>
+<li>Cidell (2010): Used <em>content clouds</em> as exploratory qualitative data analysis (online information), functioning as a qualitative GIS.</li>
+<li>Poon and Cheong (2009): Used blog data (Dell customer blog) to examine intersubjectivity in economic geography.</li>
+<li>Jones et al.&nbsp;(2010) and Mould and Joel (2010): Used blog data for agglomeration effects and information hubs.</li>
+<li>O’Loughlin et al.&nbsp;(2010): Utilized WikiLeaks and Afghan war data to reveal micro-geographies of conflict.</li>
+<li>Madden and Ross (2009): Mashed multiple online/offline sources to illuminate genocide patterns in northern Uganda.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="iv.-conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="iv.-conclusions">IV. Conclusions</h2>
+<ul>
+<li>The reviewed trends demonstrate a powerful (re)turn to <em>synthesis and holism</em> in human geography.</li>
+<li><strong>Key takeaway</strong>: Hybridizing, remixing, and mashing up conceptual frameworks, data sources, and modes of analysis offers a means to cross previously perceived methodological, epistemological, and philosophical chasms.</li>
+<li>While common hybrids include combining statistical analysis with interviews or supplementing GIS with qualitative data, this report highlights the breadth of hybrid methods.</li>
+<li><strong>Concern</strong>: A “worrisome percentage” of reviewed works do not adequately describe their methods.</li>
+<li><strong>Philosophical backing</strong>:
+<ul>
+<li>Feyerabend (1975): “everywhere science is enriched by unscientific methods and unscientific results.”</li>
+<li>Wolch (2003): Advocated <em>radical openness</em> as a method.</li>
+<li>Barnes and Sheppard (2010): Proposed an <em>engaged pluralist approach</em>.</li>
+</ul></li>
+<li><strong>Challenges</strong>:
+<ul>
+<li>Mastering the “dizzying array of traditions and techniques” for truly hybrid geographies (Wyly, 2009).</li>
+<li>Institutional culture can discourage transdisciplinary research (Wainwright, 2010).</li>
+</ul></li>
+<li><strong>Recommendation</strong>: Balanced specialist-synthesis approaches adapted to each new situation may be the most successful methodological framework (Turner, 1989).</li>
+<li>Future reports will delve into specific qualitative or quantitative approaches, emphasizing doing them well and melding them creatively as needed.</li>
+<li><strong>Note 1</strong>: Funding bodies (e.g., US National Research Council, US National Science Foundation) are increasingly supporting transdisciplinary geographical sciences and the coupling of natural and human systems, accelerating synthetic efforts.</li>
+</ul>
+</section>
+</section>
+<section id="from-visuals-to-vision-using-gis-to-inform-civic-dialogue-about-african-american-males" class="level1">
+<h1>3. From Visuals to Vision: Using GIS to Inform Civic Dialogue about African American Males</h1>
+<ul>
+<li>Tate IV, W. F., &amp; Hogrebe, M. (2011). From visuals to vision: using GIS to inform civic dialogue about African American males. <em>Race Ethnicity and Education</em>, <em>14</em>(1), 51–71.</li>
+<li>DOI: <a href="https://doi.org/10.1080/13613324.2011.531980" class="uri">https://doi.org/10.1080/13613324.2011.531980</a></li>
+<li>This article proposes leveraging Geographic Information Systems (GIS) as a visual political literacy tool to foster civic engagement and capacity building aimed at improving African American male life course development and educational attainment in metropolitan regions, using St.&nbsp;Louis, Missouri, as a case study. It critiques the current disparity between swift mobilization for economic development and the struggle to generate sustained support for human capital development in urban education, highlighting the critical role of spatial arrangements and systemic factors over individual deficits.</li>
+</ul>
+<section id="introduction-and-context" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-and-context">Introduction and Context</h2>
+<ul>
+<li><strong>Core Issue:</strong> The relationship between <em>spatial arrangements</em> and <em>opportunity structures</em> in metropolitan America, specifically examining African American males in urban contexts like Metro St.&nbsp;Louis.</li>
+<li><strong>Civic Capacity</strong> (Henig et al.&nbsp;1999): The extent to which community sectors form structures to define and implement common goals.
+<ul>
+<li>Well-mobilized for <em>economic objectives</em> (e.g., sports stadiums, downtown remakes).</li>
+<li>Extremely challenging to generate for <em>public education</em> and <em>human development</em>.</li>
+<li><strong>Contrast:</strong> Economic development offers material, near-term benefits with transparent actors, while human capital development presumes diffuse, slow-to-materialize benefits and is often perceived as <em>redistribution policy</em>.</li>
+</ul></li>
+<li><strong>Opportunity Expansion</strong> (Stone 1993): Argued that enriched education and improved transportation access for disadvantaged communities should be viewed as “opportunity expansion” (yielding economic/social gains) rather than redistribution or zero-sum. However, it remains largely hypothetical due to a lack of organized, sustainable cross-institutional efforts.</li>
+<li><strong>Proposed Solution:</strong> Education researchers should support a <em>visual political literacy project</em> using <strong>Geographic Information Systems (GIS)</strong> to inform and advance civic engagement and capacity as part of an <em>opportunity expansion regime</em> for African American males in urban America.
+<ul>
+<li><em>Myron Orfield (2002)</em> advocated for accurate visual representations (e.g., color maps) of regional demographics to stimulate community discussion on social inequality, including education, among interdependent institutions and actors.</li>
+</ul></li>
+<li><strong>Article Organization:</strong>
+<ol type="1">
+<li>Review of extant social science literature on African American males in urban America (developmental challenges, intervention opportunities).</li>
+<li>Psychological and political value of GIS mapping for civic engagement.</li>
+<li>Application of GIS to research on African American male attainment (St.&nbsp;Louis case study).</li>
+<li>Recommendations for investment in resources and sustained community-based research.</li>
+</ol></li>
+</ul>
+</section>
+<section id="why-focus-on-visual-political-literacy-and-african-american-males" class="level2">
+<h2 class="anchored" data-anchor-id="why-focus-on-visual-political-literacy-and-african-american-males">Why Focus on Visual Political Literacy and African American Males?</h2>
+<ul>
+<li><strong>Geospatial Distribution (2000 US Census):</strong>
+<ul>
+<li><strong>Largest Urban Black Populations:</strong> New York, Los Angeles, Chicago, Houston, Philadelphia, Phoenix, San Diego, Dallas, San Antonio, Detroit, Baltimore, Memphis, Washington DC, New Orleans.</li>
+<li><strong>Highest % Black Residents (100,000+ population):</strong> Gary, IN (85%); Detroit, MI; Birmingham, AL; Jackson, MS; New Orleans, LA; Baltimore, MD; Atlanta, GA; Memphis, TN; Washington, DC; Richmond, VA (58%).</li>
+<li><strong>Demographic Dispersion:</strong> 64% of US counties (3141) were less than 6% Black. 96 counties were 50% or more Black, with all but one (St.&nbsp;Louis City, MO) located in the Southern US.</li>
+<li>Focus for this article: African American males in urban cities and metropolitan communities.</li>
+</ul></li>
+<li><strong>Critique of Individual-Level Analysis:</strong>
+<ul>
+<li>Traditional social science (health, education) often uses linear models focusing on individual-level risk factors, neglecting social milieu and life course.</li>
+<li><strong>Wilson (1998)</strong> argued that <em>geographic factors</em> (neighborhood, community) are missing links in the individualistic paradigm, which fails to capture <em>relational, organizational, and collective processes</em> of social inequality (institutional influences, residential segregation, discrimination, unequal access to information, government policies, corporate decisions).</li>
+<li>Structural and environmental considerations are crucial for understanding African American male development.</li>
+</ul></li>
+</ul>
+</section>
+<section id="factors-influencing-african-american-male-attainment" class="level2">
+<h2 class="anchored" data-anchor-id="factors-influencing-african-american-male-attainment">Factors Influencing African American Male Attainment</h2>
+<section id="teachers-expectations-and-support-factors" class="level3">
+<h3 class="anchored" data-anchor-id="teachers-expectations-and-support-factors">Teachers’ Expectations and Support Factors</h3>
+<ul>
+<li><strong>Teacher Expectations:</strong> Teachers often have lower expectations for Black students than for white students (Ferguson 1998), which significantly impacts Black students’ performance.
+<ul>
+<li>African American males are often perceived as disruptive, leading to negative judgments of past performance and behavior.</li>
+<li><strong>Risk Ratios (Klingner et al.&nbsp;2005):</strong> African American males have disproportionately high risk ratios for disability categories: <em>mental retardation</em> (2.41) and <em>emotional disturbance</em> (1.88).</li>
+<li>Low expectations can lead teachers to withdraw help and support; students may conform to these negative perceptions.</li>
+</ul></li>
+<li><strong>Teacher Support:</strong> High teacher expectations and support are <em>protective factors</em>; low expectations and limited support are <em>risk factors</em>.
+<ul>
+<li>Schools serving high concentrations of poor and minority students often lack resources, personnel, and a climate of “low mutual expectations” (Payne 2008).</li>
+</ul></li>
+</ul>
+</section>
+<section id="school-opportunity-factors" class="level3">
+<h3 class="anchored" data-anchor-id="school-opportunity-factors">School Opportunity Factors</h3>
+<ul>
+<li><p><strong>Access to Quality Education:</strong> Persistent disparities in access to rigorous college preparatory courses and quality teachers exist between minority students in resource-poor inner-city schools and students in affluent suburban communities (Anderson &amp; Tate 2008).</p>
+<ul>
+<li><em>Advanced Placement</em> course availability decreases as the percentage of African American students in a school increases (Oakes, Muir, &amp; Joseph 2000).</li>
+<li>Disparities in curriculum access extend from secondary to K-8 schools.</li>
+</ul></li>
+<li><p><strong>Cognitive Demand</strong> (Tate 2006):</p>
+<ol type="1">
+<li><strong>Curriculum Policy:</strong> Quantity and type of core subjects/courses offered and taken.</li>
+<li><strong>Classroom Thinking:</strong> The level of thinking required (e.g., understanding concepts = high demand; routine memorization = low demand).</li>
+</ol>
+<ul>
+<li>Both types of cognitive demand are linked to student performance and attainment.</li>
+</ul></li>
+</ul>
+</section>
+<section id="neighborhood-and-community-factors" class="level3">
+<h3 class="anchored" data-anchor-id="neighborhood-and-community-factors">Neighborhood and Community Factors</h3>
+<ul>
+<li><strong>Neighborhood Circumstances:</strong> Living in underserved, resource-poor neighborhoods negatively affects the college aspirations of African American students (Stewart, Stewart, &amp; Simon 2007).
+<ul>
+<li>Ending desegregation oversight often leads to reassignment of African American youth to schools in high-risk neighborhoods characterized by criminal activity, limited health access, low social capital, and high unemployment (Hochschild &amp; Scovronick 2003).</li>
+</ul></li>
+<li><strong>Residential Segregation:</strong> A fundamental cause of racial disparities in health and socioeconomic status (SES), primarily by limiting access to education and employment (Williams &amp; Collins 2001).</li>
+<li><strong>Economic Status and Intergenerational Wealth:</strong>
+<ul>
+<li>Family economic status significantly influences educational attainment (Margo 1990).</li>
+<li>Miller (1995) argued that differences in academic achievement reflect greater variation in <em>family resources</em> than in school resources, emphasizing education as an <em>intergenerational process</em>.</li>
+<li><strong>Wealth vs.&nbsp;Income:</strong> Wealth passed across generations (not just current income) significantly influences educational attainment (Shapiro 2004). From 1989-1999, for every dollar earned, whites accrued $1.22 more wealth than Blacks.</li>
+<li>Wealth and poverty are heavily concentrated in metropolitan areas.</li>
+</ul></li>
+<li><strong>Business Proximity and Spatial Mismatch:</strong>
+<ul>
+<li>Neighborhoods with higher percentages of highly educated residents attract more businesses (Wheeler 2006), creating a mutually reinforcing cycle of economic activity and lower unemployment.</li>
+<li><strong>Spatial Mismatch Hypothesis</strong> (Kain 1968): Job shifts from urban cores to suburbs lead to higher rates of joblessness among African Americans due to limited transportation and access.</li>
+<li><strong>St.&nbsp;Louis Example (Cummings 2004):</strong> Regional development disparities and the focus on biotechnology create a mismatch between the skills of young African Americans (job seekers) and the requirements of emerging industries. Workforce development is often racialized, hindering consensus and support.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="a-visual-political-literacy-project" class="level2">
+<h2 class="anchored" data-anchor-id="a-visual-political-literacy-project">A Visual Political Literacy Project</h2>
+<ul>
+<li><strong>Goal:</strong> Inform <em>collective cognition</em> and <em>civic engagement</em> regarding African American males’ education attainment.</li>
+<li><strong>Cognitive Benefits of Visuals:</strong>
+<ul>
+<li><strong>Learning and Retention:</strong> Images, illustrations, and graphic representations enhance learning and support reading, improving delayed recall (Kulhavy, Stock, &amp; Kealy 1993).</li>
+<li><strong>Perceptual System:</strong> Spatial representations leverage the perceptual system, enabling spatial computations and providing an integrated, stable experience of complex arrangements (Schwartz &amp; Heiser 2006). Visuals are deterministic and specific, unlike potentially vague verbal descriptions.</li>
+<li><strong>Functionality:</strong> Visual computation tools support inspecting, finding, zooming, rotating, and transforming representations, useful for planning and explanations.</li>
+</ul></li>
+<li><strong>Political Benefits:</strong>
+<ul>
+<li><strong>Informing Community Debates:</strong> GIS mapping has been central to regional planning in areas like Minneapolis–St.&nbsp;Paul (Orfield 2002). In St.&nbsp;Louis, GIS has illustrated wealth transfer to urban fringes and decline in central city resources (Gordon 2008).</li>
+<li>Helps understand geopolitical fragmentation and changing economic goals (e.g., shift to biotechnology).</li>
+</ul></li>
+</ul>
+</section>
+<section id="st.-louis-case-study-biotechnology-clusters-and-african-american-males" class="level2">
+<h2 class="anchored" data-anchor-id="st.-louis-case-study-biotechnology-clusters-and-african-american-males">St.&nbsp;Louis Case Study: Biotechnology Clusters and African American Males</h2>
+<ul>
+<li><strong>Context:</strong> St.&nbsp;Louis aims to be a leader in biotechnology. The region is highly geopolitically fragmented (2nd among 25 largest metros), with 312 local governments. St.&nbsp;Louis City lost an average of 10,172 persons annually between 1950-2000, with out-migration to surrounding counties.</li>
+<li><strong>Biotechnology Clusters:</strong> Are statistically clustered, not randomly dispersed, influencing regional opportunity structures (Tate 2008).</li>
+<li><strong>Methodology: Kernel Density Estimation (KDE)</strong> (Wang 2006; Tate 2008): Used to calculate the density of biotechnology organizations, turning discrete point data into a continuous surface to highlight spatial patterns. (Kernel radius: 2.8 miles).</li>
+<li><strong>GIS Maps Illustrating Geospatial Arrangements:</strong>
+<ul>
+<li><strong>Figure 1 (2000 Census):</strong> African American males of all ages are highly concentrated in the <em>St.&nbsp;Louis City Urban Core biotechnology cluster</em> and communities to its north.</li>
+<li><strong>Figure 2 (2003–2004 Academic Year):</strong> African American male seniors enrolled in school districts show similar concentrations in the <em>St.&nbsp;Louis City Urban Core</em> and <em>Earth City Industrial Development clusters</em>, as well as north St.&nbsp;Louis County.</li>
+<li><strong>Figure 3 (2003–2004 Academic Year):</strong> High school graduation rates for African American male seniors. The St.&nbsp;Louis City Urban Core cluster (St.&nbsp;Louis Public Schools) shows a 53% graduation rate. Areas north and west of this cluster have higher rates but smaller numbers of African American males.</li>
+<li><strong>Figure 4 (2003–2004 Academic Year):</strong> Attainment of Missouri’s <strong>College Preparatory Studies Certificate (CPSC)</strong>.
+<ul>
+<li><strong>Requirements:</strong>
+<ol type="1">
+<li>Completion of a specific course of study (e.g., English/Language Arts: 4 units, Mathematics: 3 units, Science: 2 units, Social Studies: 3 units, Fine Arts: 1 unit, Practical Arts: 1 unit, Physical Education: 1 unit, Specified Core Electives: 3 units, General Electives: 6 units; total 24 units), emphasizing college preparatory courses (e.g., Algebra I, Algebra II, plane geometry).</li>
+<li>A 3.0 GPA (on a 4.0 scale) in core subjects.</li>
+<li>ACT or SAT score above the prior year’s national composite average.</li>
+</ol></li>
+<li><strong>Results:</strong> The <em>Earth City Industrial Development cluster</em> produced the largest number of African American male CPSC awardees (primarily from Hazelwood School District). The <em>St.&nbsp;Louis City Urban Core</em> cluster had a large number of enrolled African American males but very low CPSC production.</li>
+</ul></li>
+<li><strong>Figure 5 (2002 MAP Test):</strong> Number of African American male 10th graders scoring proficient or advanced in math. Performance across clusters was very low (0-7 students proficient/advanced per cluster), with the vast majority in the lowest proficiency levels (Step 1 and Progressing).</li>
+<li><strong>Figure 6 (2002 MAP Test):</strong> Number of African American male 10th graders scoring proficient or advanced in science. Performance was similarly low across clusters.</li>
+</ul></li>
+</ul>
+</section>
+<section id="summary-of-map-findings-and-community-questions" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-map-findings-and-community-questions">Summary of Map Findings and Community Questions</h2>
+<ul>
+<li><strong>Residential Pattern:</strong> Most African American males reside in the St.&nbsp;Louis Urban Core biotechnology cluster or areas north of it, suggesting a need for quality transportation to access employment opportunities in emerging industries.</li>
+<li><strong>College Readiness:</strong> The data indicate that many African American male students lack the skills and understanding necessary to fully participate in the biotechnology development regime.</li>
+<li><strong>Key Community Questions for Dialogue:</strong>
+<ul>
+<li>How to improve African American male graduation rates?</li>
+<li>What factors influence their college preparation status?</li>
+<li>What accounts for the Hazelwood School District’s relative success in CPSC production?</li>
+<li>Why are so few African American males proficient in mathematics and science?</li>
+<li>How can the region prepare more indigenous African American males for biotechnology careers?</li>
+</ul></li>
+<li><strong>Role of Visuals:</strong> Maps and visuals serve as tools to <em>inform</em> and <em>promote sustained civic dialogue</em>, not as solutions themselves.</li>
+</ul>
+</section>
+<section id="engineering-tools-to-support-mobilization" class="level2">
+<h2 class="anchored" data-anchor-id="engineering-tools-to-support-mobilization">Engineering Tools to Support Mobilization</h2>
+<ul>
+<li><strong>Alternative Evaluation Models:</strong> Shift from centralized, standardized testing models to evaluation frameworks emphasizing <em>community mobilization</em> (Henig et al.&nbsp;1999), providing diverse performance indicators and robust communication systems. GIS tools can serve as a “methodological engine” for this mobilization.</li>
+<li><strong>Role of Urban Universities:</strong>
+<ul>
+<li><strong>Benefits:</strong> Universities benefit from improved neighborhood conditions (thriving businesses, reduced crime, quality schools).</li>
+<li><strong>Moral Duty:</strong> To conduct relevant research and development that supports indigenous community groups, especially given their significant impact on urban areas (e.g., housing, tax revenues, employment).</li>
+<li><strong>Capacity:</strong> Universities in major US cities with large African American populations (e.g., New York, Los Angeles, Chicago, Philadelphia, St.&nbsp;Louis, Atlanta, Baltimore, Washington D.C., Detroit) are uniquely positioned to develop GIS-based insights and form multi-institutional consortiums focused on African American male attainment.</li>
+</ul></li>
+<li><strong>John Hope Franklin’s Vision (1989):</strong> Core to reform are:
+<ol type="1">
+<li>Acknowledging the centrality of human relationships.</li>
+<li>Eliminating obstacles to successful teaching and learning.</li>
+<li>Mobilizing physical and political resources.</li>
+</ol></li>
+<li>This article aims to advance a method (visual political literacy) to support the development of a vision and capacity for African American male opportunity in education.</li>
+</ul>
+</section>
+</section>
+<section id="inductive-visualization-a-humanistic-alternative-to-gis" class="level1">
+<h1>4. Inductive Visualization: A Humanistic Alternative to GIS</h1>
+<ul>
+<li>Knowles, A. K., Westerveld, L., &amp; Strom, L. (2015). Inductive visualization: A humanistic alternative to GIS. GeoHumanities, 1(2), 233-265.</li>
+<li>DOI: <a href="https://doi.org/10.1080/2373566X.2015.1108831" class="uri">https://doi.org/10.1080/2373566X.2015.1108831</a></li>
+<li>This article by Anne Kelly Knowles, Levi Westerveld, and Laura Strom (2015) proposes <em>inductive visualization</em> as a methodology more suitable for humanistic scholarship, particularly for “acutely perceived but imprecise, often highly relational spatial content,” compared to Geographic Information Systems (GIS). It critiques the limitations of GIS for representing human experience, especially in the context of Holocaust studies, and demonstrates how inductive visualization can better capture complex spatial and emotional narratives from survivor testimonies and historical sources.</li>
+</ul>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<ul>
+<li>Growing numbers of humanities researchers use <strong>Geographic Information Systems (GIS)</strong> for mapping and visualizing spatial relationships.</li>
+<li><strong>Problem</strong>: GIS has inherent limitations as a research methodology for humanistic scholarship.</li>
+<li><strong>Solution</strong>: <em>Inductive visualization</em> is introduced as a promising alternative, better suited for subjective, relational, and imprecise spatial content in humanistic sources.</li>
+<li><strong>Examples</strong>: Research on the geographies of the Holocaust, focusing on survivor testimony.</li>
+<li><strong>Value</strong>: Flexible methodology for teaching spatial thinking and visualizing spatial meaning in primary sources.</li>
+<li><strong>Key Words</strong>: digital humanities, GIS, Holocaust, inductive visualization.</li>
+</ul>
+</section>
+<section id="gis-in-digital-humanities-context" class="level2">
+<h2 class="anchored" data-anchor-id="gis-in-digital-humanities-context">GIS in Digital Humanities Context</h2>
+<ul>
+<li>GIS is dominant in explicitly spatial digital humanities fields: <em>historical GIS</em>, <em>spatial history</em>, <em>spatial humanities</em>.</li>
+<li><strong>Attractions of GIS</strong>: Integrates disparate sources, manages large datasets, works with historical maps, strong analytical capacity (e.g., “Mercedes of geovisualization”).</li>
+<li><strong>Critique</strong>:
+<ul>
+<li>Need to re-evaluate rhetoric and practices of GIS, including qualitative GIS and cartographic representation.</li>
+<li>All methods have built-in constraints; researchers often become habituated to certain approaches (Kuhn 1970).</li>
+<li>Goal is not to unseat GIS, but to <strong>broaden the range of geographical methods</strong> for visualizing human experience, especially in early research stages.</li>
+<li>Theoretical and philosophical critiques of GIS are extensive (Pickles 1995, 2004; Schuurman 2000, 2006; Harley 2001, etc.).</li>
+<li>Digital humanities is increasingly visual and computer-based, necessitating critical awareness of how digital methods shape evidence and understanding.</li>
+<li>Humanistic geographers’ “abdication of the craft of geovisualization” is a loss; need to be critical and creative practitioners of humanistic visual methodologies.</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-gis-key-terms-and-constraints" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-gis-key-terms-and-constraints">What is GIS? Key Terms and Constraints</h2>
+<ul>
+<li><strong>GIS as a “tool”</strong>: Emphasizes its capacity to perform tasks, make maps, graphs, charts, and interrogate data spatially, statistically, or temporally.
+<ul>
+<li>Debates in the 1990s questioned if GIS was merely a tool or a field of scientific research (GIScience).</li>
+<li>Critics argued tool-centric views ignore how GIS shapes understanding and its association with power hierarchies (military, economic development).</li>
+</ul></li>
+<li><strong>GIS as “technology”</strong>: Acknowledges social construction and historical context, part of the digital revolution.
+<ul>
+<li>More than a single tool; a “bundle of techniques” or a “workshop.”</li>
+<li>Defined as an integrated system of hardware, software, and personnel for capturing, storing, analyzing, manipulating, and displaying spatially-referenced data.</li>
+<li><em>Public Participation GIS (PPGIS)</em> highlights power dynamics and empowers communities.</li>
+</ul></li>
+<li><strong>Methodological Constraints</strong>: Embedded in its internal architecture, based on three representational models:
+<ol type="1">
+<li><strong>Geodetic models</strong>: Grid of geographic coordinates for locating features, based on Earth’s shape.</li>
+<li><strong>Mathematical models</strong>: Map projections affecting shape, angle, and relative position, enabling calculation of distance, proximity, density.</li>
+<li><strong>Visual representations</strong>:
+<ul>
+<li><strong>Vector GIS</strong>: Features as points, lines, or polygons; attributes stored in data tables (common in humanities/social sciences).</li>
+<li><strong>Raster GIS</strong>: Earth as a continuous surface of square cells (pixels); a single value per cell (e.g., temperature).</li>
+</ul></li>
+</ol></li>
+<li><strong>Translation Issues</strong>: Bringing qualitative source material into these models often results in <strong>loss or invention of meaning</strong>.
+<ul>
+<li><strong>Historical GIS (HGIS)</strong> example: Assigning precise dates and locations when time and place are vague or uncertain (e.g., <em>Barrington Atlas</em>, Holocaust camp system research by Knowles and Yule).
+<ul>
+<li>Challenges included camps changing locations, temporal data varying greatly (specific dates, seasons, years), and defining entities like “Auschwitz” (town, camp section, complex).</li>
+<li>Regularizing vague temporal data for mapping led to “specious accuracy.”</li>
+</ul></li>
+</ul></li>
+<li><strong>Qualitative GIS (QGIS)</strong>: Aims to make GIS more amenable to nonquantitative analysis and align with critical theory (feminist theory, grounded theory).
+<ul>
+<li>Focuses on incorporating “situated knowledge and ethnographic material” and multimedia representations (photos, audio, video).</li>
+<li>Kwan’s work incorporated subjective emotional responses to place with 3D visualizations.</li>
+<li>Emphasizes using <em>other methods</em> when GIS falls short.</li>
+<li><strong>Critique</strong>: QGIS has not fully confronted why GIS is difficult for studying human experience due to its basic representational models.</li>
+</ul></li>
+<li><strong>Lefebvre’s Three Kinds of Space (<em>The Production of Space</em>) and GIS</strong>:
+<ol type="1">
+<li><strong><em>Representations of space</em></strong>: Plans, surveys, censuses, imperial maps. GIS is ideal for this.</li>
+<li><strong><em>Spatial practice</em></strong>: People’s everyday movement in lived environments.
+<ul>
+<li>Mapping movement as lines shows location, sequence, distance, but not nuances of habitual, local movement.</li>
+<li>Time geography (Hägerstrand) focuses on duration, reduces space to abstract points.</li>
+<li>Attempts to visualize movement with emotion/nuance (e.g., McQuoid &amp; Dijst, “time-space aquaria”) are often difficult to decipher or become unreadable for multiple individuals.</li>
+<li><strong>Conclusion</strong>: GIS has limited utility for studying spatial practice.</li>
+</ul></li>
+<li><strong><em>Representational space</em></strong>: Meanings attached to spaces, transformation of space into place (Tuan).
+<ul>
+<li>Maps are semiotic (Bertin), using symbols, but standard symbols rarely evoke rich or complex meanings.</li>
+<li>The “propositional nature” of maps (Wood) asserts truths (“what it is” and “where it is”), embedded in GIS database structure.</li>
+<li><strong>Venturesome cartography</strong> (Pearce &amp; Hermann) challenges these constraints by including multiple voices, emotional colors, omissions of unknown, and changing scales. Yet, the encoding for cartographic representation still imposes distance.</li>
+<li><strong>Narrative mapping</strong> and <strong>“deep maps”</strong> (Bodenhamer) aim to capture richness of human experience, combining GIS data with VR, video, text.
+<ul>
+<li>Bodenhamer views GIS as a “blunt instrument” incapable of nuance, and notes its expense and poor handling of time (Gregory).</li>
+</ul></li>
+<li><strong>Problem</strong>: GIS/cartographic models hinder expression of immersive, sensory, changing human experience of place.</li>
+</ul></li>
+</ol></li>
+</ul>
+</section>
+<section id="the-spatial-turn-in-holocaust-studies" class="level2">
+<h2 class="anchored" data-anchor-id="the-spatial-turn-in-holocaust-studies">The Spatial Turn in Holocaust Studies</h2>
+<ul>
+<li>Historically, few geographers contributed before 2010, focusing on geopolitics, planning, propaganda, and memorials.</li>
+<li>Charlesworth and Cole brought attention to places and spatial practices of the Holocaust, but with largely conceptual or photographic methods.</li>
+<li><strong>New Veins of Research (post-2010)</strong>:
+<ol type="1">
+<li><strong>Biopolitical theory</strong>: Focus on Agamben’s conception of Auschwitz, Hitlerism fusing politics/biology/space, racial biopolitics (Giaccaria &amp; Minca). This scholarship is historically empirical but not yet using mapping analytically.</li>
+<li><strong>Empirical methods &amp; Geovisualization</strong>: Researchers use GIS to document and analyze arrests, camp construction, mass killings.
+<ul>
+<li><strong>Holocaust Geographies Collaborative (HGC)</strong>, co-founded by Knowles, tested GIS potential.</li>
+<li><strong>GIS-based HGC Case Studies</strong>:
+<ul>
+<li><strong><em>SS Concentration and Labor Camps (Knowles &amp; Jaskot)</em></strong>: Mapping showed that main camps did not always send prisoners to nearby labor camps, revealing “splayed, irregular patterns” that questioned efficiency and suggested other factors at play (Figure 1).</li>
+<li><strong><em>Auschwitz Built Environment (Jaskot &amp; Harvey)</em></strong>: Database of Nazi architectural plans. Mapping revealed that many guard barracks were constructed in late 1943/early 1944 while grand architectural plans were never started (Figure 2). This indicated how the escalation of genocide and local conditions altered Nazi “dreams.”</li>
+<li><strong><em>Einsatzkommando Attacks in Lithuania (Yule &amp; Burton from Jäger Report)</em></strong>: Mapping of killings (June–December 1941) showed distinctive spatial and temporal patterns (Figure 3). A “genocidal” burst in late August/early September killed women, children, and elderly, not just “partisans,” helping pinpoint the turning point to genocide.</li>
+</ul></li>
+<li><strong>Limitations and Ethical Concerns with GIS</strong>:
+<ul>
+<li>The “god’s-eye perspective” and “seeming precision” of maps evoked the Nazis’ dehumanizing view.</li>
+<li>Categorical thinking in database construction for GIS mirrored Nazi logic (e.g., difficulty classifying fluid camp identities).</li>
+<li><strong>The “ethics of the algorithm” (Presner, forthcoming)</strong>: Turning Holocaust victims into “quantifiable entries” and “data points” risks dehumanizing them and partaking in the “rationalized logic of modernity” that contributed to genocide.</li>
+<li>GIS characteristics suitable for representing Nazi space are problematic for representing victim experience.</li>
+<li><strong><em>Auschwitz Evacuation Study (Gigliotti, Masurovsky, Steiner)</em></strong>: Mapping the route (Figure 4) conveyed general locations but little of women’s traumatic experiences.</li>
+<li><strong>Turning Point for HGC</strong>: Erik Steiner’s experimental visualization (Figure 5) revealed experiential content (guards’ aggression, friend’s death, relationships, silences) without relying on spatial coordinates or binary categories. This led to focusing on <em>place</em> (victim’s meaning-making) rather than <em>space</em> (Nazi-created environments).</li>
+</ul></li>
+</ul></li>
+</ol></li>
+</ul>
+</section>
+<section id="exploring-holocaust-testimony-with-inductive-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-holocaust-testimony-with-inductive-visualization">Exploring Holocaust Testimony with Inductive Visualization</h2>
+<ul>
+<li><strong>Definition</strong>: A creative, experimental exploration of source material structure, content, and meaning, without a priori visual methodology or software.</li>
+<li><strong>Process</strong>: Began with chalk, blackboard, then paper/colored pens. Close listening and visual notation (graphic ideation, diagramming) heightened awareness of words, phrases, and affect.</li>
+<li><strong>Data Source</strong>: USC Shoah Foundation Visual History Archive (VHA) – oral interviews with Holocaust survivors. Selected three samples (Leon Wells, Agnes Adachi, Paul Schneiderman).
+<ul>
+<li>VHA indexing (keywords, names, places) often lacked terms for emotions or small, everyday places, making it ideal for inductive visualization.</li>
+</ul></li>
+<li><strong>Initial Research Question</strong>: How do survivors speak of their experiences of place?</li>
+<li><strong>Methods and Findings</strong>:
+<ul>
+<li><strong>Spatial Freedom/Confinement (Strom on Wells)</strong>: Diagram traced narrative flow, color-coded for perceived freedom (green), constraint (red), restricted choice (orange), or missed opportunity (yellow) (Figure 6).</li>
+<li><strong>Narrative Structure and Scale (Strom on Wells)</strong>: Story “bubbles” showed distinct narrative chapters. Spatial scale <em>expanded</em> during significant stories (focus on specific places, people), shifting from general place names to common nouns (“home,” “in the kitchen”). Temporal scale also shifted from months/years to days/minutes, with markers like “then” and “next” (Figure 7).</li>
+<li><strong>Social Relations (Westerveld on Adachi)</strong>: Physical diagram tracked characters and groups entering/exiting Adachi’s narrative, showing her stories as interwoven accounts involving many people (Figure 8).</li>
+<li><strong>Time-Geographical Approaches (Knowles &amp; Strom)</strong>: Attempted to summarize typical narrative arcs and emotional trajectories. Found abstract symbols and absolute time flattened the narratives too much, highlighting the need for better representations of narrative variation (Figure 9).</li>
+<li><strong>Multiple Scales of Narrative Space and Time (Westerveld on Wells)</strong>: Diagram representing linear story sequence, with places and people placed closer or further from the center line based on physical interaction (Figure 10).
+<ul>
+<li><strong>Key Realizations</strong>:
+<ol type="1">
+<li>Narrative time is not linear; it is disrupted, elastic, and discontinuous, moving back and forth, interspersed with reflection and other information.</li>
+<li>Used <em>interview time</em> as a constant referent to visualize story duration and place scale.</li>
+<li><strong>Inverse Relationship of Scale</strong>: The more important a story, the longer it takes to tell, and the more intensely localized it is likely to be (Figure 11).</li>
+<li>Visualized shifts between historical and daily time references within narratives (Figure 12).</li>
+<li>Dramatic, emotional stories occurred in <strong>specific, small places</strong> (e.g., an office, a table) too minute for conventional maps (Figure 13).</li>
+</ol></li>
+</ul></li>
+</ul></li>
+<li><strong>Conclusions from Inductive Visualization Experiment</strong>:
+<ol type="1">
+<li>Places in testimony exist in an <strong>elastic, discontinuous space</strong>, changing with the narrator’s awareness and emotional intensity.</li>
+<li>The time of experience is <strong>disrupted, elastic, and discontinuous</strong>.</li>
+<li>Changes in experiential time and place are linked to <strong>scale</strong>, often inversely.</li>
+<li>Conventional mapping is insufficient for mapping survivors’ journeys where spatial experience mattered most.</li>
+<li>VHA index terms (proper nouns) are of limited use for finding experiential stories; inductive visualization helps identify <em>meaningful keywords and phrases</em> related to storytelling, movement, emotion, and perception.</li>
+</ol></li>
+<li><strong>Commonalities with GIS</strong>: Inductive visualization is also an <em>iterative, exploratory practice</em>.</li>
+<li><strong>Differences</strong>: Inductive visualization has <strong>no a priori structure or parameters</strong>. It can lead to database development, but also many other outcomes.</li>
+<li><strong>Topology</strong>: While GIS uses topology for metric-independent relationships (connection, adjacency), inductive visualization is excellent for <em>detecting and thinking about</em> social and spatial relationships not measurable in metric terms.
+<ul>
+<li>Survivors often describe <em>social distance</em> (trust, fear, intimacy, estrangement, vastness, crowding) which are topological perceptions of space and place.</li>
+<li>This topological representation may be closer to survivors’ understanding than conventional mapping.</li>
+</ul></li>
+</ul>
+</section>
+<section id="teaching-with-inductive-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="teaching-with-inductive-visualization">Teaching with Inductive Visualization</h2>
+<ul>
+<li><strong>Benefits</strong>:
+<ul>
+<li>Promotes “slow thinking” (Kahneman 2013) and thoughtful discussion.</li>
+<li>Stimulates creativity and supports open-minded collaboration.</li>
+<li>Creates common ground for students with diverse technical skills (electronically savvy and technophobic).</li>
+<li>Low-cost (chalk, paper, colored pencils) or can use graphic software.</li>
+</ul></li>
+<li><strong>Knowles’s Experience</strong>:
+<ul>
+<li>Devised the approach over 15 years ago at Wellesley College, teaching geographic concepts and basic cartographic skills <em>without GIS</em>.</li>
+<li>Students made maps by hand (light tables, mylar, colored pencils) for research papers (Knowles 2000), fostering critical and creative spatial thinking.</li>
+</ul></li>
+<li><strong>Holocaust Courses at Middlebury College</strong>:
+<ul>
+<li>Few existing geovisualization examples for the Holocaust.</li>
+<li>Students created “astonishing graphics” from unillustrated memoirs.</li>
+<li><strong>Examples</strong>:
+<ul>
+<li><em>Allison Andrews’s “The Spatial Journeys of Helmut Reiner and the Orensteins”</em> (Figure 14): A compressed graphic novel showing parallel journeys, shared spaces, and relationships between a Nazi officer and a Jewish family. Focused on subjective “room allotted” rather than objective location.</li>
+<li><em>Hannah McMeekin’s “Holocaust Journey Analysis”</em> (Figure 15): Analyzed letters of Hertha Feiner, depicting the erosion of her mental and emotional state in relation to worsening Nazi oppression, using abstract triangles.</li>
+<li><em>Hannah Day’s visualization of Victor Klemperer’s Diary</em> (Figure 16): Initially mapped diary excerpts to city locations, but felt it lacked emotional power. Her final graphic used a time axis (horizontal) and emotional intensity axis (vertical, transcendence vs.&nbsp;imprisonment), with quotations originating from dates. This represented “the motion of emotion.”</li>
+</ul></li>
+<li><strong>Conclusion</strong>: Inductive visualization encourages deep engagement with primary sources, finds expressive forms for complex emotions, and embraces the challenge of representing the <em>magnitude</em> of emotion over its quantification.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="humanistic-gis-toward-a-research-agenda" class="level1">
+<h1>5. Humanistic GIS: Toward a Research Agenda</h1>
+<ul>
+<li>Zhao, B. (2022). Humanistic GIS: Toward a Research Agenda. Annals of the American Association of Geographers, 112(6), 1576–1592.</li>
+<li>DOI: <a href="https://doi.org/10.1080/24694452.2021.2004875" class="uri">https://doi.org/10.1080/24694452.2021.2004875</a></li>
+<li>Humanistic GIS proposes a new research perspective that reorients the epistemological foundation of Geographic Information Systems by situating GIS in its mediation of human experience of place. It offers a coherent framework rooted in humanistic geography and phenomenology of technology, classifying GIS into embodiment, hermeneutic, autonomous, and background relations with humans and places, while encouraging careful, critical, and responsible engagement from both users and developers.</li>
+</ul>
+<section id="introduction-to-humanistic-gis" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-humanistic-gis">Introduction to Humanistic GIS</h2>
+<ul>
+<li><strong>Expanded Connotation of GIS</strong>: In the last decade, GIS has evolved from digital objects/representations to a <em>mediated means</em> by which humans experience, explore, and make sense of the world.</li>
+<li><strong>Proposal</strong>: <strong>Humanistic GIS</strong> is proposed to encompass this expanded category, addressing opportunities and challenges.</li>
+<li><strong>Roots</strong>: Deeply rooted in <strong>humanistic geography</strong>, it offers a systematic framework integrating fragmented humanism-related GIS studies.</li>
+<li><strong>Epistemological Reorientation</strong>: Situates GIS in its <em>mediation of human experience</em>.</li>
+<li><strong>Analytical Structure</strong>: Categorizes GIS through its:
+<ul>
+<li><em>Embodiment</em></li>
+<li><em>Hermeneutic</em></li>
+<li><em>Autonomous</em></li>
+<li><em>Background relations</em></li>
+</ul></li>
+<li><strong>Goal</strong>: Develop and use GIS in ways that are more <em>empathetic and better for humanity</em>.</li>
+</ul>
+</section>
+<section id="evolution-of-gis-and-related-research" class="level2">
+<h2 class="anchored" data-anchor-id="evolution-of-gis-and-related-research">Evolution of GIS and Related Research</h2>
+<ul>
+<li><strong>History</strong>: GIS developed for almost seven decades since the early 1960s.</li>
+<li><strong>Impact</strong>: Profoundly influenced everyday life (e.g., navigation, contact tracing, ridesharing) and society (e.g., pandemic reporting, city management).</li>
+<li><strong>GIS as a Mediated Means</strong>: Examples include GPS-enabled smartwatches tracking health, self-navigated delivery robots interacting with pedestrians, and city-wide spatial infrastructure controlling traffic.</li>
+<li><strong>Previous Research Efforts</strong>:
+<ul>
+<li>Conceptualizing human behaviors in GIS: human dynamics, humanities GIS, public participation GIS (PPGIS), people-based GIS.</li>
+<li>Epistemological/methodological reorientations of place: place-based GIScience, GIS of place, placial analysis, splatial framework.</li>
+<li><em>Sui and Goodchild (2001, 2003, 2011)</em>: Characterized GIS as a medium.</li>
+</ul></li>
+<li><strong>Need for Humanistic GIS</strong>:
+<ul>
+<li>None of the above holistically conceptualized the expanded GIS category, especially its relevance to <em>users’ emplaced experiential knowing and doing</em>.</li>
+<li>Humanistic geography offers experiential perspective but overlooks GIS’s mediating role.</li>
+<li>Phenomenology of technology (Heidegger, Ihde) offers insights into technology impacts but not sufficiently on <em>places</em> where impacts occur.</li>
+<li><strong>Resonance with Humanistic Turn in Computer Science</strong>: Parallels with “humanistic AI” (<em>Gruber 2021</em>), “human-in-the-loop” (<em>Zanzotto 2019</em>), “human-centered AI” (<em>Riedl 2019</em>).</li>
+</ul></li>
+<li><strong>Distinction from Related Themes</strong>:
+<ul>
+<li>Digital geohumanities, qualitative GIS, critical GIS, GIS/2 movement – while related, they focused on applications, methodology, or social implications, but <strong>none originated from humanistic geography or a fundamental humanistic epistemology</strong>.</li>
+<li>Humanistic GIS provides a <em>coherent and systematic framework</em> to integrate these fragmented themes, representing a unique ethos.</li>
+</ul></li>
+</ul>
+</section>
+<section id="humanistic-perspectives-in-geography" class="level2">
+<h2 class="anchored" data-anchor-id="humanistic-perspectives-in-geography">Humanistic Perspectives in Geography</h2>
+<ul>
+<li><strong>Humanism</strong>:
+<ul>
+<li><strong>Origin</strong>: 15th-century Italy.</li>
+<li><strong>Stance</strong>: Philosophical perspective emphasizing careful, critical, and responsible use of intellectual knowledge and life experiences to improve human life.</li>
+<li><strong>Contrast with Positivism</strong>: Views human beings as <em>subjects</em> rather than objects, emphasizing human experiences.</li>
+<li><strong>Epistemology</strong>: Calls to enter another’s world, feel through their body, using this experience as valid scientific exploration.</li>
+</ul></li>
+<li><strong>Humanistic Geography</strong>:
+<ul>
+<li><strong>Emergence</strong>: Prominent in the 1970s.</li>
+<li><strong>Core Idea</strong>: Places human at the center of geographic inquiries; comprehensive understanding requires individual and group experiences.</li>
+<li><strong>Term Coined by</strong>: <em>Tuan (1976)</em>.</li>
+<li><strong>Influence of Phenomenology</strong>: Key concepts derived directly from phenomenology: <em>lifeworld, taken-for-granted world, dwelling, human-being-in-the-world</em>.
+<ul>
+<li><em>Tuan (1971)</em>: Argued for integrating <em>human-being-in-the-world</em>.</li>
+<li><em>Buttimer (1974, 1976)</em>: Examined <em>taken-for-granted world</em> and defined <em>lifeworld</em>.</li>
+</ul></li>
+<li><strong>Four Central Themes (Seamon and Larsen 2020)</strong>:
+<ol type="1">
+<li>Constructing a multidimensional model of human experience.</li>
+<li>Developing an open, empathetic methodology.</li>
+<li>Prioritizing firsthand human experience.</li>
+<li>Acknowledging two types of research: explication of experiences and interpretation of social worlds.</li>
+</ol></li>
+</ul></li>
+<li><strong>Focus on Place</strong>:
+<ul>
+<li><em>Tuan (1979)</em>: “sense of place” (subjective feelings).</li>
+<li><em>Tuan (1974)</em>: <em>topophilia</em> (strong affective bond to surroundings).</li>
+<li><em>Seamon (1979)</em>: “place ballet” (regularity in environments).</li>
+<li><em>Relph (1976)</em>: Place brings subconscious affective bond; <em>placelessness</em> describes lack of emotional attachment.</li>
+<li><em>Casey (1993)</em> and <em>Malpas (2018)</em>: Place is a primary ontological structure (“human-being-in-place”).</li>
+<li><em>Seamon (2015)</em>: “lived emplacement” (united structure of human-beings-experiencing-place).</li>
+<li><em>Seamon (1979)</em>: <em>environmental embodiment</em>.</li>
+<li><em>Seamon (2018)</em>: Place as a <em>process</em> involving human, situated place, and other entanglements (organismic view).</li>
+</ul></li>
+</ul>
+</section>
+<section id="phenomenological-interpretations-of-technology" class="level2">
+<h2 class="anchored" data-anchor-id="phenomenological-interpretations-of-technology">Phenomenological Interpretations of Technology</h2>
+<ul>
+<li><strong>Heidegger (1977)</strong>:
+<ul>
+<li>Examined technology’s relationship with being and the world.</li>
+<li>Technology “sets upon” nature or “frames” human society.</li>
+<li>The world is a “standing reserve” for manipulation.</li>
+<li>Essence of technology: one way reality can be revealed.</li>
+<li><strong>Critique</strong>: Neglects diversity and complexity of the world (<em>Leszczynski and Crampton</em> suggesting “anthropological GIS”).</li>
+</ul></li>
+<li><strong>Ihde’s Postphenomenology (1995)</strong>:
+<ul>
+<li>Technologies are always <em>technologies-in-use</em> and should be examined in context.</li>
+<li>Technology varies into different identities based on situated contexts, indicating inherent ambiguity.</li>
+<li>Focuses on <em>possible forms of revealing</em> technology makes possible.</li>
+</ul></li>
+<li><strong>Human-World Relations (Ihde 1990)</strong>:
+<ul>
+<li>Technology mediates relations between human beings and their worlds, with humans and technologies <em>coconstituting each other</em>.</li>
+<li>No direct human-world relationship, only indirect means (<em>Rosenberger and Verbeek 2015</em>).</li>
+<li><strong>Four Types of Human-World Relations</strong>:
+<ol type="1">
+<li><strong>Embodiment relation</strong>: Technology is a medium of human perceptual experience, transforming perception and bodily sense.</li>
+<li><strong>Hermeneutic relation</strong>: Technology represents the perceived world.</li>
+<li><strong>Alterity relation</strong> (or <em>Autonomous</em> in the context of GIS): Technology experienced as another independent being.</li>
+<li><strong>Background relations</strong>: Technology becomes part of the world and withdraws from immediate human experience.</li>
+</ol></li>
+</ul></li>
+<li><strong>Amplification-Reduction Structure (Ihde 1990)</strong>:
+<ul>
+<li>Captures how technology affects human perceptions and praxes.</li>
+<li>Technology that augments human capabilities will <em>simultaneously reduce others</em>.</li>
+<li>Microlevel impacts (sensations) accumulate to macrolevel societal impacts.</li>
+</ul></li>
+</ul>
+</section>
+<section id="gis-mediated-experience-human-gis-and-place" class="level2">
+<h2 class="anchored" data-anchor-id="gis-mediated-experience-human-gis-and-place">GIS-Mediated Experience: Human, GIS, and Place</h2>
+<ul>
+<li><strong>Centrality of Human Experience</strong>: Primary epistemological entry for theoretical and practical exploration of GIS.</li>
+<li><strong>GIS as an Inseparable Medium</strong>: Extends humanistic geography by considering GIS as capable of changing the structure of human experience.</li>
+<li><strong>Primary Elements of GIS-Mediated Experience</strong>:
+<ul>
+<li><strong>Human</strong>:
+<ul>
+<li>Biological system with multiple sensory organs (visual, auditory, tactile, vestibular, etc.).</li>
+<li>Exists within a social context.</li>
+<li>Map-mediated experience is both <em>bodily relevant</em> and <em>socially constructed</em>.</li>
+</ul></li>
+<li><strong>Place</strong>: The target of GIS-mediated experience.
+<ul>
+<li><strong>Scalable</strong>: From a chair to the whole world.</li>
+<li><strong>Dynamic</strong>: Can be relocated and transformed (e.g., urban sprawl, virtual venues).</li>
+<li><strong>Forms</strong>: Can be physical, virtual, or hybrid (e.g., #Seattle on Twitter, augmented reality monuments).</li>
+<li><strong>Space in Humanistic GIS</strong>: Conceptualized as the spatial structure, pattern, or context of place.</li>
+</ul></li>
+</ul></li>
+<li><strong>Structure</strong>: GIS-mediated human experience is abstracted into an integral structure of <strong>human, GIS, and place</strong>.
+<ul>
+<li>Adopts an <em>organismic worldview</em>, transcending mechanistic views.</li>
+<li>GIS is not an entity on its own; its functions are revealed <em>only when it is being used</em>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="humangisplace-relation-gis-as-embodiment-hermeneutics-autonomy-and-background" class="level2">
+<h2 class="anchored" data-anchor-id="humangisplace-relation-gis-as-embodiment-hermeneutics-autonomy-and-background">Human–GIS–Place Relation: GIS as Embodiment, Hermeneutics, Autonomy, and Background</h2>
+<ul>
+<li><strong>Conceptual Framework</strong>: A network of relations between human beings and places, mediated by GIS.
+<ul>
+<li><em>Latour’s actor-network theory</em> (macrolevel) and GIS-mediated experience (microlevel).</li>
+</ul></li>
+<li><strong>Baseline Equation</strong>: Human – GIS – Place
+<ul>
+<li>GIS maintains its place <em>between</em> human and place.</li>
+<li>GIS’s “position” in the equation implies its nature and functions.</li>
+</ul></li>
+<li><strong>Four Primary Types of GIS</strong>:
+<ol type="1">
+<li><strong>Embodiment GIS</strong>:
+<ul>
+<li><strong>Equation</strong>: Human – GIS (<span class="math inline">\(\text{Human} \leftrightarrow \text{GIS}\)</span>) <span class="math inline">\(\rightarrow\)</span> Place</li>
+<li><strong>Description</strong>: United with its user, extends capabilities without user’s full awareness. GIS becomes part of the human body.</li>
+<li><strong>Characteristics</strong>: “Partially transparent” (user sees through but feels device).</li>
+<li><strong>Examples</strong>: Wearable devices (Google Glass, smartwatches, VR headsets).</li>
+<li><strong>Implication</strong>: Forms a <em>GIS cyborg</em> (<em>Clynes and Kline 1960</em>; <em>Haraway 1987</em>), highlighting the subjectivity of GIS.</li>
+</ul></li>
+<li><strong>Hermeneutic GIS</strong>:
+<ul>
+<li><strong>Equation</strong>: Human <span class="math inline">\(\rightarrow\)</span> GIS – Place (<span class="math inline">\(\text{GIS} \leftrightarrow \text{Place}\)</span>)</li>
+<li><strong>Description</strong>: Acts as a representation of the depicted place; user perceives the place <em>through</em> it, not firsthand.</li>
+<li><strong>Characteristics</strong>: “Opaque.” Geospatial data cannot entirely reproduce firsthand experience; map generalization is unavoidable.</li>
+<li><strong>Examples</strong>: Maps, geovisualizations (atlases, online maps, virtual globes), auditory maps.</li>
+<li><strong>Implication</strong>: Creates an “enigma” (<em>Ihde 1990</em>), simplifying real-world phenomena to avoid cognitive overload.</li>
+</ul></li>
+<li><strong>Autonomous GIS</strong>:
+<ul>
+<li><strong>Equation</strong>: Human <span class="math inline">\(\rightarrow\)</span> GIS = Place (<span class="math inline">\(\text{GIS} \leftrightarrow \text{Independent Agent/Place}\)</span>)</li>
+<li><strong>Description</strong>: Regarded as either an independent agent or a place itself; a “quasi-other” requiring minimal human intervention.</li>
+<li><strong>Examples</strong>: GeoAI (land object recognition), robots (unmanned aerial vehicles, self-driving cars, robot vacuums).</li>
+<li><strong>Illustrative Example</strong>: DJI drone (flies independently, avoids collisions, also functions as a place to which owners develop emotional attachment).</li>
+</ul></li>
+<li><strong>Background GIS</strong>:
+<ul>
+<li><strong>Equation</strong>: Human <span class="math inline">\(\rightarrow\)</span> GIS @ Place (<span class="math inline">\(\text{GIS} \subseteq \text{Place}\)</span>)</li>
+<li><strong>Description</strong>: Becomes an integral part of a place, not apparent to the user, yet influences them.</li>
+<li><strong>Examples</strong>: Digital environments, smart cities, smart homes (integrating Internet of Things).</li>
+<li><strong>Illustrative Example</strong>: Smart city traffic control (network of vehicle detection loops embedded in pavement influences drivers without their awareness).</li>
+<li><strong>Conceptual Impact</strong>: GIS theories/models can frame human experience (e.g., perceiving a place as objects or fields, or backed by point/polygon/pixel models).</li>
+</ul></li>
+</ol></li>
+<li><strong>Dynamic Nature of Relations</strong>: GIS does not remain in a fixed relation; it <em>freely varies</em> among these four types (e.g., a self-driving Tesla shifts between embodiment, hermeneutic, autonomous, and background GIS depending on the interaction). GIS must be analyzed <em>when in use</em>.</li>
+</ul>
+</section>
+<section id="implications-of-gis-intertwined-amplification-and-reduction" class="level2">
+<h2 class="anchored" data-anchor-id="implications-of-gis-intertwined-amplification-and-reduction">Implications of GIS: Intertwined Amplification and Reduction</h2>
+<ul>
+<li><strong>Analytical Framework</strong>: Uses <em>Ihde’s amplification-reduction structure</em> to examine implications, uncovering both strengthened capabilities and diminished others.</li>
+<li><strong>Physiological Discomfort</strong>:
+<ul>
+<li>Embodiment GIS (e.g., VR headsets) can cause headaches, nausea, disorientation (motion sickness) due to conflicting visual/vestibular inputs.</li>
+<li><em>Munafo, Diedrick, and Stoffregen (2017)</em> found female wearers at greater risk.</li>
+</ul></li>
+<li><strong>Fake Geographical Information</strong>:
+<ul>
+<li>Mapmakers exploit the “enigma” of hermeneutic GIS.</li>
+<li>Examples: Propaganda maps (<em>Monmonier 1991</em>, <em>Herb 2002</em>), fictitious entries for copyright (<em>S. Zhang 2015</em>), colonial maps excluding minority groups (<em>Aalbers 2014</em>).</li>
+<li><strong>Countermapping</strong>: Grassroots strategy by marginalized communities (<em>Peluso 1995</em>).</li>
+<li>Digital Platforms: Location spoofing on Twitter (<em>Zhao and Sui 2017</em>), Pokémon Go (<em>Zhao and Zhang 2019</em>).</li>
+<li><strong>GeoAI</strong>: Can manipulate aerial imagery, creating realistic falsified features, posing national security issues (<em>Zhao et al.&nbsp;2021</em>).</li>
+</ul></li>
+<li><strong>Displacements and Dislocations</strong>:
+<ul>
+<li>Autonomous GIS (automation, robotics, AI) will displace workers (e.g., <em>McKinsey</em> estimates 375 million workers by 2030).</li>
+<li>New job opportunities (e.g., geospatial data annotators) may emerge.</li>
+<li><strong>Bias Transfer</strong>: Bias in geographical annotations can transfer to GeoAI recognition functions (e.g., due to differences in race, socioeconomic status, culture) (<em>Zou and Schiebinger 2018</em>).</li>
+</ul></li>
+<li><strong>Digital Panopticon</strong>:
+<ul>
+<li>Background GIS (smart cities) can lead to mass surveillance if misused.</li>
+<li>Example: China’s <em>Skynet</em> (200 million surveillance cameras by 2019, AI face recognition for real-time identification) (<em>Xu 2018</em>).</li>
+<li>Raises concerns about spontaneous self-surveillance and anxiety (<em>Norris 2005</em>).</li>
+</ul></li>
+</ul>
+</section>
+<section id="message-from-humanistic-gis" class="level2">
+<h2 class="anchored" data-anchor-id="message-from-humanistic-gis">Message from Humanistic GIS</h2>
+<ul>
+<li><strong>Human-Centered Logic</strong>: Similar to critical GIS, but uses GIS-mediated experience as the epistemological entry point.</li>
+<li><strong>Coconstitution</strong>: Human, GIS, and place are integral and coconstitute each other; GIS technology shapes human existence, and humans constitute themselves through mediation.</li>
+<li><strong>Stance Toward GIS</strong>: Neither suspicion nor blind reliance is helpful; people need to develop a <em>stance</em> toward the specific GIS in use.</li>
+<li><strong>“Care of the Self” (Foucault)</strong>: Encourages users to engage with GIS technology carefully and critically, actively shaping their GIS-mediated existences.
+<ul>
+<li>Examples: Critically evaluate planned routes, ensure navigation systems are up-to-date.</li>
+</ul></li>
+<li><strong>For GIS Developers</strong>:
+<ul>
+<li><strong>Anticipate Mediations</strong>: Use imagination to predict existing, potential, or unintended GIS-mediated experiences to make necessary adjustments.
+<ul>
+<li>Examples: Diversify GeoAI training sets (different races, ethnicities, socioeconomic status), develop fact-checking tools for satellite imagery.</li>
+</ul></li>
+<li><strong>Responsible Design</strong>: Acknowledge drawbacks and proactively make responsible adjustments, even by “rewiring” GIS.</li>
+<li><strong>Freedom and Mediation</strong>: GIS mediation does not mean giving up freedom; developers should design <em>responsible forms of mediation</em> instead of pitting human autonomy against technology.</li>
+<li><strong>Capacities</strong>: Developers need capacities to discover, interpret, and analyze various possibilities of mediation to design GIS in a critical, considerate, and empathetic way (<em>Kiran and Verbeek 2010</em>).</li>
+</ul></li>
+<li><strong>Author’s Perspective</strong>: Developed from &gt;15 years of practical GIS experience and critical reflection.</li>
+</ul>
+</section>
+<section id="new-research-agenda-for-gis" class="level2">
+<h2 class="anchored" data-anchor-id="new-research-agenda-for-gis">New Research Agenda for GIS</h2>
+<ul>
+<li><strong>Contribution</strong>: Integrates fragmented humanism-related GIS studies, modifies GIS connotation, and reorients its epistemological foundation.</li>
+<li><strong>Guidance</strong>: Guides methodological developments, real-world praxes, and offers moral/educational messages.</li>
+<li><strong>Core Principles</strong>:
+<ul>
+<li>Situates GIS in an experiential structure between user and perceived place, avoiding an isolated object view.</li>
+<li>Reemphasizes that GIS nature and functions are understood <em>while it is being used</em>.</li>
+<li>Taxonomy of human-GIS-place relations (embodiment, hermeneutic, autonomous, background) offers a generative approach.</li>
+<li>Amplification-reduction structure unveils intertwined implications.</li>
+</ul></li>
+<li><strong>Pathways for Future Research</strong>:
+<ol type="1">
+<li><strong>Biophysical and Psychological Processes</strong>: Pay attention to GIS-mediated experiences.
+<ul>
+<li>Learn from cognitive science, environmental psychology, neuroscience.</li>
+<li>Methodological example: EEG headsets (embodiment GIS) to quantitatively examine human brain’s electrical reflex and infer emotions about a place.</li>
+</ul></li>
+<li><strong>Expanded Research Scope</strong>: Move beyond conventional hermeneutic GIS to include all four GIS types.</li>
+<li><strong>Hermeneutic GIS Reorientation</strong>: Shift from a Cartesian mechanistic worldview to an <em>organismic one</em>.
+<ul>
+<li>Represent geographies as <em>topological objects</em> (bent, twisted, folded) and <em>geographical imaginations</em>.</li>
+</ul></li>
+</ol></li>
+<li><strong>Moral and Educational Implications</strong>: Urges users to engage carefully and developers to design responsibly.</li>
+<li><strong>Challenges</strong>: Cross-disciplinary nature may face resistance (e.g., historical “Science Wars”).</li>
+<li><strong>Objective</strong>: To offer a vehicle for scholars to collectively envision and improve a humanistic future of GIS.</li>
+<li><strong>Future Directions</strong>: Incorporate central themes of humanistic geography, explore experiences of animals/nonhumans/sentient beings (postphenomenological geographies, affective force).</li>
+<li><strong>Call to Action</strong>: Requires “tough-minded and idealistic” scholars (<em>Tuan 2018</em>).</li>
+<li><strong>Proactive Attitude</strong>: Not “technodystopian”; recognizes unintended mediations (errors, bugs), encouraging action to foster friendly experiences. Similar to <em>glitch politics</em> (<em>Russell 2020</em>).</li>
+<li><strong>Vision</strong>: GIS is not just a tool, but a variety of ways humans live on the “digital” Earth, promoting an empathetic, sustainable, and poetic lifestyle.</li>
+</ul>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ol type="1">
+<li><strong>GIS Acronym</strong>: In this article, GIS is an inclusive field encompassing GISciences, technologies, arts, humanities with geographic information, and critiques of social, political, cultural implications.</li>
+<li><strong>GIS Technology</strong>: Used consistently in the article to imply natural linkages between technology and underlying science.</li>
+<li><strong>Check-in Function</strong>: Considered a GIS technology as it allows users to post locations and provides mechanisms for storing, processing, analyzing this data.</li>
+<li><strong>Cyborg</strong>: Term coined by <em>Clynes and Kline (1960)</em> describing a creature that is half human and half machine.</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/sechang-kim\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="Sechang-Kim/Sechang-Kim.github.io" data-repo-id="R_kgDOMmUdvQ" data-category="General" data-category-id="DIC_kwDOMmUdvc4Cw9rN" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+
+
+
+
+</body></html>
