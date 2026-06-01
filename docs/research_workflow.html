@@ -17,8 +17,12 @@
 
     * { box-sizing: border-box; }
 
+    html,
     body {
       margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
@@ -27,8 +31,9 @@
     .figure {
       width: 1200px;
       max-width: none;
-      margin: 24px auto 36px;
+      margin: 0 auto;
       padding: 8px 12px 28px;
+      transform-origin: top center;
     }
 
     .title {
@@ -422,7 +427,6 @@
 </head>
 <body>
   <main class="figure" aria-label="Research workflow diagram">
-    <h1 class="title">Research Workflow</h1>
 
     <section class="top-grid">
       <div class="panel dependent">
@@ -518,5 +522,28 @@
       </div>
     </section>
   </main>
+  <script>
+  function fitWorkflowDiagram() {
+    const figure = document.querySelector(".figure");
+    if (!figure) return;
+
+    figure.style.transform = "none";
+
+    const designWidth = 1200;
+    const designHeight = figure.scrollHeight;
+
+    const scaleX = window.innerWidth / designWidth;
+    const scaleY = window.innerHeight / designHeight;
+    const scale = Math.min(scaleX, scaleY, 1);
+
+    figure.style.transform = `scale(${scale})`;
+    figure.style.transformOrigin = "top center";
+
+    document.body.style.height = `${designHeight * scale}px`;
+  }
+
+  window.addEventListener("load", fitWorkflowDiagram);
+  window.addEventListener("resize", fitWorkflowDiagram);
+</script>
 </body>
 </html>
