@@ -1,0 +1,88 @@
+---
+title: "Beyond Climate Migration"
+subtitle: "Housing Precarity, Immobility, and Recurrent Flood Damage in Seoul"
+author: "Sechang Kim"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    transition: fade
+    width: 1280
+    height: 720
+    incremental: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(leaflet)
+library(knitr)
+library(kableExtra)
+library(nnet)
+library(broom)
+library(htmltools)
+```
+
+## Beyond Climate Migration
+
+### Housing Precarity, Immobility, and Recurrent Flood Damage in Seoul
+
+**Core question**
+
+How do physical flood risk and housing precarity jointly shape recurrent flood vulnerability in Seoul?
+
+## Seoul as a Metropolitan Flood-Risk Context
+
+-   Seoul is a dense metropolitan region with highly concentrated population, housing, and infrastructure.
+
+-   Flood risk is not only a matter of total annual rainfall.
+
+-   The seasonal concentration of summer rainfall increases short-duration flood pressure.
+
+-   Mountainous terrain, streams, and highly urbanized surfaces contribute to localized flood vulnerability.
+
+## Why Seoul’s Flood Risk Matters
+
+-   Flood damage in Seoul is spatially uneven.
+
+-   Some areas experience large but episodic damage.
+
+-   Others experience repeated, smaller-scale or chronic damage.
+
+-   This distinction matters because recurrence may reflect not only physical exposure, but also social and housing-market conditions.
+
+## Research Motivation
+
+Most climate migration discussions ask:
+
+> 
+>
+> Does disaster risk cause people to move?
+
+This project asks a different question:
+
+> 
+>
+> What if the most vulnerable residents are unable to move away from recurrent risk?
+
+\<br\>
+
+**Argument**
+
+Recurrent flood damage may reveal a form of socially produced vulnerability, where housing precarity and residential immobility keep certain populations exposed to repeated flood risk.
+
+## Observed and Expected Flood Exposure
+
+## Research Workflow
+<iframe 
+  src="./docs/research_workflow.html"
+  style="width:100%; height:640px; border:none;">
+</iframe>
