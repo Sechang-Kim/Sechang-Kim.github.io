@@ -4,3 +4,193 @@
   border: none;
   overflow: hidden;
 }
+
+.reveal table.cluster-profile-table {
+  font-size: 0.62em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+}
+
+.reveal table.cluster-profile-table caption {
+  font-size: 0.75em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.reveal table.cluster-profile-table th,
+.reveal table.cluster-profile-table td {
+  padding: 4px 8px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.reveal table.cluster-profile-table td:first-child,
+.reveal table.cluster-profile-table th:first-child {
+  text-align: left;
+  white-space: normal;
+  min-width: 210px;
+}
+
+/* Slide-specific layout: Measuring At-Risk Houses */
+#at-risk-houses .at-risk-layout {
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+  gap: 36px;
+  align-items: center;
+  width: 100%;
+  height: 560px;
+}
+
+#at-risk-houses .at-risk-text {
+  font-size: 0.95em;
+  line-height: 1.35;
+}
+
+#at-risk-houses .at-risk-text ul {
+  margin-top: 0;
+}
+
+#at-risk-houses .at-risk-text li {
+  margin-bottom: 0.75em;
+}
+
+#at-risk-houses .at-risk-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#at-risk-houses .at-risk-figure img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  #at-risk-houses .at-risk-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 20px;
+  }
+
+  #at-risk-houses .at-risk-figure img {
+    max-height: 360px;
+  }
+}
+
+.hover-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-image-trigger {
+  color: #8b1e3f;
+  font-weight: 700;
+  border-bottom: 1px dotted #8b1e3f;
+  cursor: help;
+}
+
+.hover-image-box {
+  display: none;
+  position: absolute;
+  left: 105%;
+  top: -40px;
+  z-index: 9999;
+  width: 360px;
+  padding: 8px;
+  background: white;
+  border: 1px solid #999;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.hover-image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hover-image-wrapper:hover .hover-image-box {
+  display: block;
+}
+
+.reveal table.slide-regression-table {
+  font-size: 0.78em !important;
+  width: 92% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  table-layout: fixed;
+}
+
+.reveal table.slide-regression-table caption {
+  font-size: 0.75em;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #333;
+}
+
+.reveal table.slide-regression-table th,
+.reveal table.slide-regression-table td {
+  padding: 5px 8px !important;
+  line-height: 1.15;
+  vertical-align: top;
+  white-space: normal !important;
+}
+
+.reveal table.slide-regression-table th:nth-child(1),
+.reveal table.slide-regression-table td:nth-child(1) {
+  width: 26%;
+}
+
+.reveal table.slide-regression-table th:nth-child(2),
+.reveal table.slide-regression-table td:nth-child(2) {
+  width: 32%;
+}
+
+.reveal table.slide-regression-table th:nth-child(3),
+.reveal table.slide-regression-table td:nth-child(3) {
+  width: 28%;
+  text-align: right;
+}
+
+.reveal table.slide-regression-table th:nth-child(4),
+.reveal table.slide-regression-table td:nth-child(4) {
+  width: 14%;
+  text-align: right;
+}
+
+.reveal .footnote {
+  font-size: 0.55em !important;
+  line-height: 1.15;
+}
+
+.reveal .table-note {
+  width: 92%;
+  margin: 8px auto 0 auto;
+  font-size: 0.46em;
+  line-height: 1.2;
+  text-align: left;
+  color: #111827;
+}
+
+.reveal .table-note code {
+  font-size: 0.95em;
+  background: transparent;
+  padding: 0;
+}
+
+#core-question-slide .core-question-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  width: 100%;
+  text-align: center;
+}
+
+#core-question-slide .core-question-text {
+  max-width: 1100px;
+  font-size: 1.5em;
+  line-height: 1.35;
+  font-weight: 500;
+}

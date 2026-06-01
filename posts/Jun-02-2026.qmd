@@ -1,6 +1,6 @@
 ---
 title: "Beyond Climate Migration"
-subtitle: "Housing Precarity, Immobility, and Recurrent Flood Damage in Seoul"
+subtitle: "Housing Precarity, Immobility, and Flood Vulnerability in Seoul"
 author: "Sechang Kim"
 format:
   revealjs:
@@ -21,70 +21,952 @@ execute:
 
 ```{r setup}
 #| include: false
+#| message: false
+#| warning: false
+library(knitr)
+library(htmltools)
+
+# Core spatial and data-wrangling packages
 library(sf)
 library(dplyr)
-library(ggplot2)
+library(purrr)
+library(stringr)
+
+# Interactive mapping packages
 library(leaflet)
-library(knitr)
+library(leaflet.extras2)
+library(htmltools)
+library(patchwork)
+library(ggplot2)
+library(ggdendro)
+library(tidyr)
+library(tmap)
+library(broom)
+library(car)
 library(kableExtra)
 library(nnet)
-library(broom)
-library(htmltools)
+
+
+# Data are stored in the project-level data directory. The first path works
+# when running interactively from the project root; the second works when
+# Quarto executes this document from the posts directory.
+data_dir <- if (dir.exists("./data/GEOG544")) {
+  "./data/GEOG544"
+} else {
+  "../data/GEOG544"
+}
+
+# These are the raw flood-damage fields retained from each annual point file.
+raw_flood_fields <- c(
+  "ADM_CD",
+  "F_ZONE_NM",
+  "F_YR",
+  "F_AREA",
+  "F_SHIM",
+  "F_AVR_HGT"
+)
+
+# Read administrative boundary layers.
+# EMD is the lower-level administrative-dong boundary; SGG is the higher-level
+# district boundary. These polygon layers are used here as map context.
+seoul_emd <- st_read(
+  file.path(data_dir, "seoul_EMD.shp"),
+  quiet = TRUE
+) |>
+  st_make_valid()
+
+seoul_sgg <- st_read(
+  file.path(data_dir, "seoul_SGG.shp"),
+  options = "ENCODING=CP949",
+  quiet = TRUE
+) |>
+  st_make_valid() |>
+  st_transform(st_crs(seoul_emd))
+
+flood_risk <- st_read(
+  file.path(data_dir, "침수예상도/DS_Flooding_1_5179.shp"),
+  quiet = TRUE
+) |>
+  st_make_valid()
+
+# Find all annual flood-damage point shapefiles that follow the seoul_YYYY.shp
+# naming pattern. Years with no reported records, such as 2015 and 2021, are
+# simply absent from this file list.
+annual_flood_files <- list.files(
+  data_dir,
+  pattern = "^seoul_[0-9]{4}\\.shp$",
+  full.names = TRUE
+) |>
+  sort()
+
+# Read each annual point file, keep only the key raw fields, transform it to
+# the EMD CRS, and combine the results into one long-form sf object.
+flood_points <- annual_flood_files |>
+  map(
+    \(path) {
+      st_read(path, options = "ENCODING=CP949", quiet = TRUE) |>
+        select(all_of(raw_flood_fields)) |>
+        mutate(ADM_CD = as.character(ADM_CD),
+               F_AVR_HGT = as.double(F_AVR_HGT),
+               F_YR = as.integer(F_YR)) |>
+        st_transform(st_crs(seoul_emd))
+    }
+  ) |>
+  bind_rows()
+
+# Leaflet expects longitude-latitude coordinates, so all map layers are
+# transformed to WGS 84 for web mapping.
+seoul_emd_map <- seoul_emd |>
+  st_transform(4326)
+
+seoul_sgg_map <- seoul_sgg |>
+  st_transform(4326)
+
+flood_risk_map <- flood_risk |>
+  st_transform(4326)
+
+flood_points_map <- flood_points |>
+  st_transform(4326) |>
+  mutate(
+    F_YR = as.integer(F_YR),
+    popup = paste0(
+      "<strong>Year:</strong> ", htmlEscape(F_YR), "<br/>",
+      "<strong>Location:</strong> ", htmlEscape(F_ZONE_NM), "<br/>",
+      "<strong>Raw ADM_CD:</strong> ", htmlEscape(ADM_CD), "<br/>",
+      "<strong>Inundated area:</strong> ", htmlEscape(F_AREA), " m<sup>2</sup><br/>",
+      "<strong>Flood depth:</strong> ", htmlEscape(F_SHIM)
+    )
+  )
+
+# Extract point coordinates and attributes for the custom browser-side slider.
+# The slider has one step per unique F_YR and redraws only that year's points.
+flood_coords <- st_coordinates(flood_points_map)
+
+slider_points <- flood_points_map |>
+  st_drop_geometry() |>
+  mutate(
+    lng = flood_coords[, "X"],
+    lat = flood_coords[, "Y"]
+  ) |>
+  select(lng, lat, F_YR, popup)
+
+slider_years <- sort(unique(slider_points$F_YR))
 ```
 
-## Beyond Climate Migration
+##  {#core-question-slide}
 
-### Housing Precarity, Immobility, and Recurrent Flood Damage in Seoul
+:::: core-question-wrap
+::: core-question-text
+Question: How do physical flood risk and *housing precarity* jointly shape *flood vulnerability* in Seoul? How is housing precarity related to *immobility?*
+:::
+::::
 
-**Core question**
+## Motivation: Personal Experience (During Master's)
 
-How do physical flood risk and housing precarity jointly shape recurrent flood vulnerability in Seoul?
+<iframe src="https://www.chosun.com/national/national_general/2022/08/18/EVSMR7PENRC73M63GS4RFGYWB4/" style="width:100%; height:640px; border:none;">
 
-## Seoul as a Metropolitan Flood-Risk Context
-
--   Seoul is a dense metropolitan region with highly concentrated population, housing, and infrastructure.
-
--   Flood risk is not only a matter of total annual rainfall.
-
--   The seasonal concentration of summer rainfall increases short-duration flood pressure.
-
--   Mountainous terrain, streams, and highly urbanized surfaces contribute to localized flood vulnerability.
+</iframe>
 
 ## Why Seoul’s Flood Risk Matters
 
--   Flood damage in Seoul is spatially uneven.
+-   College of Education/Humanities vs. College of Law/Business?
 
--   Some areas experience large but episodic damage.
+-   Flood damage in Seoul is *spatially uneven.*
+
+-   Some areas experience large and episodic damage.
 
 -   Others experience repeated, smaller-scale or chronic damage.
 
--   This distinction matters because recurrence may reflect not only physical exposure, but also social and housing-market conditions.
+-   This distinction matters because intensity & recurrence may reflect not only physical exposure, but also *social and housing-market conditions*.
 
-## Research Motivation
+## Research Workflow
 
-Most climate migration discussions ask:
+<iframe class="workflow-frame" src="https://sechang-kim.github.io/research_workflow.html" scrolling="no">
 
-> 
->
-> Does disaster risk cause people to move?
-
-This project asks a different question:
-
-> 
->
-> What if the most vulnerable residents are unable to move away from recurrent risk?
-
-\<br\>
-
-**Argument**
-
-Recurrent flood damage may reveal a form of socially produced vulnerability, where housing precarity and residential immobility keep certain populations exposed to repeated flood risk.
+</iframe>
 
 ## Observed and Expected Flood Exposure
 
-## Research Workflow
-<iframe 
-  class="workflow-frame"
-  src="https://sechang-kim.github.io/research_workflow.html"
-  scrolling="no">
-</iframe>
+```{r}
+#| out-width: 100%
+# Interactive exploratory map of reported flood-damage locations by year.
+leaflet(width = "100%", height = "560px") |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  addPolygons(
+    data = flood_risk_map,
+    color = "#2166ac",
+    weight = 0.6,
+    opacity = 0.8,
+    fillColor = "#67a9cf",
+    fillOpacity = 0.20,
+    group = "Expected Damage",
+    popup = "Expected Flood Damage Spot"
+  ) |>
+  addPolygons(
+    data = seoul_emd_map,
+    color = "#333333",
+    weight = 0.4,
+    opacity = 0.6,
+    fillOpacity = 0,
+    group = "EMD boundaries"
+  ) |>
+  addPolygons(
+    data = seoul_sgg_map,
+    color = "#333333",
+    weight = 1.2,
+    opacity = 1,
+    fillOpacity = 0,
+    group = "SGG boundaries"
+  ) |>
+  addLayersControl(
+    overlayGroups = c(
+      "Expected Damage",
+      "EMD boundaries",
+      "SGG boundaries"
+    ),
+    options = layersControlOptions(collapsed = FALSE)
+  ) |>
+  htmlwidgets::onRender(
+    "
+    function(el, x, data) {
+      var map = this;
+      var years = data.years;
+      var points = data.points;
+      var markerLayer = L.layerGroup().addTo(map);
+      var playTimer = null;
+
+      var control = L.control({ position: 'bottomleft' });
+
+      control.onAdd = function() {
+        var div = L.DomUtil.create('div', 'year-slider-control');
+        div.style.background = 'white';
+        div.style.padding = '8px 10px';
+        div.style.border = '1px solid #999';
+        div.style.borderRadius = '4px';
+        div.style.boxShadow = '0 1px 4px rgba(0, 0, 0, 0.25)';
+        div.style.minWidth = '220px';
+        div.innerHTML =
+          '<div style=\"font-weight: 600; margin-bottom: 4px;\">Year: ' +
+          '<span id=\"flood-year-label\">' + years[0] + '</span></div>' +
+          '<input id=\"flood-year-slider\" type=\"range\" min=\"0\" max=\"' +
+          (years.length - 1) + '\" step=\"1\" value=\"0\" style=\"width: 200px;\">' +
+          '<button id=\"flood-year-play\" type=\"button\" style=\"display: block; margin-top: 6px; padding: 3px 8px;\">Play</button>';
+
+        L.DomEvent.disableClickPropagation(div);
+        L.DomEvent.disableScrollPropagation(div);
+        return div;
+      };
+
+      control.addTo(map);
+
+      var slider = document.getElementById('flood-year-slider');
+      var label = document.getElementById('flood-year-label');
+      var playButton = document.getElementById('flood-year-play');
+
+      function drawYear(index) {
+        var year = Number(years[index]);
+        label.textContent = year;
+        markerLayer.clearLayers();
+
+        for (var i = 0; i < points.F_YR.length; i++) {
+          if (Number(points.F_YR[i]) === year) {
+            L.circleMarker([points.lat[i], points.lng[i]], {
+              radius: 1,
+              stroke: true,
+              color: '#8b1e3f',
+              weight: 1,
+              fillColor: '#d95f02',
+              fillOpacity: 0.75
+            })
+              .bindPopup(points.popup[i])
+              .addTo(markerLayer);
+          }
+        }
+      }
+
+      function stopPlayback() {
+        if (playTimer !== null) {
+          clearInterval(playTimer);
+          playTimer = null;
+          playButton.textContent = 'Play';
+        }
+      }
+
+      function startPlayback() {
+        playButton.textContent = 'Stop';
+        playTimer = setInterval(function() {
+          var nextIndex = Number(slider.value) + 1;
+
+          if (nextIndex >= years.length) {
+            stopPlayback();
+            return;
+          }
+
+          slider.value = nextIndex;
+          drawYear(nextIndex);
+        }, 1000);
+      }
+
+      slider.addEventListener('input', function(event) {
+        stopPlayback();
+        drawYear(Number(event.target.value));
+      });
+
+      playButton.addEventListener('click', function() {
+        if (playTimer === null) {
+          if (Number(slider.value) >= years.length - 1) {
+            slider.value = 0;
+            drawYear(0);
+          }
+          startPlayback();
+        } else {
+          stopPlayback();
+        }
+      });
+
+      drawYear(0);
+    }
+    ",
+    data = list(
+      years = slider_years,
+      points = slider_points
+    )
+  )
+```
+
+## Measuring Flood Damage
+
+**1) Magnitude**
+
+-   Number of damaged houses
+
+-   Inundation area
+
+-   Flood volume proxy: area × depth
+
+**2) Repeatability**
+
+-   Number of damage years
+
+-   **Evenness of annual damage distribution**
+
+-   Share of the most damaged year in total damage
+
+## Measuring Evenness (Shannon Entropy Index)
+
+For each *dong*, annual flood damage is converted into a proportional distribution, where $D_t$ is annual area-depth flood exposure.
+
+$$
+p_t = \frac{D_t}{\sum_t D_t},\quad H = - \sum_t p_t \log(p_t)
+$$
+
+**Normalized evenness** (where n is the number of damaged years):
+
+$$
+E = \frac{H}{\log(n)}
+$$
+
+**Range**: 0 - 1 (Completely Concentrated to Completely Distributed)
+
+## Measuring At-Risk Houses {#at-risk-houses}
+
+::::: at-risk-layout
+::: at-risk-text
+-   Using 100m × 100m grid data and flood hazard map
+-   Sum of houses that intersect with hazard polygon
+-   Exposure to flood-risk
+-   Reflects hydrological site conditions
+:::
+
+::: at-risk-figure
+![](/data/GEOG544/AtRiskHouse_Example.png)
+:::
+:::::
+
+## Cluster Analysis (CA) Result: Box Plot
+
+```{r}
+#| results: asis
+# Use the 2025 administrative-dong boundary as the fixed target geography.
+# Flood points are assigned to this framework spatially, not by joining on the
+# historical raw ADM_CD values stored in the flood files.
+dong_boundary_2025 <- seoul_emd |>
+  mutate(ADM_CD_2025 = as.character(ADM_CD))
+
+# Ensure both spatial layers use the same CRS before point-in-polygon joining.
+if (st_crs(flood_points) != st_crs(dong_boundary_2025)) {
+  flood_points <- flood_points |>
+    st_transform(st_crs(dong_boundary_2025))
+}
+
+# Preserve the original point-level administrative code and spatially attach
+# the 2025 administrative-dong identifier from the polygon layer.
+flood_points <- flood_points |>
+  mutate(ADM_CD_raw = as.character(ADM_CD))
+
+flood_points_2025 <- flood_points |>
+  st_join(
+    dong_boundary_2025 |>
+      select(ADM_CD_2025),
+    join = st_within,
+    left = FALSE
+  )
+
+# Prepare the spatially joined flood records used to construct dong-level
+# indicators. Years with no reported records, 2015 and 2021, are excluded.
+flood_records_for_indicators <- flood_points_2025 |>
+  st_drop_geometry() |>
+  mutate(
+    F_YR = as.integer(F_YR),
+    F_AREA = coalesce(as.double(F_AREA), 0),
+    F_SHIM = coalesce(as.double(F_SHIM), 0),
+    area_depth = F_AREA * F_SHIM
+  ) |>
+  filter(
+    F_YR >= 2010,
+    F_YR <= 2025,
+    !F_YR %in% c(2015, 2021)
+  )
+
+# Cumulative damage indicators: counts, total inundated area, and total
+# area-depth are each summarized once per administrative dong.
+dong_cumulative_damage <- flood_records_for_indicators |>
+  group_by(ADM_CD_2025) |>
+  summarise(
+    total_damage_count = n(),
+    total_F_AREA = sum(F_AREA, na.rm = TRUE),
+    total_area_depth = sum(area_depth, na.rm = TRUE),
+    n_damage_years = n_distinct(F_YR),
+    .groups = "drop"
+  )
+
+# Annual area-depth is used only to measure temporal recurrence and
+# concentration within each dong.
+dong_annual_area_depth <- flood_records_for_indicators |>
+  group_by(ADM_CD_2025, F_YR) |>
+  summarise(
+    annual_area_depth = sum(area_depth, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+dong_area_depth_concentration <- dong_annual_area_depth |>
+  group_by(ADM_CD_2025) |>
+  mutate(
+    total_area_depth = sum(annual_area_depth, na.rm = TRUE),
+    p_t = if_else(total_area_depth > 0, annual_area_depth / total_area_depth, 0)
+  ) |>
+  summarise(
+    n_damage_years_for_evenness = n_distinct(F_YR),
+    area_depth_entropy = -sum(if_else(p_t > 0, p_t * log(p_t), 0)),
+    max_year_share_area_depth = if_else(
+      first(total_area_depth) > 0,
+      max(annual_area_depth, na.rm = TRUE) / first(total_area_depth),
+      0
+    ),
+    .groups = "drop"
+  ) |>
+  mutate(
+    area_depth_evenness = if_else(
+      n_damage_years_for_evenness > 1,
+      area_depth_entropy / log(n_damage_years_for_evenness),
+      0
+    )
+  ) |>
+  select(ADM_CD_2025, area_depth_evenness, max_year_share_area_depth)
+
+# Join the summaries back to all 2025 administrative dongs. Dongs with no
+# reported flood damage are retained and assigned zero values.
+dong_flood_indicators <- dong_boundary_2025 |>
+  left_join(dong_cumulative_damage, by = "ADM_CD_2025") |>
+  left_join(dong_area_depth_concentration, by = "ADM_CD_2025") |>
+  mutate(
+    across(
+      c(
+        total_damage_count,
+        total_F_AREA,
+        total_area_depth,
+        n_damage_years,
+        area_depth_evenness,
+        max_year_share_area_depth
+      ),
+      \(x) coalesce(x, 0)
+    ),
+    log_total_damage_count = log1p(total_damage_count),
+    log_total_F_AREA = log1p(total_F_AREA),
+    log_total_area_depth = log1p(total_area_depth)
+  ) |>
+  select(
+    ADM_CD_2025,
+    ADM_NM,
+    SGG_CD,
+    total_damage_count,
+    log_total_damage_count,
+    total_F_AREA,
+    log_total_F_AREA,
+    total_area_depth,
+    log_total_area_depth,
+    n_damage_years,
+    area_depth_evenness,
+    max_year_share_area_depth
+  )
+
+cluster_indicators <- c(
+  "log_total_damage_count",
+  "log_total_F_AREA",
+  "log_total_area_depth",
+  "n_damage_years",
+  "area_depth_evenness",
+  "max_year_share_area_depth"
+)
+
+dong_cluster_input <- dong_flood_indicators |>
+  st_drop_geometry() |>
+  select(ADM_CD_2025, ADM_NM, all_of(cluster_indicators)) |>
+  mutate(
+    across(
+      all_of(cluster_indicators),
+      \(x) coalesce(as.numeric(x), 0)
+    )
+  )
+
+dong_cluster_matrix <- dong_cluster_input |>
+  select(all_of(cluster_indicators)) |>
+  as.matrix()
+
+rownames(dong_cluster_matrix) <- dong_cluster_input$ADM_CD_2025
+
+# Standardize indicators before Euclidean distance and Ward.D2 clustering.
+dong_cluster_scaled <- scale(dong_cluster_matrix)
+dong_cluster_distance <- dist(dong_cluster_scaled, method = "euclidean")
+dong_flood_hclust <- hclust(dong_cluster_distance, method = "ward.D2")
+
+final_k <- 5
+
+dong_cluster_membership <- tibble::tibble(
+  ADM_CD_2025 = names(cutree(dong_flood_hclust, k = final_k)),
+  cluster_id = cutree(dong_flood_hclust, k = final_k)
+) |>
+  mutate(
+    cluster_id = factor(cluster_id, levels = sort(unique(cluster_id)))
+  )
+
+dong_cluster_labeled <- dong_flood_indicators |>
+  left_join(dong_cluster_membership, by = "ADM_CD_2025")
+
+cluster_profile_for_labeling <- dong_cluster_labeled |>
+  st_drop_geometry() |>
+  group_by(cluster_id) |>
+  summarise(
+    n_dongs = n(),
+    mean_log_total_damage_count = mean(log_total_damage_count, na.rm = TRUE),
+    mean_log_total_F_AREA = mean(log_total_F_AREA, na.rm = TRUE),
+    mean_log_total_area_depth = mean(log_total_area_depth, na.rm = TRUE),
+    mean_n_damage_years = mean(n_damage_years, na.rm = TRUE),
+    mean_area_depth_evenness = mean(area_depth_evenness, na.rm = TRUE),
+    mean_max_year_share_area_depth = mean(max_year_share_area_depth, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    raw_damage_index = rowMeans(
+      pick(
+        mean_log_total_damage_count,
+        mean_log_total_F_AREA,
+        mean_log_total_area_depth
+      )
+    ),
+    raw_recurrence_index = rowMeans(
+      pick(
+        mean_n_damage_years,
+        mean_area_depth_evenness
+      )
+    ),
+    raw_concentration_index = mean_max_year_share_area_depth
+  ) |>
+  mutate(
+    damage_index = as.numeric(scale(raw_damage_index)),
+    recurrence_index = as.numeric(scale(raw_recurrence_index)),
+    concentration_index = as.numeric(scale(raw_concentration_index))
+  )
+
+very_low_damage_cluster <- cluster_profile_for_labeling |>
+  slice_min(damage_index, n = 1, with_ties = FALSE) |>
+  pull(cluster_id)
+
+candidate_clusters <- cluster_profile_for_labeling |>
+  filter(cluster_id != very_low_damage_cluster)
+
+high_recurrent_cluster <- candidate_clusters |>
+  slice_max(
+    damage_index + recurrence_index - 0.25 * concentration_index,
+    n = 1,
+    with_ties = FALSE
+  ) |>
+  pull(cluster_id)
+
+high_concentrated_cluster <- candidate_clusters |>
+  filter(cluster_id != high_recurrent_cluster) |>
+  slice_max(
+    damage_index + concentration_index - 0.25 * recurrence_index,
+    n = 1,
+    with_ties = FALSE
+  ) |>
+  pull(cluster_id)
+
+moderate_recurrent_cluster <- candidate_clusters |>
+  filter(!cluster_id %in% c(high_recurrent_cluster, high_concentrated_cluster)) |>
+  slice_max(
+    recurrence_index - 0.15 * damage_index,
+    n = 1,
+    with_ties = FALSE
+  ) |>
+  pull(cluster_id)
+
+low_concentrated_cluster <- candidate_clusters |>
+  filter(
+    !cluster_id %in% c(
+      high_recurrent_cluster,
+      high_concentrated_cluster,
+      moderate_recurrent_cluster
+    )
+  ) |>
+  slice_max(
+    concentration_index - damage_index,
+    n = 1,
+    with_ties = FALSE
+  ) |>
+  pull(cluster_id)
+
+cluster_label_levels <- c(
+  "1. High damage and recurrent",
+  "2. High damage but concentrated",
+  "3. Moderate or low damage but recurrent",
+  "4. Low damage and episodic",
+  "5. Very low or no reported damage"
+)
+
+cluster_label_lookup <- cluster_profile_for_labeling |>
+  mutate(
+    cluster_label = case_when(
+      cluster_id == high_recurrent_cluster ~ cluster_label_levels[1],
+      cluster_id == high_concentrated_cluster ~ cluster_label_levels[2],
+      cluster_id == moderate_recurrent_cluster ~ cluster_label_levels[3],
+      cluster_id == low_concentrated_cluster ~ cluster_label_levels[4],
+      cluster_id == very_low_damage_cluster ~ cluster_label_levels[5],
+      TRUE ~ "Unassigned flood-damage profile"
+    )
+  ) |>
+  arrange(cluster_id) |>
+  select(cluster_id, cluster_label)
+
+dong_cluster_labeled <- dong_cluster_labeled |>
+  left_join(cluster_label_lookup, by = "cluster_id") |>
+  mutate(
+    cluster_label = factor(cluster_label, levels = cluster_label_levels),
+    cluster_number_label = paste0("Cluster ", cluster_id, ": ", cluster_label)
+  )
+
+cluster_profile_table <- dong_cluster_labeled |>
+  st_drop_geometry() |>
+  group_by(cluster_id, cluster_label) |>
+  summarise(
+    n_dongs = n(),
+    across(
+      all_of(cluster_indicators),
+      \(x) round(mean(x, na.rm = TRUE), 3),
+      .names = "{.col}"
+    ),
+    .groups = "drop"
+  ) |>
+  arrange(cluster_id)
+
+cluster_map_palette <- setNames(
+  c("#b2182b", "#ef8a62", "#2166ac", "#67a9cf", "#d9d9d9"),
+  cluster_label_levels
+)
+
+dong_cluster_scaled_df <- as.data.frame(dong_cluster_scaled) |>
+  tibble::rownames_to_column("ADM_CD_2025")
+
+cluster_indicator_scaled_long <- dong_cluster_labeled |>
+  st_drop_geometry() |>
+  select(ADM_CD_2025, cluster_id, cluster_label) |>
+  left_join(dong_cluster_scaled_df, by = "ADM_CD_2025") |>
+  pivot_longer(
+    cols = all_of(cluster_indicators),
+    names_to = "indicator",
+    values_to = "z_score"
+  )
+
+ggplot(
+  cluster_indicator_scaled_long,
+  aes(x = cluster_label, y = z_score, fill = cluster_label)
+) +
+  geom_hline(yintercept = 0, color = "grey55", linewidth = 0.25) +
+  geom_boxplot(
+    width = 0.65,
+    outlier.alpha = 0.35,
+    linewidth = 0.25
+  ) +
+  facet_wrap(~ indicator, ncol = 2) +
+  scale_fill_manual(values = cluster_map_palette) +
+  coord_flip() +
+  labs(
+    title = "k = 5 cluster profiles across standardized flood-damage indicators",
+    x = NULL,
+    y = "Standardized indicator value"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme(
+    legend.position = "none",
+    panel.grid.minor = element_blank(),
+    strip.text = element_text(face = "bold")
+  )
+```
+
+## CA Result (Map)
+
+#### Flood-damage Clusters, Seoul (k=5)
+
+```{r}
+dong_cluster_map_5179 <- dong_cluster_labeled |>
+  st_transform(5179)
+
+seoul_sgg_5179 <- seoul_sgg |>
+  st_transform(5179)
+
+tm_shape(dong_cluster_map_5179) +
+  tm_polygons(
+    col = "cluster_label",
+    palette = cluster_map_palette,
+    title = "Flood-damage cluster",
+    border.col = "grey70",
+    lwd = 0.15
+  ) +
+  tm_shape(seoul_sgg_5179) +
+  tm_borders(
+    col = "grey20",
+    lwd = 1.2
+  ) +
+  tm_layout(
+    legend.outside = TRUE,
+    frame = FALSE
+  )
+```
+
+## Multinomial Regression Result (1)
+
+```{r}
+#| results: asis
+#------------------------------------------------------------
+# 1. Prepare data
+#------------------------------------------------------------
+flood_analysis <- st_read(
+  file.path(data_dir, "/final/seoul_flood_analysis_final.gpkg"),
+  quiet = TRUE
+) |>
+  st_make_valid()
+
+multi_data <- flood_analysis |>
+  st_drop_geometry() |>
+  mutate(
+    # Proxy for potential elderly single-person household concentration
+    single_elderly_proxy = SINGLE_HH_ * Elderly_R,
+
+    # Set reference category
+    cluster_label = factor(
+      cluster_label,
+      levels = c(
+        "5. Very low or no reported damage",
+        "1. High damage and recurrent",
+        "2. High damage but concentrated",
+        "3. Moderate or low damage but recurrent",
+        "4. Low damage and episodic"
+      )
+    )
+  ) |>
+  select(
+    cluster_label,
+    log_AtRisk,
+    GM_Rate,
+    SINGLE_HH_,
+    Frgn_HH_R,
+    NonHous_R,
+    Youth_R,
+    Elderly_R,
+    single_elderly_proxy
+  ) |>
+  na.omit()
+
+#------------------------------------------------------------
+# 2. Multinomial logistic regression
+#------------------------------------------------------------
+
+multi_null <- nnet::multinom(
+  cluster_label ~ 1,
+  data = multi_data,
+  trace = FALSE
+)
+
+multi_full <- nnet::multinom(
+  cluster_label ~ log_AtRisk + GM_Rate + Frgn_HH_R + NonHous_R +
+    Youth_R + single_elderly_proxy +
+    log_AtRisk:GM_Rate +
+    GM_Rate:NonHous_R +
+    log_AtRisk:NonHous_R,
+  data = multi_data,
+  trace = FALSE
+)
+
+multi_step <- MASS::stepAIC(
+  multi_null,
+  scope = list(
+    lower = multi_null,
+    upper = multi_full
+  ),
+  direction = "both",
+  trace = FALSE
+)
+
+multi_step_or <- broom::tidy(
+  multi_step,
+  exponentiate = TRUE,
+  conf.int = TRUE
+)
+
+multi_step_table_slide <- multi_step_or |>
+  filter(term != "(Intercept)") |>
+  mutate(
+    Outcome = case_when(
+      y.level == "1. High damage and recurrent" ~ "C1: High recurrent",
+      y.level == "2. High damage but concentrated" ~ "C2: High episodic",
+      y.level == "3. Moderate or low damage but recurrent" ~ "C3: Low recurrent",
+      y.level == "4. Low damage and episodic" ~ "C4: Low episodic",
+      TRUE ~ y.level
+    ),
+    Predictor = case_when(
+      term == "log_AtRisk" ~ "At-risk houses",
+      term == "GM_Rate" ~ "Migration rate",
+      term == "Frgn_HH_R" ~ "Foreign HH share",
+      term == "NonHous_R" ~ "Non-housing share",
+      term == "Youth_R" ~ "Youth share",
+      term == "single_elderly_proxy" ~ "Single elderly proxy",
+      term == "log_AtRisk:GM_Rate" ~ "At-risk × migration",
+      term == "GM_Rate:NonHous_R" ~ "Migration × non-housing",
+      term == "log_AtRisk:NonHous_R" ~ "At-risk × non-housing",
+      TRUE ~ term
+    ),
+    sig = case_when(
+      p.value < 0.001 ~ "***",
+      p.value < 0.01 ~ "**",
+      p.value < 0.05 ~ "*",
+      p.value < 0.1 ~ "†",
+      TRUE ~ ""
+    ),
+    `OR [95% CI]` = paste0(
+      sprintf("%.2f", estimate), sig,
+      " [", sprintf("%.2f", conf.low), ", ", sprintf("%.2f", conf.high), "]"
+    ),
+    `p` = case_when(
+      p.value < 0.001 ~ "<.001",
+      TRUE ~ sprintf("%.3f", p.value)
+    )
+  ) |>
+  select(
+    Outcome,
+    Predictor,
+    `OR [95% CI]`,
+    p
+  )
+
+multi_step_table_slide_1 <- multi_step_table_slide |>
+  filter(Outcome %in% c("C1: High recurrent", "C2: High episodic"))
+
+multi_step_table_slide_2 <- multi_step_table_slide |>
+  filter(Outcome %in% c("C3: Low recurrent", "C4: Low episodic"))
+
+multi_step_table_slide_1 |>
+  kable(
+    format = "html",
+    caption = "Stepwise multinomial logistic regression results: high-damage clusters",
+    align = c("l", "l", "r", "r"),
+    escape = FALSE,
+    table.attr = "class='slide-regression-table'"
+  ) |>
+  kable_styling(
+    full_width = FALSE,
+    position = "center",
+    font_size = 18,
+    bootstrap_options = c("condensed")
+  ) |>
+  collapse_rows(
+    columns = 1,
+    valign = "top"
+  )
+```
+
+## Multinomial Regression Result (2)
+
+```{r}
+#| results: asis
+
+table_html <- multi_step_table_slide_2 |>
+  kable(
+    format = "html",
+    caption = "Stepwise multinomial logistic regression results: lower-damage clusters",
+    align = c("l", "l", "r", "r"),
+    escape = FALSE,
+    table.attr = "class='slide-regression-table'"
+  ) |>
+  kable_styling(
+    full_width = FALSE,
+    position = "center",
+    font_size = 18,
+    bootstrap_options = c("condensed")
+  ) |>
+  collapse_rows(
+    columns = 1,
+    valign = "top"
+  )
+
+cat(table_html)
+
+cat("
+<div class='table-note'>
+  <em>Note:</em> Reference category is the first level of <code>cluster_label</code>. 
+  Values are odds ratios with 95% confidence intervals. 
+  † p &lt; .10, * p &lt; .05, ** p &lt; .01, *** p &lt; .001. 
+  Variables were selected using stepwise AIC.
+</div>
+")
+```
+
+## What Are “Non-Housing Residences”?
+
+`NonHous_R` is central to the model results.
+
+In the Korean housing context, “non-housing residences” often include highly precarious dwelling forms such as:
+
+-   [ ]{.hover-image-wrapper}[<strong>Jjokbang</strong>]{.hover-image-trigger} [ <img src="https://image.kmib.co.kr/online_image/2021/0126/611211110015466376_1.jpg" alt="Example of jjokbang"/> ]{.hover-image-box}
+
+-   **Goshiwon**
+
+-   Shanty or informal settlements
+
+-   Other substandard or quasi-housing arrangements
+
+## Housing Precarity and Residential Immobility
+
+-   Jjokbang and goshiwon often require little or no deposit.
+-   For extremely poor tenants, this makes them one of the few accessible housing options.
+-   Monthly rate subsidy may become a de facto rent benchmark in this micro-housing market.
+-   Rent can be very high relative to its unit size and facility quality.
+-   Tenants have extremely limited ability to move to other housing because alternative housing requires deposits.
+-   Landlords may have weak incentives to renovate because demand remains stable and returns can be high.
+
+## Key Point
+
+:::: core-question-wrap
+::: core-question-text
+Flood vulnerability may persist not simply because residents choose to stay, but because the housing market limits their ability to leave.
+:::
+::::

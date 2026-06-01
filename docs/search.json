@@ -88,7 +88,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCritical GIS - Methods\n\n\n\n\n\n\nGIS\n\n\nQualitative GIS\n\n\nCritical GIS\n\n\nGEOG 521\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBeyond Climate Migration\n\n\nHousing Precarity, Immobility, and Recurrent Flood Damage in Seoul\n\n\n\n\n\n\n\n\nSechang Kim\n\n\n\n\n\n\n\n\n\n\n\n\nMigration as System Stabilzer\n\n\n\n\n\n\nMigration\n\n\nClimate Migration\n\n\nSpatial Analysis\n\n\nGEOG 544\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[Book Chapter] Introduction: Feedback in Migration Process\n\n\n\n\n\n\ngeography\n\n\ndemography\n\n\nmigration\n\n\nsocial network\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCritical GIS - Methods\n\n\n\n\n\n\nGIS\n\n\nQualitative GIS\n\n\nCritical GIS\n\n\nGEOG 521\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBeyond Climate Migration\n\n\nHousing Precarity, Immobility, and Flood Vulnerability in Seoul\n\n\n\n\n\n\n\n\nSechang Kim\n\n\n\n\n\n\n\n\n\n\n\n\nMigration as System Stabilzer\n\n\n\n\n\n\nMigration\n\n\nClimate Migration\n\n\nSpatial Analysis\n\n\nGEOG 544\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[Book Chapter] Introduction: Feedback in Migration Process\n\n\n\n\n\n\ngeography\n\n\ndemography\n\n\nmigration\n\n\nsocial network\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Oct-22-2025.html",
@@ -403,7 +403,7 @@
     "href": "posts/Jun-02-2026.html#beyond-climate-migration",
     "title": "Beyond Climate Migration",
     "section": "Beyond Climate Migration",
-    "text": "Beyond Climate Migration\nHousing Precarity, Immobility, and Recurrent Flood Damage in Seoul\nCore question\nHow do physical flood risk and housing precarity jointly shape recurrent flood vulnerability in Seoul?"
+    "text": "Beyond Climate Migration\nHousing Precarity, Immobility, and Flood Vulnerability\nCore question\nHow do physical flood risk and housing precarity jointly shape recurrent flood vulnerability in Seoul?"
   },
   {
     "objectID": "posts/Jun-02-2026.html#seoul-as-a-metropolitan-flood-risk-context",
@@ -417,14 +417,14 @@
     "href": "posts/Jun-02-2026.html#why-seouls-flood-risk-matters",
     "title": "Beyond Climate Migration",
     "section": "Why Seoul’s Flood Risk Matters",
-    "text": "Why Seoul’s Flood Risk Matters\n\nFlood damage in Seoul is spatially uneven.\nSome areas experience large but episodic damage.\nOthers experience repeated, smaller-scale or chronic damage.\nThis distinction matters because recurrence may reflect not only physical exposure, but also social and housing-market conditions."
+    "text": "Why Seoul’s Flood Risk Matters\n\nCollege of Education/Humanities vs. College of Law/Business?\nFlood damage in Seoul is spatially uneven.\nSome areas experience large and episodic damage.\nOthers experience repeated, smaller-scale or chronic damage.\nThis distinction matters because intensity & recurrence may reflect not only physical exposure, but also social and housing-market conditions."
   },
   {
     "objectID": "posts/Jun-02-2026.html#research-motivation",
     "href": "posts/Jun-02-2026.html#research-motivation",
     "title": "Beyond Climate Migration",
     "section": "Research Motivation",
-    "text": "Research Motivation\nMost climate migration discussions ask:\n\nDoes disaster risk cause people to move?\n\nThis project asks a different question:\n\nWhat if the most vulnerable residents are unable to move away from recurrent risk?\n\n&lt;br&gt;\nArgument\nRecurrent flood damage may reveal a form of socially produced vulnerability, where housing precarity and residential immobility keep certain populations exposed to repeated flood risk."
+    "text": "Research Motivation\nMost climate migration discussions ask:\n\nDoes disaster risk cause people to move?\n\nThis project asks a different question:\n\nWhat if the most vulnerable residents are unable to move away from recurrent risk?\n\nArgument\nFlood inundation may reveal a form of socially produced vulnerability, where housing precarity and residential immobility keep certain populations exposed to repeated flood risk."
   },
   {
     "objectID": "posts/Jun-02-2026.html#observed-and-expected-flood-exposure",
@@ -439,5 +439,145 @@
     "title": "Beyond Climate Migration",
     "section": "Research Workflow",
     "text": "Research Workflow"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#seoul-as-a-metropolitan-flood-risk-context-1",
+    "href": "posts/Jun-02-2026.html#seoul-as-a-metropolitan-flood-risk-context-1",
+    "title": "Beyond Climate Migration",
+    "section": "Seoul as a Metropolitan Flood-Risk Context",
+    "text": "Seoul as a Metropolitan Flood-Risk Context"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#measuring-recurrent-flood-damage",
+    "href": "posts/Jun-02-2026.html#measuring-recurrent-flood-damage",
+    "title": "Beyond Climate Migration",
+    "section": "Measuring Recurrent Flood Damage",
+    "text": "Measuring Recurrent Flood Damage\nDependent Variable Construction\nMagnitude\n\nNumber of damaged houses\nInundation area\nFlood volume proxy: area × depth\n\nRepeatability\n\nNumber of damage years\nEvenness of annual damage distribution\nShare of the most damaged year in total damage"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#measuring-evenness",
+    "href": "posts/Jun-02-2026.html#measuring-evenness",
+    "title": "Beyond Climate Migration",
+    "section": "Measuring Evenness",
+    "text": "Measuring Evenness\nEvenness (Shannon Entropy Index)\nFor each dong, annual flood damage is converted into a proportional distribution:\n\\[\np_t = \\frac{D_t}{\\sum_t D_t},\\quad H = - \\sum_t p_t \\log(p_t)\n\\]\nwhere \\(D_t\\) is annual area-depth flood exposure.\nNormalized evenness:\n\\[\nE = \\frac{H}{\\log(n)}\n\\]\nwhere n is the number of damage years\nRange: 0 - 1 (Completely Concentrated to Completely Distributed)"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#measuring-at-risk-houses",
+    "href": "posts/Jun-02-2026.html#measuring-at-risk-houses",
+    "title": "Beyond Climate Migration",
+    "section": "Measuring At-Risk Houses",
+    "text": "Measuring At-Risk Houses\n\n\n\nUsing 100m × 100m grid data and flood hazard map\nSum of houses that intersect with hazard polygon\nExposure to flood-risk\nReflects hydrological site conditions"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#cluster-analysis-ca",
+    "href": "posts/Jun-02-2026.html#cluster-analysis-ca",
+    "title": "Beyond Climate Migration",
+    "section": "Cluster Analysis (CA)",
+    "text": "Cluster Analysis (CA)\nHierarchical CA\n\nMean values of the six flood-damage indicators by final k = 5 cluster.\n\n\ncluster_id\ncluster_label\nn_dongs\nlog_total_damage_count\nlog_total_F_AREA\nlog_total_area_depth\nn_damage_years\narea_depth_evenness\nmax_year_share_area_depth\n\n\n\n\n1\n3. Moderate or low damage but recurrent\n121\n2.72\n7.83\n6.60\n3.35\n0.71\n0.65\n\n\n2\n4. Low damage and episodic\n45\n1.03\n5.21\n3.33\n1.11\n0.02\n1.00\n\n\n3\n5. Very low or no reported damage\n25\n0.00\n0.00\n0.00\n0.00\n0.00\n0.00\n\n\n4\n2. High damage but concentrated\n91\n4.45\n10.73\n9.63\n3.07\n0.20\n0.93\n\n\n5\n1. High damage and recurrent\n144\n4.68\n10.34\n9.13\n4.58\n0.72\n0.54"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#cluster-analysis-ca-1",
+    "href": "posts/Jun-02-2026.html#cluster-analysis-ca-1",
+    "title": "Beyond Climate Migration",
+    "section": "Cluster Analysis (CA)",
+    "text": "Cluster Analysis (CA)"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#cluster-analysis-ca-result-box-plot",
+    "href": "posts/Jun-02-2026.html#cluster-analysis-ca-result-box-plot",
+    "title": "Beyond Climate Migration",
+    "section": "Cluster Analysis (CA) Result: Box Plot",
+    "text": "Cluster Analysis (CA) Result: Box Plot"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#ca-result-map",
+    "href": "posts/Jun-02-2026.html#ca-result-map",
+    "title": "Beyond Climate Migration",
+    "section": "CA Result (Map)",
+    "text": "CA Result (Map)\nFlood-damage Clusters, Seoul (k=5)"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#at-risk-houses",
+    "href": "posts/Jun-02-2026.html#at-risk-houses",
+    "title": "Beyond Climate Migration",
+    "section": "Measuring At-Risk Houses",
+    "text": "Measuring At-Risk Houses\n\n\n\nUsing 100m × 100m grid data and flood hazard map\nSum of houses that intersect with hazard polygon\nExposure to flood-risk\nReflects hydrological site conditions"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#measuring-flood-damage",
+    "href": "posts/Jun-02-2026.html#measuring-flood-damage",
+    "title": "Beyond Climate Migration",
+    "section": "Measuring Flood Damage",
+    "text": "Measuring Flood Damage\n1) Magnitude\n\nNumber of damaged houses\nInundation area\nFlood volume proxy: area × depth\n\n2) Repeatability\n\nNumber of damage years\nEvenness of annual damage distribution\nShare of the most damaged year in total damage"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#measuring-evenness-shannon-entropy-index",
+    "href": "posts/Jun-02-2026.html#measuring-evenness-shannon-entropy-index",
+    "title": "Beyond Climate Migration",
+    "section": "Measuring Evenness (Shannon Entropy Index)",
+    "text": "Measuring Evenness (Shannon Entropy Index)\nFor each dong, annual flood damage is converted into a proportional distribution, where \\(D_t\\) is annual area-depth flood exposure.\n\\[\np_t = \\frac{D_t}{\\sum_t D_t},\\quad H = - \\sum_t p_t \\log(p_t)\n\\]\nNormalized evenness (where n is the number of damaged years):\n\\[\nE = \\frac{H}{\\log(n)}\n\\]\nRange: 0 - 1 (Completely Concentrated to Completely Distributed)"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#multinomial-regression",
+    "href": "posts/Jun-02-2026.html#multinomial-regression",
+    "title": "Beyond Climate Migration",
+    "section": "Multinomial Regression",
+    "text": "Multinomial Regression\n\nStepwise multinomial logistic regression results\n\n\nOutcome\nPredictor\nOR [95% CI]\np\n\n\n\n\nC1: High recurrent\nNon-housing share\n1.30*** [1.16, 1.45]\n&lt;.001\n\n\nSingle elderly proxy\n1.00 [1.00, 1.00]\n0.635\n\n\nForeign HH share\n1.02 [0.85, 1.22]\n0.868\n\n\nAt-risk houses\n1.18** [1.05, 1.33]\n0.005\n\n\nC2: High episodic\nNon-housing share\n1.28*** [1.15, 1.43]\n&lt;.001\n\n\nSingle elderly proxy\n1.00 [1.00, 1.00]\n0.477\n\n\nForeign HH share\n1.09 [0.91, 1.30]\n0.354\n\n\nAt-risk houses\n1.10† [0.98, 1.24]\n0.099\n\n\nC3: Low recurrent\nNon-housing share\n1.24*** [1.11, 1.39]\n&lt;.001\n\n\nSingle elderly proxy\n1.00 [1.00, 1.00]\n0.931\n\n\nForeign HH share\n1.02 [0.85, 1.22]\n0.863\n\n\nAt-risk houses\n1.06 [0.95, 1.18]\n0.284\n\n\nC4: Low episodic\nNon-housing share\n1.22*** [1.09, 1.37]\n&lt;.001\n\n\nSingle elderly proxy\n1.00* [1.00, 1.00]\n0.019\n\n\nForeign HH share\n1.01 [0.84, 1.21]\n0.957\n\n\nAt-risk houses\n1.03 [0.91, 1.16]\n0.657\n\n\n\nNote:   Reference category: cluster_label first level. Values are odds ratios with 95% confidence intervals. † p &lt; .10, * p &lt; .05, ** p &lt; .01, *** p &lt; .001."
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#what-are-non-housing-residences",
+    "href": "posts/Jun-02-2026.html#what-are-non-housing-residences",
+    "title": "Beyond Climate Migration",
+    "section": "What Are “Non-Housing Residences”?",
+    "text": "What Are “Non-Housing Residences”?\nNonHous_R is central to the model results.\nIn the Korean housing context, “non-housing residences” often include highly precarious dwelling forms such as:\n\nJjokbang \nGoshiwon\nShanty or informal settlements\nOther substandard or quasi-housing arrangements"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#housing-precarity-and-residential-immobility",
+    "href": "posts/Jun-02-2026.html#housing-precarity-and-residential-immobility",
+    "title": "Beyond Climate Migration",
+    "section": "Housing Precarity and Residential Immobility",
+    "text": "Housing Precarity and Residential Immobility\n\nJjokbang and goshiwon often require little or no deposit.\nFor extremely poor tenants, this makes them one of the few accessible housing options.\nMonthly rate subsidy may become a de facto rent benchmark in this micro-housing market.\nRent can be very high relative to its unit size and facility quality.\nTenants have extremely limited ability to move to other housing because alternative housing requires deposits.\nLandlords may have weak incentives to renovate because demand remains stable and returns can be high."
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#motivation-personal-experiecne-during-masters",
+    "href": "posts/Jun-02-2026.html#motivation-personal-experiecne-during-masters",
+    "title": "Beyond Climate Migration",
+    "section": "Motivation: Personal Experiecne (During Master’s)",
+    "text": "Motivation: Personal Experiecne (During Master’s)"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#multinomial-regression-result-1",
+    "href": "posts/Jun-02-2026.html#multinomial-regression-result-1",
+    "title": "Beyond Climate Migration",
+    "section": "Multinomial Regression Result (1)",
+    "text": "Multinomial Regression Result (1)\n\nStepwise multinomial logistic regression results: high-damage clusters\n\n\nOutcome\nPredictor\nOR [95% CI]\np\n\n\n\n\nC1: High recurrent\nNon-housing share\n1.30*** [1.16, 1.45]\n&lt;.001\n\n\nSingle elderly proxy\n1.00 [1.00, 1.00]\n0.635\n\n\nForeign HH share\n1.02 [0.85, 1.22]\n0.868\n\n\nAt-risk houses\n1.18** [1.05, 1.33]\n0.005\n\n\nC2: High episodic\nNon-housing share\n1.28*** [1.15, 1.43]\n&lt;.001\n\n\nSingle elderly proxy\n1.00 [1.00, 1.00]\n0.477\n\n\nForeign HH share\n1.09 [0.91, 1.30]\n0.354\n\n\nAt-risk houses\n1.10† [0.98, 1.24]\n0.099"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#multinomial-regression-result-2",
+    "href": "posts/Jun-02-2026.html#multinomial-regression-result-2",
+    "title": "Beyond Climate Migration",
+    "section": "Multinomial Regression Result (2)",
+    "text": "Multinomial Regression Result (2)\n\n\nStepwise multinomial logistic regression results: lower-damage clusters\n\n\n\n\nOutcome\n\n\nPredictor\n\n\nOR [95% CI]\n\n\np\n\n\n\n\n\n\nC3: Low recurrent\n\n\nNon-housing share\n\n\n1.24*** [1.11, 1.39]\n\n\n&lt;.001\n\n\n\n\nSingle elderly proxy\n\n\n1.00 [1.00, 1.00]\n\n\n0.931\n\n\n\n\nForeign HH share\n\n\n1.02 [0.85, 1.22]\n\n\n0.863\n\n\n\n\nAt-risk houses\n\n\n1.06 [0.95, 1.18]\n\n\n0.284\n\n\n\n\nC4: Low episodic\n\n\nNon-housing share\n\n\n1.22*** [1.09, 1.37]\n\n\n&lt;.001\n\n\n\n\nSingle elderly proxy\n\n\n1.00* [1.00, 1.00]\n\n\n0.019\n\n\n\n\nForeign HH share\n\n\n1.01 [0.84, 1.21]\n\n\n0.957\n\n\n\n\nAt-risk houses\n\n\n1.03 [0.91, 1.16]\n\n\n0.657\n\n\n\n\n\nNote: Reference category is the first level of cluster_label. Values are odds ratios with 95% confidence intervals. † p &lt; .10, * p &lt; .05, ** p &lt; .01, *** p &lt; .001. Variables were selected using stepwise AIC."
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#core-question-slide",
+    "href": "posts/Jun-02-2026.html#core-question-slide",
+    "title": "Beyond Climate Migration",
+    "section": "",
+    "text": "Question: How do physical flood risk and housing precarity jointly shape flood vulnerability in Seoul? How is housing precarity related to immobility?"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#motivation-personal-experience-during-masters",
+    "href": "posts/Jun-02-2026.html#motivation-personal-experience-during-masters",
+    "title": "Beyond Climate Migration",
+    "section": "Motivation: Personal Experience (During Master’s)",
+    "text": "Motivation: Personal Experience (During Master’s)"
+  },
+  {
+    "objectID": "posts/Jun-02-2026.html#key-point",
+    "href": "posts/Jun-02-2026.html#key-point",
+    "title": "Beyond Climate Migration",
+    "section": "Key Point",
+    "text": "Key Point\n\n\nFlood vulnerability may persist not simply because residents choose to stay, but because the housing market limits their ability to leave."
   }
 ]
