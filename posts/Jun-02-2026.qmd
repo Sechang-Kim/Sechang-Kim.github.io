@@ -4,7 +4,7 @@ subtitle: "Housing Precarity, Immobility, and Flood Vulnerability in Seoul"
 author: "Sechang Kim"
 format:
   revealjs:
-    theme: simple
+    theme: white
     slide-number: true
     chalkboard: false
     preview-links: auto
