@@ -200,7 +200,8 @@ leaflet(width = "100%", height = "560px") |>
     fillColor = "#67a9cf",
     fillOpacity = 0.20,
     group = "Expected Damage",
-    popup = "Expected Flood Damage Spot"
+    popup = "Expected Flood Damage Spot",
+    options = pathOptions(interactive = FALSE)
   ) |>
   addPolygons(
     data = seoul_emd_map,
@@ -208,7 +209,8 @@ leaflet(width = "100%", height = "560px") |>
     weight = 0.4,
     opacity = 0.6,
     fillOpacity = 0,
-    group = "EMD boundaries"
+    group = "EMD boundaries",
+    options = pathOptions(interactive = FALSE)
   ) |>
   addPolygons(
     data = seoul_sgg_map,
@@ -216,7 +218,8 @@ leaflet(width = "100%", height = "560px") |>
     weight = 1.2,
     opacity = 1,
     fillOpacity = 0,
-    group = "SGG boundaries"
+    group = "SGG boundaries",
+    options = pathOptions(interactive = FALSE)
   ) |>
   addLayersControl(
     overlayGroups = c(
