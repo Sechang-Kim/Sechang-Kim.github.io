@@ -949,7 +949,18 @@ cat("
 
 In the Korean housing context, “non-housing residences” often include highly precarious dwelling forms such as:
 
--   [ ]{.hover-image-wrapper}[<strong>Jjokbang</strong>]{.hover-image-trigger} [ <img src="https://image.kmib.co.kr/online_image/2021/0126/611211110015466376_1.jpg" alt="Example of jjokbang"/> ]{.hover-image-box}
+-   <span class="hover-image-wrapper">
+  <span class="hover-image-trigger"><strong>Jjokbang</strong></span>
+  <span class="hover-image-box">
+    <img src="https://image.kmib.co.kr/online_image/2021/0126/611211110015466376_1.jpg" alt="Example of jjokbang">
+    <span class="hover-image-source">
+      Link:
+      <a href="https://www.goodnews1.com/news/articleView.html?idxno=456703" target="_blank">
+        goodnews1.com
+      </a>
+    </span>
+  </span>
+</span>
 
 -   **Goshiwon**
 

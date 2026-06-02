@@ -97,7 +97,7 @@
   left: 105%;
   top: -40px;
   z-index: 9999;
-  width: 360px;
+  width: 540px;
   padding: 8px;
   background: white;
   border: 1px solid #999;
@@ -112,6 +112,19 @@
 
 .hover-image-wrapper:hover .hover-image-box {
   display: block;
+}
+
+.hover-image-source {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.55em;
+  line-height: 1.2;
+  color: #374151;
+}
+
+.hover-image-source a {
+  color: #1f4e8c;
+  text-decoration: underline;
 }
 
 .reveal table.slide-regression-table {
