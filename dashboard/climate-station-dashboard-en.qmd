@@ -1,0 +1,266 @@
+---
+title: "South Korea Climate Stations"
+author: "Sechang Kim"
+lang: en
+format:
+  dashboard:
+    theme: default
+    include-in-header: header.html
+    orientation: columns
+    mainfont: Pretendard
+    monofont: Pretendard
+resources:
+  - contents/climate-stations-en/
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(leaflet)
+library(echarts4r)
+library(htmlwidgets)
+library(readxl)
+library(htmltools)
+library(DT)
+library(dplyr)
+library(crosstalk)
+
+# Keep the source workbook unchanged; translate its fields for display.
+weather <- read_excel("weather_data(2020).xlsx", sheet = "데이터") |>
+  rename(
+    StationID = `번호`, Station = `관측소`, Item = `항목`,
+    Annual = `연평균`
+  ) |>
+  rename_with(~ month.abb, all_of(paste0(1:12, "월")))
+
+station_names <- c(
+  "서울" = "Seoul", "인천" = "Incheon", "양평" = "Yangpyeong",
+  "대관령" = "Daegwallyeong", "강릉" = "Gangneung", "서산" = "Seosan",
+  "대전" = "Daejeon", "청주" = "Cheongju", "전주" = "Jeonju",
+  "광주" = "Gwangju", "목포" = "Mokpo", "대구" = "Daegu",
+  "울산" = "Ulsan", "부산" = "Busan", "제주" = "Jeju",
+  "서귀포" = "Seogwipo", "울릉도" = "Ulleungdo"
+)
+weather$Station <- unname(station_names[weather$Station])
+stopifnot(!anyNA(weather$Station))
+
+temp_data <- weather |> filter(Item == "평균 기온 (℃)")
+prec_data <- weather |> filter(Item == "강수량 (㎜)")
+stopifnot(
+  !anyDuplicated(temp_data$StationID),
+  !anyDuplicated(prec_data$StationID),
+  setequal(temp_data$StationID, prec_data$StationID)
+)
+
+# Rebuild the original dual-axis popup charts with English labels.
+# Save shared JavaScript dependencies once, beside the generated charts.
+popup_dir <- file.path("contents", "climate-stations-en")
+dir.create(popup_dir, recursive = TRUE, showWarnings = FALSE)
+
+for (i in seq_len(nrow(temp_data))) {
+  station <- temp_data$Station[i]
+  rainfall <- prec_data |> filter(StationID == temp_data$StationID[i])
+  monthly <- data.frame(
+    Month = month.abb,
+    Temperature = as.numeric(unlist(temp_data[i, month.abb], use.names = FALSE)),
+    Precipitation = as.numeric(unlist(rainfall[1, month.abb], use.names = FALSE))
+  )
+
+  chart <- monthly |>
+    e_charts(Month, width = "100%", height = 400) |>
+    e_line(Temperature, name = "Mean temperature (°C)",
+           y_index = 0, color = "#EEA47F") |>
+    e_bar(Precipitation, name = "Precipitation (mm)",
+          y_index = 1, color = "#00539C", opacity = 0.6) |>
+    e_title(text = station, left = "center") |>
+    e_tooltip(trigger = "axis") |>
+    e_grid(top = 75, bottom = 75, left = 50, right = 50) |>
+    e_x_axis(axisLabel = list(fontSize = 12),
+             axisTick = list(show = FALSE),
+             # Draw the baseline at the bottom (-15°C), rather than at zero.
+             axisLine = list(show = TRUE, onZero = FALSE,
+                             lineStyle = list(color = "black", width = 1.5))) |>
+    e_y_axis(index = 0, name = "Temperature (°C)", min = -15, max = 35,
+             interval = 5,
+             axisLabel = list(fontSize = 12, showMinLabel = TRUE,
+                              showMaxLabel = TRUE, hideOverlap = FALSE)) |>
+    e_y_axis(index = 1, name = "Precipitation (mm)", min = 0, max = 500,
+             splitLine = list(show = FALSE),
+             axisLabel = list(fontSize = 12)) |>
+    e_legend(bottom = 8, textStyle = list(fontSize = 12))
+
+  saveWidget(
+    chart,
+    file = file.path(popup_dir, paste0(tolower(station), ".html")),
+    selfcontained = FALSE, libdir = "lib",
+    title = paste(station, "- Monthly Climate Normals (1991-2020)")
+  )
+}
+
+popup_html <- function(station) {
+  as.character(tags$iframe(
+    src = paste0("contents/climate-stations-en/", tolower(station), ".html"),
+    title = paste(station, "monthly temperature and precipitation"),
+    loading = "lazy",
+    style = "width: min(600px, 72vw); height: 400px; border: 0;"
+  ))
+}
+
+prepare_stations <- function(data) {
+  data |>
+    mutate(
+      StationID = as.character(StationID),
+      # Named vectors serialize as JSON objects; Leaflet needs an array.
+      Popup = unname(vapply(Station, popup_html, character(1)))
+    ) |>
+    select(StationID, Station, all_of(month.abb), Annual,
+           Longitude, Latitude, Popup)
+}
+temp_data <- prepare_stations(temp_data)
+prec_data <- prepare_stations(prec_data)
+
+# Separate groups keep the two measurements' filters independent.
+# Explicit station keys keep map markers and table rows aligned.
+shared_temp <- SharedData$new(temp_data, key = ~StationID,
+                              group = "temperature-stations")
+shared_prec <- SharedData$new(prec_data, key = ~StationID,
+                              group = "precipitation-stations")
+
+station_map <- function(shared_data, numbered = FALSE) {
+  map <- leaflet(shared_data) |>
+    addTiles(group = "OpenStreetMap") |>
+    addProviderTiles(providers$OpenTopoMap, group = "OpenTopoMap") |>
+    hideGroup("OpenTopoMap")
+
+  if (numbered) {
+    map <- map |>
+      addCircleMarkers(
+        ~Longitude, ~Latitude, group = "Stations", layerId = ~StationID,
+        radius = 10, weight = 1, color = "#00539C",
+        fillOpacity = 0.8, fillColor = "#00539C",
+        popup = ~Popup, popupOptions = popupOptions(maxWidth = 650),
+        # Attach the number to this marker rather than registering another
+        # Crosstalk layer with the same key (Leaflet 2.2.3 cannot filter that).
+        label = ~StationID,
+        labelOptions = labelOptions(
+          noHide = TRUE, textOnly = TRUE, textsize = "14px",
+          direction = "center",
+          style = list(color = "white", "text-shadow" = "0 0 3px black")
+        )
+      )
+  } else {
+    map <- map |>
+      addMarkers(
+        ~Longitude, ~Latitude, group = "Stations", layerId = ~StationID,
+        popup = ~Popup, popupOptions = popupOptions(maxWidth = 650),
+        label = ~Station
+      )
+  }
+
+  map |>
+    fitBounds(
+      min(temp_data$Longitude), min(temp_data$Latitude),
+      max(temp_data$Longitude), max(temp_data$Latitude)
+    ) |>
+    addLayersControl(
+      baseGroups = c("OpenStreetMap", "OpenTopoMap"),
+      options = layersControlOptions(collapsed = TRUE)
+    )
+}
+
+station_table <- function(shared_data, annual_label) {
+  fields <- names(shared_data$origData())
+  headers <- fields
+  headers[fields == "Annual"] <- annual_label
+  hidden <- match(c("StationID", "Longitude", "Latitude", "Popup"), fields) - 1L
+
+  datatable(
+    shared_data, rownames = FALSE, colnames = headers,
+    class = "compact stripe hover", selection = "single",
+    options = list(
+      dom = "fti", paging = FALSE, order = list(),
+      scrollX = TRUE, scrollY = "55vh", scrollCollapse = TRUE,
+      columnDefs = list(list(visible = FALSE, targets = hidden)),
+      language = list(search = "Search stations:")
+    )
+  ) |>
+    formatRound(columns = c(month.abb, "Annual"), digits = 1) |>
+    formatStyle(columns = fields, fontSize = "80%")
+}
+```
+
+# Regional Climate of South Korea {.sidebar width="330px"}
+
+### Regional climate characteristics
+
+#### 1) Climate normals
+
+Climate normals are **averages over a 30-year period ending in a year that ends in zero**.
+
+For example, the 2020 climate normals summarize temperature, precipitation, and other observations for **1991–2020**. They are usually updated every 10 years.
+
+#### 2) South Korea's climate (2020 normals)
+
+- Mean temperature: **12.8°C**
+- Annual precipitation: **1,306.3 mm**
+
+#### 3) Changes reported in the original source
+
+- Temperature increased by **0.3°C** compared with 10 years earlier and **0.5°C** compared with 20 years earlier.
+- Precipitation increased by **34.1 mm** compared with 10 years earlier, but decreased by **25.0 mm** compared with 20 years earlier.
+
+#### 4) Compare stations with the national averages
+
+Adjust the annual ranges to filter the map and table on the corresponding tab. Click a station marker to view its monthly climate chart.
+
+```{r}
+filter_slider(
+  id = "annual-temperature", label = "Annual mean temperature (°C)",
+  sharedData = shared_temp, column = ~Annual,
+  step = 0.1, round = FALSE, sep = "", ticks = FALSE
+)
+
+filter_slider(
+  id = "annual-precipitation", label = "Annual precipitation (mm)",
+  sharedData = shared_prec, column = ~Annual,
+  step = 0.1, round = FALSE, sep = "", ticks = FALSE
+)
+```
+
+Source: Korea Meteorological Administration, *Meteorological Observation Statistics*, station climate normals, December 2020. Accessed November 11, 2024, as cited in the original dashboard. [View the source table on KOSIS](https://kosis.kr/statHtml/statHtml.do?orgId=141&tblId=DT_14102_B002&conn_path=I2).
+
+# Temperature
+
+## Map {width="45%"}
+
+```{r}
+#| title: "Station Climate Charts"
+station_map(shared_temp, numbered = TRUE)
+```
+
+## Table {width="55%"}
+
+```{r}
+#| title: "Monthly and Annual Mean Temperature by Station (°C)"
+station_table(shared_temp, "Annual mean")
+```
+
+# Precipitation
+
+## Map {width="45%"}
+
+```{r}
+#| title: "Station Climate Charts"
+station_map(shared_prec)
+```
+
+## Table {width="55%"}
+
+```{r}
+#| title: "Monthly and Annual Precipitation by Station (mm)"
+station_table(shared_prec, "Annual total")
+```
